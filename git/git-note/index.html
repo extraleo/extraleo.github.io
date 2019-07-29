@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="keyword 1, keyword 2, keyword 3" name="keywords">
+<meta content="Leiheng" name="author">
+<meta property="og:title" content="Git Note - Ray">
+<meta property="og:url" content="https://leiheng.github.io/git/git-note/">
+<meta property="og:description" content="Your description here">
+<meta property="og:type" content="website" />
+<title>Git Note | Ray</title>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<link rel="stylesheet" href="https://leiheng.github.io/css/style.css">
+<link rel="shortcut icon" href="https://leiheng.github.io/gopher.png">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+
+</head>
+
+<body>
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="https://leiheng.github.io"><h1 class="title is-4">Ray</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="https://github.com/leiheng" target="_blank">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/HKuaPa" target="_blank">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml" target="_blank">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Git Note</h1>
+    <h2 class="subtitle is-5">July 5, 2019 by Leiheng</h2>
+    
+      <div class="tags">
+    
+        <a class="button is-link" href="/tags/git">git</a>
+    
+</div>
+
+    
+    <div class="content">
+      
+
+<h2 id="git-de-bug-bisect-https-git-scm-com-book-zh-v1-git-e5-b7-a5-e5-85-b7-e4-bd-bf-e7-94-a8-git-e8-b0-83-e8-af-95">Git de-bug <em>bisect</em><a href="https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E4%BD%BF%E7%94%A8-Git-%E8%B0%83%E8%AF%95">!!!</a></h2>
+
+<hr />
+
+<ol>
+<li><code>git bisect start</code></li>
+<li><code>git bisect bad</code></li>
+<li><code>git bisect good [good commit]</code></li>
+<li>find it and fixed. use <code>git bisect reset</code> return the begin</li>
+</ol>
+
+<h2 id="add-git">Add git</h2>
+
+<hr />
+
+<p>创建并添加ssh key</p>
+
+<pre><code class="language-sh">git config --global user.name &quot;leiheng&quot;
+git config --global user.email &quot;heng.lei@hpe.com&quot;
+ssh-keygen -t rsa -C &quot;heng.lei@hpe.com&quot;
+</code></pre>
+
+<p>但是如果要在电脑上添加自己的github accout，refer <a href="https://code.tutsplus.com/tutorials/quick-tip-how-to-work-with-github-and-multiple-accounts--net-22574">this</a></p>
+
+<p><code>ssh-add error</code> refer <a href="https://unix.stackexchange.com/questions/48863/ssh-add-complains-could-not-open-a-connection-to-your-authentication-agent/48868#48868">this</a></p>
+
+<p>final: <code>git clone git@git-personal:leiheng\repo</code></p>
+
+<p>final: <code>git clone git@github.com:leiheng\repo</code></p>
+
+<h2 id="配置了-gitignore-但是并没有起作用">配置了<code>.gitignore</code>但是并没有起作用</h2>
+
+<hr />
+
+<p><strong>method:</strong></p>
+
+<pre><code>git rm --cached *.class
+git commit -m &quot;add gitignore file&quot;
+</code></pre>
+
+<h2 id="good-habit">Good Habit</h2>
+
+<hr />
+
+<ul>
+<li>本地新建分支，然后merge到master上去，用master作为提pr的branch</li>
+<li><del>开始写代码之前rebase代码</del>
+
+<ul>
+<li>rebase before or after change does not matter, the point is, do not rebase branch which other guys or other mechine working on it.</li>
+</ul></li>
+<li>在add之前，看status<code>git status</code></li>
+<li>在add之前，看diff <code>git diff</code> 最好看diff是用<strong>source tree</strong></li>
+<li>注意<strong>编码</strong>；github上是LF，win上是CRLF <strong>坑注意</strong></li>
+<li>can use <code>git option --help</code></li>
+</ul>
+
+<h2 id="rebase">Rebase</h2>
+
+<hr />
+
+<pre><code class="language-sh">git fetch upstream
+//rebase branch which you want, most is default branch
+// Do not rebase branch which other guy work on it
+git rebase upstream/master
+...
+//if not use rebase, use pull also a good choice but cause a merge node created
+git pull origin master
+</code></pre>
+
+<h2 id="commit相关">Commit相关</h2>
+
+<hr />
+
+<ul>
+<li>前提
+&gt; - 多个commit合并成一个commit(这些&rsquo;多个commit&rsquo;指只做一件事的commit)
+&gt; - pr 尽可能的细
+&gt; - 一个pr，一个分支只能做一件事
+&gt; - file change 最好不要超过10个
+&gt; - <code>git commit --amend --no-edit</code> 补提交，但不增加commit 节点 <strong>love it</strong>
+&gt; - <code>git commit --amend</code> change your commit msg</li>
+</ul>
+
+<pre><code class="language-shell">git reset 某次commit的id
+相当于
+git reset --soft HEAD~
+</code></pre>
+
+<h2 id="拉pr到本地分支">拉pr到本地分支</h2>
+
+<pre><code>git fetch origin pull/1941/head:repack-org-apache
+git checkout repack-org-apache
+</code></pre>
+
+<blockquote>
+<p>在checkout之前不要手动创建这个 <code>repack-org-apache</code> 分支</p>
+</blockquote>
+
+<p><a href="https://www.huangyunkun.com/2018/06/15/pull-github-pr-to-local-branch/">refer</a></p>
+
+<h2 id="懒人-git-stash">懒人 git stash</h2>
+
+<hr />
+
+<ul>
+<li>git stash</li>
+<li>git stash apply</li>
+<li>git stash pop</li>
+</ul>
+
+<h2 id="submodule">Submodule</h2>
+
+<hr />
+
+<p><code>git submodule add url folder</code>
+在一个module里面添加ignore的submodule，顺序是很重要的。
+我在其中还看到了empty repo的一些特性。
+1. submodule remote repo 不能为空
+2. <code>.gitignore</code> 必须在添加完 submodule 之后才能把这个 folder 添加上去，要是之前就添上去了咋搞，指路<code>git rm --cached</code>
+3. update submodule 指路 <code>git submodule --help</code></p>
+
+<h2 id="remote-repo">Remote repo</h2>
+
+<hr />
+
+<ol>
+<li>remote repo 不能为空,empty repo cannot be created</li>
+</ol>
+
+<h2 id="refer">REFER</h2>
+
+<ul>
+<li><a href="https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89">refer</a></li>
+<li><a href="https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E4%BD%BF%E7%94%A8-Git-%E8%B0%83%E8%AF%95">git bisect</a></li>
+<li><a href="https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97">submodule</a></li>
+</ul>
+
+    </div>
+    
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <aside><div id="disqus_thread"></div></aside>
+    <script type="text/javascript">
+      var disqus_shortname = 'leiheng';
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; 2019 | Follow on <a href="https://github.com/leiheng" target="_blank">Github</a> | <a href="https://github.com/mgjohansen/hucore.git" target="_blank">HuCore theme</a> & <a href="http://gohugo.io" target="_blank">Hugo</a> ♥</p>
+  </div>
+</section>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js" integrity="sha256-+bhVTaRmJ/c07eV80nU8gD2cBBF0rYkf1txqXlrbvb0=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/go.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/dockerfile.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/bash.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'trackingcode', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
