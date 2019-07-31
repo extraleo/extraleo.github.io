@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="keyword 1, keyword 2, keyword 3" name="keywords">
+<meta content="Leiheng" name="author">
+<meta property="og:title" content="Https for Harbor - Ray">
+<meta property="og:url" content="https://leiheng.github.io/post/docker/https-for-harbor/">
+<meta property="og:description" content="Your description here">
+<meta property="og:type" content="website" />
+<title>Https for Harbor | Ray</title>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<link rel="stylesheet" href="https://leiheng.github.io/css/style.css">
+<link rel="shortcut icon" href="https://leiheng.github.io/gopher.png">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+
+</head>
+
+<body>
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="https://leiheng.github.io"><h1 class="title is-4">Ray</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="https://github.com/leiheng" target="_blank">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/HKuaPa" target="_blank">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml" target="_blank">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Https for Harbor</h1>
+    <h2 class="subtitle is-5">July 31, 2019 by Leiheng</h2>
+    
+      <div class="tags">
+    
+        <a class="button is-link" href="/tags/docker">Docker</a>
+    
+</div>
+
+    
+    <div class="content">
+      
+
+<h2 id="https">https</h2>
+
+<p>Exercise install Harbor and configure https.</p>
+
+<h3 id="prepare">prepare</h3>
+
+<ol>
+<li>install docker by get-docker script.</li>
+<li>install compose by compose github install wiki</li>
+<li>install harbor by harbor wiki</li>
+</ol>
+
+<h3 id="lets-getting-ca">lets getting CA</h3>
+
+<ol>
+<li><code>mkdir /data/harbor-cert &amp; cd /data/harbor-cert</code></li>
+<li>generate CA key
+<code>sh
+openssl genrsa -out ca.key 4096
+</code></li>
+
+<li><p>CA crt</p>
+
+<pre><code class="language-sh">openssl req -x509 -new -nodes -sha512 -days 3650 \
+-subj &quot;/CN=yourdomain.com&quot; \
+-key ca.key \
+-out ca.crt
+</code></pre>
+
+<h3 id="lets-getting-server-certificate">lets getting server certificate</h3></li>
+
+<li><p>server key</p>
+
+<pre><code class="language-sh">openssl genrsa -out yourdomain.com.key 4096
+</code></pre></li>
+
+<li><p>Generate a Certificate Signing request</p>
+
+<pre><code class="language-sh">openssl req -sha512 -new \
+-subj &quot;/CN=yourdomain.com&quot; \
+-key yourdomain.com.key \
+-out yourdomain.com.csr 
+</code></pre></li>
+
+<li><p>Generate Certificate for Harbor
+```sh
+cat &gt; v3.ext &lt;&lt;-EOF
+authorityKeyIdentifier=keyid,issuer
+basicConstraints=CA:FALSE
+keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names</p></li>
+</ol>
+
+<p>[alt_names]
+DNS.1=yourdomain.com
+DNS.2=yourdomain
+DNS.3=hostname
+EOF</p>
+
+<pre><code>```shell
+openssl x509 -req -sha512 -days 3650 \
+    -extfile v3.ext \
+    -CA ca.crt -CAkey ca.key -CAcreateserial \
+    -in yourdomain.com.csr \
+    -out yourdomain.com.crt
+</code></pre>
+
+<h3 id="configure-harbor">configure Harbor</h3>
+
+<ol>
+<li>Convert server yourdomain.com.crt to yourdomain.com.cert:
+<code>shell
+openssl x509 -inform PEM -in yourdomain.com.crt -out yourdomain.com.cert
+</code></li>
+
+<li><p>Delpoy yourdomain.com.cert, yourdomain.com.key, and ca.crt for Docker:</p>
+
+<pre><code class="language-sh"># if /etc/docker/certs.d/yourdomain.com/ not exist, mkdir.
+cp yourdomain.com.cert /etc/docker/certs.d/yourdomain.com/
+cp yourdomain.com.key /etc/docker/certs.d/yourdomain.com/
+cp ca.crt /etc/docker/certs.d/yourdomain.com/
+</code></pre></li>
+</ol>
+
+<p>The following illustrates a configuration with custom certificates:</p>
+
+<pre><code class="language-sh">/etc/docker/certs.d/
+    └── yourdomain.com:port   
+       ├── yourdomain.com.cert  &lt;-- Server certificate signed by CA
+       ├── yourdomain.com.key   &lt;-- Server key signed by CA
+       └── ca.crt               &lt;-- Certificate authority that signed the registry certificate
+</code></pre>
+
+<ol>
+<li>Edit harbor.yml, add certificate, harbor.yml should be like this:</li>
+</ol>
+
+<pre><code class="language-sh">#set hostnamehostname: yourdomain.com
+
+http:
+  port: 80
+https:
+  # https port for harbor, default is 443
+  port: 443
+  # The path of cert and key files for nginx
+  certificate: /data/cert/yourdomain.com.crt
+  private_key: /data/cert/yourdomain.com.key
+
+  ......
+</code></pre>
+
+<p>Generate configuration files for Harbor:</p>
+
+<pre><code class="language-sh">docker-compose down -v # if harbor is running, down first, then run prepare script
+./prepare
+docker-compose up -d
+</code></pre>
+
+<ol>
+<li>Valid https</li>
+</ol>
+
+<ul>
+<li>Open browser, and open <code>https://yourdomain.com</code>, see the harbor login page.</li>
+<li><code>docker login yourdomain.com</code>  should success.
+
+<br /></li>
+</ul>
+
+<h2 id="ts">TS</h2>
+
+<ol>
+<li>if use chrome open harbor, may have a <strong>NET::ERR_CERT_INVALID</strong>. It is Chrome&rsquo;s bug when visiting numerous top sites. Our self-signing certificate belonging this <code>numerous</code> category. So, open harbor with firefox.</li>
+<li>if your docker has <code>Insecure Registries</code> (you can see it by <code>docker ifno</code>), add the harbor registry:(Centos7)
+```
+cat &gt; /etc/docker/daemon.json &lt;&lt;-EOF
+{
+&ldquo;insecure-registries&rdquo; : [ &ldquo;SGDLITVM0531.hpeswlab.net&rdquo; ]
+}
+EOF</li>
+</ol>
+
+<h1 id="then-restart-docker">then restart docker</h1>
+
+<p>systemctl daemon-reload
+systemctl restart docker
+``<code>
+3. I still dont know how to add insecure registry into docker on windos. I have tried install</code>ca.crt<code>and</code>harbor.crt<code>into</code>Trusted Root Certification` and restart computer, still cannot connect the harbor.</p>
+
+<h3 id="refer">Refer</h3>
+
+<ul>
+<li><a href="https://get.docker.com/">get-docker</a></li>
+<li><a href="https://docs.docker.com/config/daemon/systemd/">docker set proxy</a></li>
+<li><a href="https://github.com/docker/compose/releases">compose wiki</a></li>
+<li><a href="https://github.com/goharbor/harbor/blob/master/docs/installation_guide.md">harbor install</a></li>
+<li><a href="https://appuals.com/fix-google-chrome-error-neterr_cert_invalid/">Chrome&rsquo;s ssl bug</a></li>
+<li><a href="https://stackoverflow.com/questions/42211380/add-insecure-registry-to-docker">docker insecure registry</a></li>
+<li><a href="https://docs.docker.com/registry/insecure/#windows">Windows docker insecure registry but failed</a></li>
+</ul>
+
+    </div>
+    
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <aside><div id="disqus_thread"></div></aside>
+    <script type="text/javascript">
+      var disqus_shortname = 'leiheng';
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; 2019 | Follow on <a href="https://github.com/leiheng" target="_blank">Github</a> | <a href="https://github.com/mgjohansen/hucore.git" target="_blank">HuCore theme</a> & <a href="http://gohugo.io" target="_blank">Hugo</a> ♥</p>
+  </div>
+</section>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js" integrity="sha256-+bhVTaRmJ/c07eV80nU8gD2cBBF0rYkf1txqXlrbvb0=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/go.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/dockerfile.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/bash.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'trackingcode', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
