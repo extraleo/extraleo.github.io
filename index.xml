@@ -5,8 +5,110 @@
     <description>Recent content in Ray&#39;s Blog on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 31 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Aug 2019 19:25:47 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Code Style</title>
+      <link>https://leiheng.github.io/posts/java/code-style/</link>
+      <pubDate>Thu, 01 Aug 2019 19:25:47 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/code-style/</guid>
+      <description>
+
+&lt;h2 id=&#34;到-resource-文件夹里面拿文件&#34;&gt;到 resource 文件夹里面拿文件&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;String response = Resources.toString(Resources.getResource(&amp;quot;response.json&amp;quot;), Charsets.UTF_8);
+// bytes:
+Resources.asByteSource(Resources.getResource(&amp;quot;datain_100000.log&amp;quot;).toURI().toURL()).openBufferedStream();
+
+// Guava:
+  public static URL getResource(String resourceName) {
+    ClassLoader loader =
+        MoreObjects.firstNonNull(
+            Thread.currentThread().getContextClassLoader(), Resources.class.getClassLoader());
+    URL url = loader.getResource(resourceName);
+    checkArgument(url != null, &amp;quot;resource %s not found.&amp;quot;, resourceName);
+    return url;
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;get-env-in-springboot&#34;&gt;get env in SpringBoot&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;// define properties in application.yaml like:
+project:
+  service:
+    name: smarta-installer
+    feature:
+      mgmt:
+        job-setting:
+          job-retry-time: ${JOB_RETRY_TIME:100}
+          job-interval-time: ${JOB_INTERVAL_TIME:60}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;then, create Bean:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Data
+@ConfigurationProperties(prefix = &amp;quot;project.service.feature.mgmt&amp;quot;)
+public class AppConfigProperties {
+	private ScaleJobSetting JobSetting;
+
+	@Data
+	public static class JobSetting {
+		private long jobRetryTime = 100;
+		private long jobIntervalTime = 60;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;now, have fun.&lt;/p&gt;
+
+&lt;h2 id=&#34;try-with-resource&#34;&gt;try with resource&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;能&lt;code&gt;try with resource&lt;/code&gt;的类必须继承&lt;code&gt;AutoCloseable&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;流式处理I/O&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void queryEncode2() throws Exception {
+   AciServerDetails aciServerDetails = getServerDetails(Constants.idolHost, Constants.idolQueryPort, Constants.idolOemKey);
+   try (
+           InputStream inputStream = Resources.asByteSource(Resources.getResource(&amp;quot;datain_100000.log&amp;quot;).toURI().toURL()).openBufferedStream();
+           BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+           OutputStream outputStream = Files.asByteSink(new File(&amp;quot;output/querys.txt&amp;quot;)).openBufferedStream();
+   ) {
+     Flux.fromStream(bufferedReader.lines())
+             .subscribe( query -&amp;gt; {
+                       try {
+                         log.info(&amp;quot;query is, {}&amp;quot;, query);
+                         outputStream.write(SimpleQuery.encode(aciServerDetails, query).getBytes());
+                         outputStream.write(&amp;quot;\n&amp;quot;.getBytes());
+                       } catch (Exception e) {
+                         log.info(&amp;quot;error query is, {}&amp;quot;, query);
+                         log.error(&amp;quot;&amp;quot;, e);
+                       }
+                     }
+             );
+   }
+ }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;or&lt;/strong&gt; vertx.fileSytem()&lt;/p&gt;
+
+&lt;h3 id=&#34;refer&#34;&gt;refer&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;java-string-immutable&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;java-string-immutable&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/java-immutable-object&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;java-immutable-object&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;java-string-pool&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;java-string-pool&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Https for Harbor</title>
@@ -249,19 +351,24 @@ git pull origin master
 &lt;hr /&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;前提
-&amp;gt; - 多个commit合并成一个commit(这些&amp;rsquo;多个commit&amp;rsquo;指只做一件事的commit)
-&amp;gt; - pr 尽可能的细
-&amp;gt; - 一个pr，一个分支只能做一件事
-&amp;gt; - file change 最好不要超过10个
-&amp;gt; - &lt;code&gt;git commit --amend --no-edit&lt;/code&gt; 补提交，但不增加commit 节点 &lt;strong&gt;love it&lt;/strong&gt;
-&amp;gt; - &lt;code&gt;git commit --amend&lt;/code&gt; change your commit msg&lt;/p&gt;
+&lt;li&gt;前提&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;多个commit合并成一个commit(这些&amp;rsquo;多个commit&amp;rsquo;指只做一件事的commit)&lt;/li&gt;
+&lt;li&gt;pr 尽可能的细&lt;/li&gt;
+&lt;li&gt;一个pr，一个分支只能做一件事&lt;/li&gt;
+&lt;li&gt;file change 最好不要超过10个&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git commit --amend --no-edit&lt;/code&gt; 补提交，但不增加commit 节点 &lt;strong&gt;love it&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git commit --amend&lt;/code&gt; change your commit msg&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git reset 某次commit的id
 相当于
 git reset --soft HEAD~
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;拉pr到本地分支&#34;&gt;拉pr到本地分支&lt;/h2&gt;
 

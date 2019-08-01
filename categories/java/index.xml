@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java on Ray&#39;s Blog</title>
+    <link>https://leiheng.github.io/categories/java/</link>
+    <description>Recent content in java on Ray&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 01 Aug 2019 19:25:47 +0800</lastBuildDate>
+    
+	<atom:link href="https://leiheng.github.io/categories/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Code Style</title>
+      <link>https://leiheng.github.io/posts/java/code-style/</link>
+      <pubDate>Thu, 01 Aug 2019 19:25:47 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/code-style/</guid>
+      <description>到 resource 文件夹里面拿文件 String response = Resources.toString(Resources.getResource(&amp;quot;response.json&amp;quot;), Charsets.UTF_8); // bytes: Resources.asByteSource(Resources.getResource(&amp;quot;datain_100000.log&amp;quot;).toURI().toURL()).openBufferedStream(); // Guava: public static URL getResource(String resourceName) { ClassLoader loader = MoreObjects.firstNonNull( Thread.currentThread().getContextClassLoader(), Resources.class.getClassLoader()); URL url = loader.getResource(resourceName); checkArgument(url != null, &amp;quot;resource %s not found.&amp;quot;, resourceName); return url; } get env in SpringBoot // define properties in application.yaml like: project: service: name: smarta-installer feature: mgmt: job-setting: job-retry-time: ${JOB_RETRY_TIME:100} job-interval-time: ${JOB_INTERVAL_TIME:60} then, create</description>
+    </item>
+    
+  </channel>
+</rss>

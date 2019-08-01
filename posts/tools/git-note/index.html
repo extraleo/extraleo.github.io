@@ -57,7 +57,7 @@
     "datePublished": "2019-07-05 00:00:00 \x2b0000 UTC",
     "dateModified" : "2019-07-05 00:00:00 \x2b0000 UTC",
     "url" : "https:\/\/leiheng.github.io\/posts\/tools\/git-note\/",
-    "wordCount" : "709",
+    "wordCount" : "697",
     "keywords" : [ "git", "Ray\x27s Blog"]
 }
 </script>
@@ -128,7 +128,7 @@
                         <a href="https://leiheng.github.io/categories/tools/"> tools </a>
                         
                 </span>
-                <span class="post-word-count">, 709 words</span>
+                <span class="post-word-count">, 697 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -212,19 +212,24 @@ git pull origin master
 <hr />
 
 <ul>
-<li><p>前提
-&gt; - 多个commit合并成一个commit(这些&rsquo;多个commit&rsquo;指只做一件事的commit)
-&gt; - pr 尽可能的细
-&gt; - 一个pr，一个分支只能做一件事
-&gt; - file change 最好不要超过10个
-&gt; - <code>git commit --amend --no-edit</code> 补提交，但不增加commit 节点 <strong>love it</strong>
-&gt; - <code>git commit --amend</code> change your commit msg</p>
+<li>前提</li>
+</ul>
+
+<blockquote>
+<ul>
+<li>多个commit合并成一个commit(这些&rsquo;多个commit&rsquo;指只做一件事的commit)</li>
+<li>pr 尽可能的细</li>
+<li>一个pr，一个分支只能做一件事</li>
+<li>file change 最好不要超过10个</li>
+<li><code>git commit --amend --no-edit</code> 补提交，但不增加commit 节点 <strong>love it</strong></li>
+<li><code>git commit --amend</code> change your commit msg</li>
+</ul>
+</blockquote>
 
 <pre><code class="language-bash">git reset 某次commit的id
 相当于
 git reset --soft HEAD~
-</code></pre></li>
-</ul>
+</code></pre>
 
 <h2 id="拉pr到本地分支">拉pr到本地分支</h2>
 
