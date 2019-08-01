@@ -1,41 +1,329 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ray</title>
+    <title>Ray&#39;s Blog on Ray&#39;s Blog</title>
     <link>https://leiheng.github.io/</link>
-    <description>Recent content on Ray</description>
+    <description>Recent content in Ray&#39;s Blog on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-US</language>
-    <copyright>&amp;copy; 2019 | Follow on &lt;a href=&#34;https://github.com/leiheng&#34; target=&#34;_blank&#34;&gt;Github&lt;/a&gt; | &lt;a href=&#34;https://github.com/mgjohansen/hucore.git&#34; target=&#34;_blank&#34;&gt;HuCore theme&lt;/a&gt; &amp; &lt;a href=&#34;http://gohugo.io&#34; target=&#34;_blank&#34;&gt;Hugo&lt;/a&gt; ♥</copyright>
+    <language>zh-cn</language>
     <lastBuildDate>Wed, 31 Jul 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://leiheng.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
+    <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Https for Harbor</title>
-      <link>https://leiheng.github.io/post/docker/https-for-harbor/</link>
+      <link>https://leiheng.github.io/posts/docker/https-for-harbor/</link>
       <pubDate>Wed, 31 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://leiheng.github.io/post/docker/https-for-harbor/</guid>
-      <description>https Exercise install Harbor and configure https.
-prepare  install docker by get-docker script. install compose by compose github install wiki install harbor by harbor wiki  lets getting CA  mkdir /data/harbor-cert &amp;amp; cd /data/harbor-cert generate CA key sh openssl genrsa -out ca.key 4096  CA crt
-openssl req -x509 -new -nodes -sha512 -days 3650 \ -subj &amp;quot;/CN=yourdomain.com&amp;quot; \ -key ca.key \ -out ca.crt  lets getting server certificate server key</description>
+      <guid>https://leiheng.github.io/posts/docker/https-for-harbor/</guid>
+      <description>
+
+&lt;h2 id=&#34;https&#34;&gt;https&lt;/h2&gt;
+
+&lt;p&gt;Exercise install Harbor and configure https.&lt;/p&gt;
+
+&lt;h3 id=&#34;prepare&#34;&gt;prepare&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;install docker by get-docker script.&lt;/li&gt;
+&lt;li&gt;install compose by compose github install wiki&lt;/li&gt;
+&lt;li&gt;install harbor by harbor wiki&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;lets-getting-ca&#34;&gt;lets getting CA&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;mkdir /data/harbor-cert &amp;amp; cd /data/harbor-cert&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;generate CA key&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;openssl genrsa -out ca.key 4096
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;CA crt&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;openssl req -x509 -new -nodes -sha512 -days 3650 \
+-subj &amp;quot;/CN=yourdomain.com&amp;quot; \
+-key ca.key \
+-out ca.crt
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;lets-getting-server-certificate&#34;&gt;lets getting server certificate&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;server key&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;openssl genrsa -out yourdomain.com.key 4096
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Generate a Certificate Signing request&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;openssl req -sha512 -new \
+-subj &amp;quot;/CN=yourdomain.com&amp;quot; \
+-key yourdomain.com.key \
+-out yourdomain.com.csr 
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Generate Certificate for Harbor:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cat &amp;gt; v3.ext &amp;lt;&amp;lt;-EOF
+authorityKeyIdentifier=keyid,issuer
+basicConstraints=CA:FALSE
+keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+extendedKeyUsage = serverAuth 
+subjectAltName = @alt_names
+[alt_names]
+DNS.1=yourdomain.com
+DNS.2=yourdomain
+DNS.3=hostname
+EOF
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;then:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;openssl x509 -req -sha512 -days 3650 \
+-extfile v3.ext \
+-CA ca.crt -CAkey ca.key -CAcreateserial \
+-in yourdomain.com.csr \
+-out yourdomain.com.crt
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;configure-harbor&#34;&gt;configure Harbor&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Convert server yourdomain.com.crt to yourdomain.com.cert:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;openssl x509 -inform PEM -in yourdomain.com.crt -out yourdomain.com.cert
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Delpoy yourdomain.com.cert, yourdomain.com.key, and ca.crt for Docker:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# if /etc/docker/certs.d/yourdomain.com/ not exist, mkdir.
+cp yourdomain.com.cert /etc/docker/certs.d/yourdomain.com/
+cp yourdomain.com.key /etc/docker/certs.d/yourdomain.com/
+cp ca.crt /etc/docker/certs.d/yourdomain.com/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The following illustrates a configuration with custom certificates:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;/etc/docker/certs.d/
+└── yourdomain.com:port   
+   ├── yourdomain.com.cert  &amp;lt;-- Server certificate signed by CA
+   ├── yourdomain.com.key   &amp;lt;-- Server key signed by CA
+   └── ca.crt               &amp;lt;-- Certificate authority that signed the registry certificate
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Edit harbor.yml, add certificate, harbor.yml should be like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#set hostnamehostname: yourdomain.com
+http:
+port: 80
+https:
+# https port for harbor, default is 443
+port: 443
+# The path of cert and key files for nginx
+certificate: /data/cert/yourdomain.com.crt
+private_key: /data/cert/yourdomain.com.key
+......
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Generate configuration files for Harbor:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker-compose down -v # if harbor is running, down first, then run prepare script
+./prepare
+docker-compose up -d
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Valid https&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Open browser, and open &lt;code&gt;https://yourdomain.com&lt;/code&gt;, see the harbor login page.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docker login yourdomain.com&lt;/code&gt;  should success.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;ts&#34;&gt;TS&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;if use chrome open harbor, may have a &lt;strong&gt;NET::ERR_CERT_INVALID&lt;/strong&gt;. It is Chrome&amp;rsquo;s bug when visiting numerous top sites. Our self-signing certificate belonging this &lt;code&gt;numerous&lt;/code&gt; category. So, open harbor with firefox.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;if your docker has &lt;code&gt;Insecure Registries&lt;/code&gt; (you can see it by &lt;code&gt;docker ifno&lt;/code&gt;), add the harbor registry:(Centos7)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cat &amp;gt; /etc/docker/daemon.json &amp;lt;&amp;lt;-EOF
+{
+&amp;quot;insecure-registries&amp;quot; : [ &amp;quot;SGDLITVM0531.hpeswlab.net&amp;quot; ]
+}
+EOF
+# then restart docker
+systemctl daemon-reload
+systemctl restart docker
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;I still dont know how to add insecure registry into docker on windos. I have tried install &lt;code&gt;ca.crt&lt;/code&gt;&amp;amp;&lt;code&gt;harbor.crt&lt;/code&gt; into &lt;code&gt;Trusted Root Certification&lt;/code&gt; and restart computer, still cannot connect the harbor.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;refer&#34;&gt;Refer&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://get.docker.com/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;get-docker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/config/daemon/systemd/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;docker set proxy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/docker/compose/releases&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;compose wiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/goharbor/harbor/blob/master/docs/installation_guide.md&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;harbor install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://appuals.com/fix-google-chrome-error-neterr_cert_invalid/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Chrome&amp;rsquo;s ssl bug&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/42211380/add-insecure-registry-to-docker&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;docker insecure registry&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/registry/insecure/#windows&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Windows docker insecure registry but failed&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
       <title>Git Note</title>
-      <link>https://leiheng.github.io/post/git/git-note/</link>
+      <link>https://leiheng.github.io/posts/tools/git-note/</link>
       <pubDate>Fri, 05 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://leiheng.github.io/post/git/git-note/</guid>
-      <description>Git de-bug bisect!!!  git bisect start git bisect bad git bisect good [good commit] find it and fixed. use git bisect reset return the begin  Add git 创建并添加ssh key
-git config --global user.name &amp;quot;leiheng&amp;quot; git config --global user.email &amp;quot;heng.lei@hpe.com&amp;quot; ssh-keygen -t rsa -C &amp;quot;heng.lei@hpe.com&amp;quot;  但是如果要在电脑上添加自己的github accout，refer this
-ssh-add error refer this
-final: git clone git@git-personal:leiheng\repo
-final: git clone git@github.com:leiheng\repo
-配置了.gitignore但是并没有起作用 method:
-git rm --cached *.class git commit -m &amp;quot;add gitignore file&amp;quot;  Good Habit  本地新建分支，然后merge到master上去，用master作为提pr的branch 开始写代码之前rebase代码  rebase before or after change does not matter, the point is, do not rebase branch which other guys or other mechine working on it.</description>
+      <guid>https://leiheng.github.io/posts/tools/git-note/</guid>
+      <description>
+
+&lt;h2 id=&#34;add-git&#34;&gt;Add git&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;创建并添加ssh key&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git config --global user.name &amp;quot;leiheng&amp;quot;
+git config --global user.email &amp;quot;heng.lei@hpe.com&amp;quot;
+ssh-keygen -t rsa -C &amp;quot;heng.lei@hpe.com&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;但是如果要在电脑上添加自己的github accout，refer &lt;a href=&#34;https://code.tutsplus.com/tutorials/quick-tip-how-to-work-with-github-and-multiple-accounts--net-22574&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;this&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ssh-add error&lt;/code&gt; refer &lt;a href=&#34;https://unix.stackexchange.com/questions/48863/ssh-add-complains-could-not-open-a-connection-to-your-authentication-agent/48868#48868&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;this&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;final: &lt;code&gt;git clone git@git-personal:leiheng\repo&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;final: &lt;code&gt;git clone git@github.com:leiheng\repo&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;配置了-gitignore-但是并没有起作用&#34;&gt;配置了&lt;code&gt;.gitignore&lt;/code&gt;但是并没有起作用&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;method:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git rm --cached *.class
+git commit -m &amp;quot;add gitignore file&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;good-habit&#34;&gt;Good Habit&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;本地新建分支，然后merge到master上去，用master作为提pr的branch&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;开始写代码之前rebase代码&lt;/del&gt;
+
+&lt;ul&gt;
+&lt;li&gt;rebase before or after change does not matter, the point is, do not rebase branch which other guys or other mechine working on it.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;在add之前，看status&lt;code&gt;git status&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在add之前，看diff &lt;code&gt;git diff&lt;/code&gt; 最好看diff是用&lt;strong&gt;source tree&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;注意&lt;strong&gt;编码&lt;/strong&gt;；github上是LF，win上是CRLF &lt;strong&gt;坑注意&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;can use &lt;code&gt;git option --help&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;rebase&#34;&gt;Rebase&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git fetch upstream
+//rebase branch which you want, most is default branch
+// Do not rebase branch which other guy work on it
+git rebase upstream/master
+...
+//if not use rebase, use pull also a good choice but cause a merge node created
+git pull origin master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;commit相关&#34;&gt;Commit相关&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;前提
+&amp;gt; - 多个commit合并成一个commit(这些&amp;rsquo;多个commit&amp;rsquo;指只做一件事的commit)
+&amp;gt; - pr 尽可能的细
+&amp;gt; - 一个pr，一个分支只能做一件事
+&amp;gt; - file change 最好不要超过10个
+&amp;gt; - &lt;code&gt;git commit --amend --no-edit&lt;/code&gt; 补提交，但不增加commit 节点 &lt;strong&gt;love it&lt;/strong&gt;
+&amp;gt; - &lt;code&gt;git commit --amend&lt;/code&gt; change your commit msg&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git reset 某次commit的id
+相当于
+git reset --soft HEAD~
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;拉pr到本地分支&#34;&gt;拉pr到本地分支&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git fetch origin pull/1941/head:repack-org-apache
+git checkout repack-org-apache
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;在checkout之前不要手动创建这个&lt;code&gt;repack-org-apache&lt;/code&gt;分支
+&lt;a href=&#34;https://www.huangyunkun.com/2018/06/15/pull-github-pr-to-local-branch/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;refer&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;git-stash&#34;&gt;git stash&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;git stash&lt;/li&gt;
+&lt;li&gt;git stash apply&lt;/li&gt;
+&lt;li&gt;git stash pop&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;submodule&#34;&gt;Submodule&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;code&gt;git submodule add url folder&lt;/code&gt;
+在一个module里面添加ignore的submodule，顺序是很重要的。
+我在其中还看到了empty repo的一些特性。
+1. submodule remote repo 不能为空
+2. &lt;code&gt;.gitignore&lt;/code&gt; 必须在添加完 submodule 之后才能把这个 folder 添加上去，要是之前就添上去了咋搞，指路&lt;code&gt;git rm --cached&lt;/code&gt;
+3. update submodule 指路 &lt;code&gt;git submodule --help&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;git-de-bug-bisect-https-git-scm-com-book-zh-v1-git-e5-b7-a5-e5-85-b7-e4-bd-bf-e7-94-a8-git-e8-b0-83-e8-af-95&#34;&gt;Git de-bug &lt;em&gt;bisect&lt;/em&gt;&lt;a href=&#34;https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E4%BD%BF%E7%94%A8-Git-%E8%B0%83%E8%AF%95&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;!!!&lt;/a&gt;&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;git bisect start&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git bisect bad&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git bisect good [good commit]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;find it and fixed. use &lt;code&gt;git bisect reset&lt;/code&gt; return the begin&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;remote-repo&#34;&gt;Remote repo&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li&gt;remote repo 不能为空, empty repo cannot be created&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;refer&#34;&gt;REFER&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;refer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E4%BD%BF%E7%94%A8-Git-%E8%B0%83%E8%AF%95&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;git bisect&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;submodule&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
   </channel>

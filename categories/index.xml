@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Ray</title>
+    <title>Categories on Ray&#39;s Blog</title>
     <link>https://leiheng.github.io/categories/</link>
-    <description>Recent content in Categories on Ray</description>
+    <description>Recent content in Categories on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-US</language>
-    <copyright>&amp;copy; 2019 | Follow on &lt;a href=&#34;https://github.com/leiheng&#34; target=&#34;_blank&#34;&gt;Github&lt;/a&gt; | &lt;a href=&#34;https://github.com/mgjohansen/hucore.git&#34; target=&#34;_blank&#34;&gt;HuCore theme&lt;/a&gt; &amp; &lt;a href=&#34;http://gohugo.io&#34; target=&#34;_blank&#34;&gt;Hugo&lt;/a&gt; ♥</copyright>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 31 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://leiheng.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -21,7 +21,7 @@
     </item>
     
     <item>
-      <title>Tools</title>
+      <title>tools</title>
       <link>https://leiheng.github.io/categories/tools/</link>
       <pubDate>Fri, 05 Jul 2019 00:00:00 +0000</pubDate>
       
