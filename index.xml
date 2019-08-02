@@ -5,8 +5,96 @@
     <description>Recent content in Ray&#39;s Blog on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 02 Aug 2019 15:53:01 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 02 Aug 2019 16:50:38 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Create an Object</title>
+      <link>https://leiheng.github.io/posts/design-patterns/create-an-object/</link>
+      <pubDate>Fri, 02 Aug 2019 16:50:38 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/design-patterns/create-an-object/</guid>
+      <description>
+
+&lt;h2 id=&#34;builder-pattern&#34;&gt;Builder Pattern&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Getter
+@Setter
+public class BuilderSample {
+  private String compo;
+  private boolean flag;
+
+  private BuilderSample(SampleBuild build) {
+    this.compo = build.compo;
+    this.flag = build.flag;
+  }
+
+  public static class SampleBuild {
+    private String compo;
+    private boolean flag = false;
+
+    public BuilderSample build() {
+      return new BuilderSample(this);
+    }
+
+    public SampleBuild setCompo(String compon) {
+      this.compo = compon;
+      return this;
+    }
+
+    public SampleBuild setFlag(boolean flag) {
+      this.flag = flag;
+      return this;
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;OR&lt;/strong&gt; use &lt;code&gt;@Bulid&lt;/code&gt; ,everything is simple.&lt;/p&gt;
+
+&lt;h2 id=&#34;factory-patterna&#34;&gt;Factory Patterna&lt;/h2&gt;
+
+&lt;h2 id=&#34;singleton-pattern&#34;&gt;Singleton Pattern&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Best way to to implement a singleton pattern in Java is use &lt;code&gt;enum&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;a single-element enum type is the best way to implement a singleton. &amp;ndash;&amp;ldquo;Effective java&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public enum StatusEnum {
+    SUCCESS(&amp;quot;9000&amp;quot;, &amp;quot;success&amp;quot;),
+    private final String[] favoriteSongs =
+        { &amp;quot;Hound Dog&amp;quot;, &amp;quot;Heartbreak Hotel&amp;quot; };
+    public void printFavorites() {
+        System.out.println(Arrays.toString(favoriteSongs));
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;double check create singleton&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class StatusEnum{
+    private volatile static StatusEnum instance;
+    private StatusEnum(){}
+    public static StatusEnum getInstance(){
+        if(instance == null){
+            synchronized (StatusEnum.class){
+                if (instance == null){
+                    instance = new StatusEnum();
+                }
+            }
+        }
+        return instance;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Diff StatefulSet and Deployment</title>

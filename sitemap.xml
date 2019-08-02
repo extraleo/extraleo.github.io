@@ -4,7 +4,77 @@
     <url>
       <loc>https://leiheng.github.io/categories/</loc>
       
-      <lastmod>2019-08-02T15:53:01+08:00</lastmod>
+      <lastmod>2019-08-02T16:50:38+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/posts/design-patterns/create-an-object/</loc>
+      
+      <lastmod>2019-08-02T16:50:38+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/posts/</loc>
+      
+      <lastmod>2019-08-02T16:50:38+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/</loc>
+      
+      <lastmod>2019-08-02T16:50:38+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/tags/</loc>
+      
+      <lastmod>2019-08-02T16:50:38+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/categories/design-pattern/</loc>
+      
+      <lastmod>2019-08-02T16:50:38+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/tags/design-pattern/</loc>
+      
+      <lastmod>2019-08-02T16:50:38+08:00</lastmod>
       
       
       
@@ -24,31 +94,7 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/posts/</loc>
-      
-      <lastmod>2019-08-02T15:53:01+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://leiheng.github.io/</loc>
-      
-      <lastmod>2019-08-02T15:53:01+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://leiheng.github.io/tags/</loc>
+      <loc>https://leiheng.github.io/categories/k8s/</loc>
       
       <lastmod>2019-08-02T15:53:01+08:00</lastmod>
       
@@ -61,18 +107,6 @@
   
     <url>
       <loc>https://leiheng.github.io/tags/k8s/</loc>
-      
-      <lastmod>2019-08-02T15:53:01+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://leiheng.github.io/categories/k8s/</loc>
       
       <lastmod>2019-08-02T15:53:01+08:00</lastmod>
       
@@ -116,7 +150,7 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/tags/java/</loc>
+      <loc>https://leiheng.github.io/categories/java/</loc>
       
       <lastmod>2019-08-01T19:25:47+08:00</lastmod>
       
@@ -128,7 +162,7 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/categories/java/</loc>
+      <loc>https://leiheng.github.io/tags/java/</loc>
       
       <lastmod>2019-08-01T19:25:47+08:00</lastmod>
       

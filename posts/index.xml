@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 02 Aug 2019 15:53:01 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 02 Aug 2019 16:50:38 +0800</lastBuildDate>
     
 	<atom:link href="https://leiheng.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Create an Object</title>
+      <link>https://leiheng.github.io/posts/design-patterns/create-an-object/</link>
+      <pubDate>Fri, 02 Aug 2019 16:50:38 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/design-patterns/create-an-object/</guid>
+      <description>Builder Pattern @Getter @Setter public class BuilderSample { private String compo; private boolean flag; private BuilderSample(SampleBuild build) { this.compo = build.compo; this.flag = build.flag; } public static class SampleBuild { private String compo; private boolean flag = false; public BuilderSample build() { return new BuilderSample(this); } public SampleBuild setCompo(String compon) { this.compo = compon; return this; } public SampleBuild setFlag(boolean flag) { this.flag = flag; return this; } } }  OR use @Bulid ,everything is simple.</description>
+    </item>
     
     <item>
       <title>Diff StatefulSet and Deployment</title>
