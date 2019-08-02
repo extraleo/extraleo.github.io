@@ -5,8 +5,106 @@
     <description>Recent content in Ray&#39;s Blog on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 02 Aug 2019 15:20:37 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 02 Aug 2019 15:53:01 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Diff StatefulSet and Deployment</title>
+      <link>https://leiheng.github.io/posts/k8s/diff-statefulset-and-deployment/</link>
+      <pubDate>Fri, 02 Aug 2019 15:53:01 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/k8s/diff-statefulset-and-deployment/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;Deployment - You specify a PersistentVolumeClaim that is shared by all pod replicas. In other words, shared volume.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The backing storage obviously must have ReadWriteMany or ReadOnlyMany accessMode if you have more than one replica pod.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;StatefulSet - You specify a volumeClaimTemplates so that each replica pod gets a unique PersistentVolumeClaim associated with it. In other words, no shared volume.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here, the backing storage can have ReadWriteOnce accessMode&lt;/p&gt;
+
+&lt;p&gt;The deployment replicas pod share the same pv but stateful set not. Each statefulset pod has own pv-pvc.&lt;/p&gt;
+
+&lt;p&gt;StatefulSet使用Headless服务来控制Pod的域名,那么这个pod的域名的FQDN为: &lt;code&gt;$(pod-name).$(service-name).$(namespace).svc.cluster.local&lt;/code&gt;. 其中,&lt;code&gt;cluster.local&lt;/code&gt;指的是集群的域名.&lt;/p&gt;
+
+&lt;h2 id=&#34;statefulset&#34;&gt;StatefulSet&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;StatefulSet 控制的 pod 都是有状态的, 而像 deployment &amp;amp; replicaSet 这种就是 Stateless 无状态的. 具体表现为 StatefulSet 控制的pod并不分享pv - pvc.
+&lt;del&gt;他们使用的&lt;code&gt;pv accessmode&lt;/code&gt; 都是 &lt;code&gt;ReadWriteOnce&lt;/code&gt;&lt;/del&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;headless-service&#34;&gt;Headless Service&lt;/h3&gt;
+
+&lt;p&gt;Headless service主要是用于分配DNS固定域名给那些 &lt;code&gt;StatefulSet&lt;/code&gt; 控制的 pod, 与这些 pod 通信主要是靠 DNS 而非 ip.&lt;/p&gt;
+
+&lt;p&gt;作为headless service [&amp;hellip;.waiting]&lt;/p&gt;
+
+&lt;h3 id=&#34;pv-pvc-volumeclaimtemple-about-statefulset&#34;&gt;pv &amp;amp; pvc &amp;amp; volumeClaimTemple about StatefulSet&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Static:
+集群管理员创建多个PV。 它们携带可供集群用户使用的真实存储的详细信息。 它们存在于Kubernetes API中，可用于消费.&lt;/li&gt;
+&lt;li&gt;Dynamic:
+当管理员创建的静态PV都不匹配用户的PersistentVolumeClaim时，集群可能会尝试为PVC动态配置卷。 此配置基于StorageClasses：PVC必须请求一个类，并且管理员必须已创建并配置该类才能进行动态配置。 要求该类的声明有效地为自己禁用动态配置&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;so, 关于 StatefulSet 的 pv pvc binding 就是:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;自己手动创建 PV &amp;amp; PVC 并且注意好 pvc 的命名&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;StorageClass&lt;/code&gt; 动态 绑定&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;named-pvc&#34;&gt;named pvc&lt;/h4&gt;
+
+&lt;p&gt;Create &lt;code&gt;volumeClaimTemplates&lt;/code&gt; like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;  volumeClaimTemplates:
+  - metadata:
+      name: &amp;quot;pvc-prefix&amp;quot;
+    spec:
+      accessModes:
+      - &amp;quot;ReadWriteOnce&amp;quot;
+      storageClassName: &amp;quot;storageName&amp;quot;
+      resources:
+        requests:
+          storage: &amp;quot;1Gi&amp;quot;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, your pvc must named &lt;code&gt;pvc-prefix-stsName-indx&lt;/code&gt; like &lt;code&gt;rabbitmq-infra-rabbitmq-0&lt;/code&gt;, statefulSet name is infra-rabbitmq. Otherwise, pod will be always &lt;code&gt;Pending&lt;/code&gt; because of cannot find mapping pvc.&lt;/p&gt;
+
+&lt;h2 id=&#34;access-modes&#34;&gt;access modes&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Kubernetes supports 3 kinds of access mode for persistent volume: ReadWriteOnce, ReadOnlyMany, ReadWriteMany.&lt;/p&gt;
+
+&lt;p&gt;If a pod mounts a volume with &lt;strong&gt;ReadWriteOnce&lt;/strong&gt; access mode, no other pod can mount it.&lt;/p&gt;
+
+&lt;p&gt;Most of our pod mounted the pv with  &lt;code&gt;ReadWriteMany&lt;/code&gt;. These pod share same resource.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ReadOnlyMany&lt;/code&gt; indicate this pv only can be read but no write right.&lt;/p&gt;
+
+&lt;h3 id=&#34;refer&#34;&gt;REFER&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;pv access modes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/37649541/kubernetes-persistent-volume-accessmode&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;stackoverflow k8s pv accessmode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Dynamic Volume Provisioning - Kubernetes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Install K8s The Hard Way</title>
