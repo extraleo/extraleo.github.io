@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 05 Aug 2019 15:53:33 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 05 Aug 2019 16:12:53 +0800</lastBuildDate>
     
 	<atom:link href="https://leiheng.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>NFS Sharing</title>
+      <link>https://leiheng.github.io/posts/linux/linux-sharing/</link>
+      <pubDate>Mon, 05 Aug 2019 16:12:53 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/linux/linux-sharing/</guid>
+      <description>参考文档：鸟哥 NFS：NetFileSystem 在启动NFS之前就要启动 Remote Procedure Call（RPC） RPC： 因为 NFS 支持的功能相当的多，而不同的功能</description>
+    </item>
     
     <item>
       <title>Linux Command</title>

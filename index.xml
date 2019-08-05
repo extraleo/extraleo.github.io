@@ -5,8 +5,178 @@
     <description>Recent content in Ray&#39;s Blog on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 05 Aug 2019 15:53:33 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 05 Aug 2019 16:12:53 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>NFS Sharing</title>
+      <link>https://leiheng.github.io/posts/linux/linux-sharing/</link>
+      <pubDate>Mon, 05 Aug 2019 16:12:53 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/linux/linux-sharing/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://cn.linux.vbird.org/linux_server/0330nfs.php&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;参考文档：鸟哥&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;nfs-netfilesystem&#34;&gt;NFS：NetFileSystem&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;在启动NFS之前就要启动 Remote Procedure Call（RPC）&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;rpc&#34;&gt;RPC：&lt;/h3&gt;
+
+&lt;p&gt;因为 NFS 支持的功能相当的多，而不同的功能都会使用不同的程序来启动， 每启动一个功能就会启用一些端口来传输数据，因此， NFS 的功能所对应的端口才没有固定住， 而是随机取用一些未被使用的小于 1024 的埠口来作为传输之用。但如此一来又造成客户端想要连上服务器时的困扰， 因为客户端得要知道服务器端的相关埠口才能够联机吧！&lt;/p&gt;
+
+&lt;p&gt;此时我们就得需要远程过程调用 (RPC) 的服务啦！RPC 最主要的功能就是在指定每个 NFS 功能所对应的 port number ，并且回报给客户端，让客户端可以连结到正确的埠口上去。 那 RPC 又是如何知道每个 NFS 的埠口呢？这是因为当服务器在启动 NFS 时会随机取用数个埠口，并主动的向 RPC 注册，因此 RPC 可以知道每个埠口对应的 NFS 功能，然后 RPC 又是固定使用 port 111 来监听客户端的需求并回报客户端正确的埠口， 所以当然可以让 NFS 的启动更为轻松愉快了&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tips&lt;/strong&gt;:
+&amp;gt; 所以你要注意，要启动 NFS 之前，RPC 就要先启动了，否则 NFS 会无法向RPC注册。另外，RPC 若重新启动时，原本注册的数据会不见，因此RPC重新启动后，它管理的所有服务都需要重新启动来重新向 RPC 注册。&lt;/p&gt;
+
+&lt;h3 id=&#34;nfs-的档案访问权限&#34;&gt;NFS 的档案访问权限&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;(相关：Linux的 user、group)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;client的的uid和server folder开放的权限以及文件本身的读写权限&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;当client的uid(非root)能在server上找到对应用户，则client的身份就是该对应用户，以该用户身份操作文件&lt;/li&gt;
+&lt;li&gt;当client的uid(非root)不能在server上找到，则client的身份被压缩成anonymous。！！！有例外，当被expose folder是/tmp 时，这种情况下client的uid不变。(虽然很诡异，但是事实就是这样)&lt;/li&gt;
+&lt;li&gt;当client的身份是root，server开放权限是root_squash，则client身份被压缩成anonymous，这个时候就要看文件本身对anonymous用户开放的权限(anonymous 对应为 other)&lt;/li&gt;
+&lt;li&gt;当client的身份是root，server开放权限是no_root_squash,则client在server上操作文件的身份就是root&lt;/li&gt;
+&lt;li&gt;当server开放的权限是all_squash，无论client的身份是root还是其他、uid是否能在server上找到对应用户，一律被压缩成anonymous&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;npc-需要的软件&#34;&gt;NPC 需要的软件&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;RPC主程序：rpcbind&lt;/li&gt;
+&lt;li&gt;NFS主程序：nfs-utils&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;示例代码&#34;&gt;示例代码&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/sh
+
+#这个脚本作用是如果机器上没有安装nfs服务，安装服务，暴露目录，启动服务
+#传入参数：暴露的目录（dir）、是否存在nfs-server（boolean）、UID、GID
+
+#default expose folder /nfsdir
+folder=${1:-&amp;quot;/var/vols/itom/core&amp;quot;}
+isNFSServer=${2:-&amp;quot;true&amp;quot;}
+userId=${3:-&amp;quot;1999&amp;quot;}
+groupId=${4:-&amp;quot;1999&amp;quot;}
+setupNFS(){
+    echo &amp;quot;Setting up the NFS service ... &amp;quot;
+    path=$(dirname $0)
+    cd $path
+    #check if NFS is installed
+    isNFS=`rpm -qa|grep nfs-utils|wc -l`
+    if [ $isNFS = 0 ]; then
+        #install NFS with yum first. If the first try is failed then install NFS with rpm
+        yum install -y nfs-utils 2&amp;gt;&amp;amp;1 1&amp;gt;/dev/null
+        if [ $? != 0 ]; then
+            rpm -ivh ../rpm/rpcbind-0.2.0-26.el7.x86_64.rpm 2&amp;gt;&amp;amp;1 1&amp;gt;/dev/null
+            rpm -ivh ../rpm/nfs-utils-1.3.0-0.8.el7.x86_64.rpm 2&amp;gt;&amp;amp;1 1&amp;gt;/dev/null
+            if [ $? != 0 ]; then
+                echo &amp;quot;The NFS service installation failed.&amp;quot;
+                echo &amp;quot;If you have a CentOS repo or you can access the Internet from this host,&amp;quot;
+                echo &amp;quot;you can install NFS with the command \&amp;quot;yum install -y ufs-utils\&amp;quot;.&amp;quot;
+                echo &amp;quot;If you don&#39;t have a CentOS repo and cannot access the Internet from this&amp;quot;
+                echo &amp;quot;host, please download the nfs-utils and rpcbind packages and upload them&amp;quot;
+                echo &amp;quot;to this host. Then run the command \&amp;quot;rpm -ivh &amp;lt;rpm-package-name&amp;gt;\&amp;quot; to install.&amp;quot;
+                exit 1
+            fi
+        fi
+        isNFS=`rpm -qa|grep nfs-utils|wc -l`
+        if [ $isNFS -gt 0 ]; then
+            echo &amp;quot;The NFS service was installed successfully.&amp;quot;
+        fi
+    else
+        echo &amp;quot;The NFS service was found to be already installed.&amp;quot;
+    fi
+}
+
+exposeFolder() {
+    nfsdir=$1
+    echo &amp;quot;Exposing the folder ${nfsdir} ...&amp;quot;
+    if [ ! -d $nfsdir ]; then
+        mkdir -p $nfsdir
+    fi
+    chown -R ${userId}:${groupId} $nfsdir
+    #if nfsdir isn&#39;t exist on exports,adding or not
+    isConfig=`grep -v &#39;^$\|^\s*\#&#39; /etc/exports|grep &amp;quot;$nfsdir &amp;quot;|wc -l `
+    if [ $isConfig = 0 ]; then
+    echo &amp;quot;$nfsdir *(rw,sync,anonuid=${userId},anongid=${groupId},all_squash)&amp;quot;&amp;gt;&amp;gt;/etc/exports
+    fi
+    exportfs -ra
+    systemctl restart rpcbind
+    systemctl enable rpcbind
+    systemctl restart nfs-server
+    systemctl enable nfs-server
+}
+
+#main
+setupNFS
+if [ &amp;quot;$isNFSServer&amp;quot; = true ]; then
+    exposeFolder $folder
+else
+    echo &amp;quot;If you want to expose your nfs folder.&amp;quot;
+    echo &amp;quot;Usage: $0 [folder] [true] [userId] [groupId]&amp;quot;
+fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;用户权限&#34;&gt;用户权限：&lt;/h5&gt;
+
+&lt;p&gt;参数：
+rw ：read write
+ro ：read only
+sync ：直接写入内存与硬盘
+async ：先写入缓存
+no_root_squash ：client可以root权限操作
+root_squash ：client以root登陆会被压缩成匿名用户
+all_squash ：无论以什么身份登陆都会被压缩成匿名用户
+anonuid ：匿名用户的uid
+anongid ：匿名用户的gid&lt;/p&gt;
+
+&lt;p&gt;tip：
+1. all_squash 要配合 anonuid、gid使用
+2. anonuid、&lt;del&gt;gid可以单独使用&lt;/del&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;client-挂载&#34;&gt;client 挂载&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;mount -t nfs serverip:expose_fold   client_mount_fold&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;automount-autofs&#34;&gt;automount————autofs&lt;/h3&gt;
+
+&lt;p&gt;autofs：在客户端上应用
+在客户端计算机上，会持续侦测某个指定目录，并预先设定当使用该目录下的某个次目录下时，将会取得来自服务端的NFS文件系统资源，并进行自动挂载的动作&lt;/p&gt;
+
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;server&lt;/li&gt;
+&lt;li&gt;rpm -qa | grep nfs &amp;amp;&amp;amp; rpm -qa | grep rpcbind //判断是否有nfs服务&lt;/li&gt;
+&lt;li&gt;vim /etc/exports //文件中写要export出去的目录或者文件
+/tmp 195.154.1.&lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;25&lt;/sub&gt;(ro) localhost(rw) // 将/tmp目录exports给IP地址为195.154.1.1/25（权限为ro）、localhost(权限为rw)&lt;/li&gt;
+&lt;li&gt;exportfs -ra
+systemctl restart rpcbind
+systemctl enable rpcbind
+systemctl restart nfs-server
+systemctl enable nfs-server&lt;/li&gt;
+&lt;li&gt;showmount -e localhost&lt;/li&gt;
+&lt;li&gt;client&lt;/li&gt;
+&lt;li&gt;mount -t nfs 192.168.100.254:/home/public /tmp //将IP为192.168.100.254的/home/public挂载到/tmp上&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;showmount -e serverhost&lt;/code&gt; 查看server端有哪些file可以被mount&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;df&lt;/code&gt;或者&lt;code&gt;mount&lt;/code&gt;查看mount file之后的情况&lt;/li&gt;
+&lt;li&gt;umount /home/nfs/public&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Linux Command</title>
