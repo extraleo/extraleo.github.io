@@ -10,7 +10,7 @@
   
   
   <link rel="prev" href="https://leiheng.github.io/posts/linux/linux-command/" />
-  
+  <link rel="next" href="https://leiheng.github.io/posts/java/jvm/jvm-infra/" />
   <link rel="canonical" href="https://leiheng.github.io/posts/linux/linux-sharing/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -57,7 +57,7 @@
     "datePublished": "2019-08-05 16:12:53 \x2b0800 CST",
     "dateModified" : "2019-08-05 16:12:53 \x2b0800 CST",
     "url" : "https:\/\/leiheng.github.io\/posts\/linux\/linux-sharing\/",
-    "wordCount" : "1913",
+    "wordCount" : "1916",
     "keywords" : [ "linux", "Ray\x27s Blog"]
 }
 </script>
@@ -128,7 +128,7 @@
                         <a href="https://leiheng.github.io/categories/linux/"> linux </a>
                         
                 </span>
-                <span class="post-word-count">, 1913 words</span>
+                <span class="post-word-count">, 1916 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -160,8 +160,11 @@
 
 <p>此时我们就得需要远程过程调用 (RPC) 的服务啦！RPC 最主要的功能就是在指定每个 NFS 功能所对应的 port number ，并且回报给客户端，让客户端可以连结到正确的埠口上去。 那 RPC 又是如何知道每个 NFS 的埠口呢？这是因为当服务器在启动 NFS 时会随机取用数个埠口，并主动的向 RPC 注册，因此 RPC 可以知道每个埠口对应的 NFS 功能，然后 RPC 又是固定使用 port 111 来监听客户端的需求并回报客户端正确的埠口， 所以当然可以让 NFS 的启动更为轻松愉快了</p>
 
-<p><strong>Tips</strong>:
-&gt; 所以你要注意，要启动 NFS 之前，RPC 就要先启动了，否则 NFS 会无法向RPC注册。另外，RPC 若重新启动时，原本注册的数据会不见，因此RPC重新启动后，它管理的所有服务都需要重新启动来重新向 RPC 注册。</p>
+<p><strong>Tips</strong>:</p>
+
+<blockquote>
+<p>所以你要注意，要启动 NFS 之前，RPC 就要先启动了，否则 NFS 会无法向RPC注册。另外，RPC 若重新启动时，原本注册的数据会不见，因此RPC重新启动后，它管理的所有服务都需要重新启动来重新向 RPC 注册。</p>
+</blockquote>
 
 <h3 id="nfs-的档案访问权限">NFS 的档案访问权限</h3>
 
@@ -258,20 +261,27 @@ fi
 
 <h5 id="用户权限">用户权限：</h5>
 
-<p>参数：
-rw ：read write
-ro ：read only
-sync ：直接写入内存与硬盘
-async ：先写入缓存
-no_root_squash ：client可以root权限操作
-root_squash ：client以root登陆会被压缩成匿名用户
-all_squash ：无论以什么身份登陆都会被压缩成匿名用户
-anonuid ：匿名用户的uid
-anongid ：匿名用户的gid</p>
+<p>参数：</p>
 
-<p>tip：
-1. all_squash 要配合 anonuid、gid使用
-2. anonuid、<del>gid可以单独使用</del></p>
+<ul>
+<li>rw ：read write</li>
+<li>ro ：read only</li>
+<li>sync ：直接写入内存与硬盘</li>
+<li>async ：先写入缓存</li>
+<li>no_root_squash ：client可以root权限操作</li>
+<li>root_squash ：client以root登陆会被压缩成匿名用户</li>
+<li>all_squash ：无论以什么身份登陆都会被压缩成匿名用户</li>
+<li>anonuid ：匿名用户的uid</li>
+<li>anongid ：匿名用户的gid</li>
+</ul>
+
+<p>tip：</p>
+
+<ol>
+<li><p>all_squash 要配合 anonuid、gid使用</p></li>
+
+<li><p>anonuid、<del>gid可以单独使用</del></p></li>
+</ol>
 
 <h4 id="client-挂载">client 挂载</h4>
 
@@ -290,7 +300,7 @@ anongid ：匿名用户的gid</p>
 <li>server</li>
 <li>rpm -qa | grep nfs &amp;&amp; rpm -qa | grep rpcbind //判断是否有nfs服务</li>
 <li>vim /etc/exports //文件中写要export出去的目录或者文件
-/tmp 195.154.1.<sup>1</sup>&frasl;<sub>25</sub>(ro) localhost(rw) // 将/tmp目录exports给IP地址为195.154.1.1/25（权限为ro）、localhost(权限为rw)</li>
+/tmp 195.154.1.<sup>1</sup>&frasl;<sub>25</sub>(ro) localhost(rw) // 将/tmp目录exports给IP地址为195.154.1.<sup>1</sup>&frasl;<sub>25</sub> (权限为ro)、localhost(权限为rw)</li>
 <li>exportfs -ra
 systemctl restart rpcbind
 systemctl enable rpcbind
@@ -352,6 +362,8 @@ systemctl enable nfs-server</li>
         
         <a href="https://leiheng.github.io/posts/linux/linux-command/" class="prev" rel="prev" title="Linux Command"><i class="iconfont icon-left"></i>&nbsp;Linux Command</a>
          
+        
+        <a href="https://leiheng.github.io/posts/java/jvm/jvm-infra/" class="next" rel="next" title="Jvm Infra">Jvm Infra&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

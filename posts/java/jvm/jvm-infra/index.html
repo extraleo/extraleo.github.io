@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="leiheng">
+  
+  
+  
+  <link rel="prev" href="https://leiheng.github.io/posts/linux/linux-sharing/" />
+  
+  <link rel="canonical" href="https://leiheng.github.io/posts/java/jvm/jvm-infra/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Jvm Infra | Ray&#39;s Blog
+       
+  </title>
+  <meta name="title" content="Jvm Infra | Ray&#39;s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/leiheng.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Jvm Infra",
+    "headline" : "Jvm Infra",
+    "description" : "infra java 虚拟机分heap、vm stack(虚拟机栈)、method area、 native method stack(本地方法栈)、program counter register(程序",
+    "inLanguage" : "zh-cn",
+    "author" : "leiheng",
+    "creator" : "leiheng",
+    "publisher": "leiheng",
+    "accountablePerson" : "leiheng",
+    "copyrightHolder" : "leiheng",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-08-05 18:27:25 \x2b0800 CST",
+    "dateModified" : "2019-08-05 18:27:25 \x2b0800 CST",
+    "url" : "https:\/\/leiheng.github.io\/posts\/java\/jvm\/jvm-infra\/",
+    "wordCount" : "3642",
+    "keywords" : [ "java","jvm", "Ray\x27s Blog"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://leiheng.github.io">Ray&#39;s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://leiheng.github.io">Ray&#39;s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Jvm Infra</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://leiheng.github.io" rel="author">leiheng</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-08-05 itemprop="datePublished">August 5, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://leiheng.github.io/categories/jvm/"> jvm </a>
+                        
+                </span>
+                <span class="post-word-count">, 3642 words</span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h2 id="infra">infra</h2>
+
+<blockquote>
+<ul>
+<li>java 虚拟机分heap、vm stack(虚拟机栈)、method area、 native method stack(本地方法栈)、program counter register(程序计数器)</li>
+<li>线程共享的是方法区和heap，线程私有的是虚拟机栈、本地方法栈、pc 寄存器</li>
+</ul>
+</blockquote>
+
+<h2 id="堆-栈和方法区">堆、栈和方法区</h2>
+
+<p>最关系的就是heap了，基本上调优都是在堆上调参数。</p>
+
+<p>对象是在堆上的，句柄是在栈上，而这个栈就是虚拟机栈(每个Java线程拥有自己的独立的native方法栈就是本地方法栈，面向本地方法(用 C++ 写的 native 方法),栈里面存放了对象的局部变量。方法区就是每个被加载的类的静态变量、常量、类信息等。</p>
+
+<h2 id="吞吐量优先的gc">吞吐量优先的GC</h2>
+
+<p>CMS收集器的关注点是尽可能<strong>缩短</strong>垃圾收集时<strong>用户线程的停顿时间</strong>，而parallel GC更看重一个可控制的<strong>吞吐量</strong>
+&gt; 吞吐量=运行用户代码时间/(运行用户代码时间+垃圾收集时间)</p>
+
+<h5 id="高吞吐量可以高效率的利用cpu-适合后台运算不需要太多交互的任务">高吞吐量可以高效率的利用CPU，适合后台运算不需要太多交互的任务</h5>
+
+<h2 id="gc">GC</h2>
+
+<ul>
+<li>复制算法：年轻代</li>
+
+<li><p>标记-整理：年老代</p>
+
+<pre><code>Q:FullGC 不是针对持久代的么
+A:FullGC is cleaning the entire Heap - both Young and Tenured spaces
+</code></pre></li>
+</ul>
+
+<blockquote>
+<p>　MinorGC 针对Eden代的（复制算法实现 ： Eden -&gt; survivor0 -&gt;survivor1）</p>
+</blockquote>
+
+<p><strong>MajorGC is cleaning the Tenured space(老年代)</strong></p>
+
+<p>Eden 的对象经历过Eden -&gt; survivor0 -&gt;survivor1 -&gt;老年代</p>
+
+<p>Eden是新生对象的存储区域</p>
+
+<p><strong>Q:</strong> 什么情况下新生代对象会晋升到老年代？</p>
+
+<p><strong>A:</strong> 当对象大小超过了PretenureSizeThreshold设置的对象大小阀值时，对象直接在老年代分配空间
+当age从1开始的对象大小累计超过了Survivor区域的1/2(TargetSurvivorRatio所定义)时，会计算一个Thenuring Threshold，超过这个年龄的新生代对象会进入到老年代，即使这时候新生代还有很多的空间。注意MaxTenuringThreshold只是设置了最大的Thenuring Threshold，不是说只有大于Max Tenuring Threshold才会进入到老年代，而是只要超过了计算出来的Tenuring Threshold就会进入老年代，MaxTenuringThreshold规定了Tenuring Threshold的最大值而已。Tenuring Threshold这个值在每一轮GC后都会动态计算，它与TargetSurvivorRatio以及Survivor区的大小有关系，TargetSurivivor默认是50即Survivor的1/2, 会计算出一个Desired Survivor Size，当age从1开始的对象大小累计超过了这个Desired Survivor Size，那么这个age就是Tenuring Threshold的值</p>
+
+<blockquote>
+<p>尽可能地让对象停留在新生代</p>
+
+<p>因为新生代采用了复制算法，相对收回得更快，而且Minor GC的次数肯定比Full GC多，那么对象在新生代被清除的更能性会更高。而对象一旦进入到老年代，那么只有Full GC时才会回收，对象在整个系统停留的时间就会很长，很可能创建的它的线程早就死了，而它还活着</p>
+</blockquote>
+
+<p>为了尽可能让对象停留在新生代，就要注意设置Survivor区域的大小
+因为它直接和对象是否进入老年代相关。之前就遇到过这种情况，明明新生代还有很大的空间，但是每次Minor GC后总是有对象进入到了老年代。后来发现由于Survivor太小，导致Tenuring Threshold为1，意思是年龄为1的对象大小超过了Survivor / 2(可通过TargetSurvivorRatio来调节，默认是50，即1/2)，年龄只要超过1的对象这时候就要直接进入老年代了。而进入老年代，对象就只有在Full GC的时候才会被清除。而如果调大了Survivor空间，让对象对象尽量接近Max Tenuring Threshold时才进入到老年代，这时候会大大减少老年代的对象大小，并且让对象在新生代停留时间变长，提高了它们被快速清理出系统的概率</p>
+
+<h2 id="jvm-properties">JVM properties</h2>
+
+<h3 id="memory-properties">Memory properties</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="right">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">-Xmx <nG></td>
+<td align="right">最大堆大小</td>
+</tr>
+
+<tr>
+<td align="left">-Xms <nG></td>
+<td align="right">初始堆大小,启动jvm时堆内存大小</td>
+</tr>
+
+<tr>
+<td align="left">-XX:NewRatio</td>
+<td align="right">新生代和老年代的内存比</td>
+</tr>
+
+<tr>
+<td align="left">-XX:NewSize</td>
+<td align="right">新生代内存大小</td>
+</tr>
+
+<tr>
+<td align="left">-XX:SurvivorRatio</td>
+<td align="right">Eden和Survivor的内存比</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="gc-properties">GC properties</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="right">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">-XX:MaxGCPauseMilis=<ms></td>
+<td align="right">为所需的最长暂停时间设置目标值。默认值是 200 毫秒。指定的值不适用于您的堆大小</td>
+</tr>
+
+<tr>
+<td align="left"><code>-XX:InitiatingHeapOccupancyPercent=&lt;%&gt;</code></td>
+<td align="right">设置触发标记周期的 Java 堆占用率阈值。默认占用率是整个 Java 堆的 45%</td>
+</tr>
+
+<tr>
+<td align="left">-XX:+PrintGCDetails</td>
+<td align="right">打印GC详细信息</td>
+</tr>
+
+<tr>
+<td align="left">-XX:+PrintAdaptiveSizePolicy</td>
+<td align="right"></td>
+</tr>
+
+<tr>
+<td align="left">-XX:G1HeapRegionSize</td>
+<td align="right">设置G1区域的大小，值是2的幂，范围是1M-32M之间</td>
+</tr>
+
+<tr>
+<td align="left">-XX:+PrintReferenceGC</td>
+<td align="right">&hellip;</td>
+</tr>
+
+<tr>
+<td align="left">-XX:+ParallelRefProcEnabled</td>
+<td align="right">&hellip;</td>
+</tr>
+
+<tr>
+<td align="left">-XX:ParallelGCThreads=n</td>
+<td align="right">Parallel并行收集器的线程数</td>
+</tr>
+
+<tr>
+<td align="left">-XX:ConcGCThreads=n</td>
+<td align="right">设置并行标记的线程数。将 n 设置为并行垃圾回收线程数 (ParallelGCThreads) 的 <sup>1</sup>&frasl;<sub>4</sub> 左右</td>
+</tr>
+
+<tr>
+<td align="left">-XX:G1MixedGCCountTarget=n</td>
+<td align="right">设置标记周期完成后，对存活数据上限为G1MixedGCLIveThresholdPercent的旧区域执行混合垃圾回收的目标次数。默认值是8次混合垃圾回收。混合回的目标是要控制在此目标次数以内。Java HotSpot VM build 23 中没有此设置</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="jvm-一些参数列表">jvm 一些参数列表</h3>
+
+<pre><code class="language-yaml">INSTALLER_JAVA_OPTS: &quot;-XX:+UseG1GC -XX:MaxRAMFraction=2 -XshowSettings:vm&quot;
+JVM启动参数可以添加-XX:+HeapDumpOnOutOfMemoryError -XX:+PrintHeapAtGC 等参数来协助收集JVM内存溢出信息
+</code></pre>
+
+<p>参数解释：
+1000m（毫） 一个CPU
+100m 0.1cpu</p>
+
+<p><a href="http://zhaoyanblog.com/archives/440.html" rel="nofollow noreferrer" target="_blank"><code>-XX:+UseG1GC</code></a> : 告诉JVM使用G1 GC
+(这篇文章有G1 GC 开关选项完全列表)</p>
+
+<p><code>-XX:MaxRAMFraction</code> : Using -XX:MaxRAMFraction we are telling the JVM to use available memory/MaxRAMFraction as max heap. Using -XX:MaxRAMFraction=1 we are using almost all the available memory as max heap
+<a href="https://blog.csanchez.org/2017/05/31/running-a-jvm-in-a-container-without-getting-killed/" rel="nofollow noreferrer" target="_blank">动态的使用container的内存</a></p>
+
+<p><code>-XshowSettings</code> ：显示Setting</p>
+
+<h3 id="g1收集器">G1收集器</h3>
+
+<ul>
+<li><p><a href="http://www.oracle.com/technetwork/cn/articles/java/g1gc-1984535-zhs.html" rel="nofollow noreferrer" target="_blank">官方文档</a></p></li>
+
+<li><p><a href="http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/G1GettingStarted/index.html" rel="nofollow noreferrer" target="_blank">官方教程</a></p></li>
+</ul>
+
+<p><strong>G1的年轻代的回收:复制算法</strong></p>
+
+<p>年轻代=Eden + survivor0 + survivor1</p>
+
+<p>G1收集器与其他收集器不同，他没有新生代、老年代、持久代的的物理memory区域，他是把内存划分为相等小大小的region（独立区域）</p>
+
+<p>G1 GC 是区域化、分代式垃圾回收器，这意味着 Java 对象堆（堆）被划分成大小相同的若干区域。启动时，Java 虚拟机 (JVM) 会设置区域大小。区域大小从 1 MB 到 32 MB 不等，具体取决于堆大小。目标是产生不超过 2048 个区域。Eden、存活空间和老年代是一系列不连续的逻辑区域。</p>
+
+<p>G1还有个重要的特性&ndash;能够设置在长度为M毫秒的时间片段里面，消耗在GC上的时间不得超过N毫秒。</p>
+
+<p>对于使用G1收集器来说，是不是不需要参数调优了？<a href="https://www.zhihu.com/question/55564388" rel="nofollow noreferrer" target="_blank">不是的</a></p>
+
+<h4 id="如何解锁实验性虚拟机标志">如何解锁实验性虚拟机标志</h4>
+
+<blockquote>
+<p>要更改实验性标志的值，必须先对其解锁。解锁方法是：在命令行中的实验性标志前，显式地设置 -XX:+UnlockExperimentalVMOptions</p>
+
+<p>例如：
+java -XX:+UnlockExperimentalVMOptions -XX:G1NewSizePercent=10 -XX:G1MaxNewSizePercent=75  G1test.jar</p>
+</blockquote>
+
+<h3 id="重要的参数">重要的参数</h3>
+
+<p><code>-XX:G1HeapRegionSize=n</code></p>
+
+<blockquote>
+<p>设置的 G1 区域的大小。值是 2 的幂，范围是 1 MB 到 32 MB 之间。目标是根据最小的 Java 堆大小划分出约 2048 个区域。</p>
+</blockquote>
+
+<p><code>-XX:MaxGCPauseMillis=200</code></p>
+
+<blockquote>
+<p>为所需的最长暂停时间设置目标值。默认值是 200 毫秒。指定的值不适用于您的堆大小。</p>
+</blockquote>
+
+<p><strong><code>-XX:G1NewSizePercent=5</code></strong></p>
+
+<blockquote>
+<p>设置要用作年轻代大小最小值的堆百分比。默认值是 Java 堆的 5%。这是一个实验性的标志。有关示例，请参见“如何解锁实验性虚拟机标志”。此设置取代了 -XX:DefaultMinNewGenPercent 设置。Java HotSpot VM build 23 中没有此设置。</p>
+</blockquote>
+
+<p><strong><code>-XX:G1MaxNewSizePercent=60</code></strong></p>
+
+<blockquote>
+<p>设置要用作年轻代大小最大值的堆大小百分比。默认值是 Java 堆的 60%。这是一个实验性的标志。有关示例，请参见“如何解锁实验性虚拟机标志”。此设置取代了 -XX:DefaultMaxNewGenPercent 设置。Java HotSpot VM build 23 中没有此设置。</p>
+</blockquote>
+
+<p><code>-XX:ParallelGCThreads=n</code></p>
+
+<blockquote>
+<p>设置 STW 工作线程数的值。将 n 的值设置为逻辑处理器的数量。n 的值与逻辑处理器的数量相同，最多为 8。
+如果逻辑处理器不止八个，则将 n 的值设置为逻辑处理器数的 <sup>5</sup>&frasl;<sub>8</sub> 左右。这适用于大多数情况，除非是较大的 SPARC 系统，其中 n 的值可以是逻辑处理器数的 <sup>5</sup>&frasl;<sub>16</sub> 左右。</p>
+</blockquote>
+
+<p><code>-XX:ConcGCThreads=n</code></p>
+
+<blockquote>
+<p>设置并行标记的线程数。将 n 设置为并行垃圾回收线程数 (ParallelGCThreads) 的 <sup>1</sup>&frasl;<sub>4</sub> 左右。</p>
+</blockquote>
+
+<p><code>-XX:InitiatingHeapOccupancyPercent=45</code></p>
+
+<blockquote>
+<p>设置触发标记周期的 Java 堆占用率阈值。默认占用率是整个 Java 堆的 45%。</p>
+</blockquote>
+
+<p><strong><code>-XX:G1MixedGCLiveThresholdPercent=65</code></strong></p>
+
+<blockquote>
+<p>为混合垃圾回收周期中要包括的旧区域设置占用率阈值。默认占用率为 65%。这是一个实验性的标志。有关示例，请参见“如何解锁实验性虚拟机标志”。此设置取代了 -XX:G1OldCSetRegionLiveThresholdPercent 设置。Java HotSpot VM build 23 中没有此设置。</p>
+</blockquote>
+
+<p><code>-XX:G1HeapWastePercent=10</code></p>
+
+<blockquote>
+<p>设置您愿意浪费的堆百分比。如果可回收百分比小于堆废物百分比，Java HotSpot VM 不会启动混合垃圾回收周期。默认值是 10%。Java HotSpot VM build 23 中没有此设置。</p>
+</blockquote>
+
+<p><code>-XX:G1MixedGCCountTarget=8</code></p>
+
+<blockquote>
+<p>设置标记周期完成后，对存活数据上限为 G1MixedGCLIveThresholdPercent 的旧区域执行混合垃圾回收的目标次数。默认值是 8 次混合垃圾回收。混合回收的目标是要控制在此目标次数以内。Java HotSpot VM build 23 中没有此设置。</p>
+</blockquote>
+
+<p>-XX:G1OldCSetRegionThresholdPercent=10</p>
+
+<blockquote>
+<p>设置混合垃圾回收期间要回收的最大旧区域数。默认值是 Java 堆的 10%。Java HotSpot VM build 23 中没有此设置。</p>
+</blockquote>
+
+<p><code>-XX:G1ReservePercent=10</code></p>
+
+<blockquote>
+<p>设置作为空闲空间的预留内存百分比，以降低目标空间溢出的风险。默认值是 10%。增加或减少百分比时，请确保对总的 Java 堆调整相同的量。Java HotSpot VM build 23 中没有此设置。</p>
+</blockquote>
+
+<h3 id="内存溢出-调整g1收集器">内存溢出 &amp; 调整G1收集器</h3>
+
+<ul>
+<li><a href="https://segmentfault.com/a/1190000007815623" rel="nofollow noreferrer" target="_blank">case1</a></li>
+</ul>
+
+<p>有关溢出和用尽的日志消息
+当您在日志中看到目标空间溢出/用尽的消息时，意味着 G1 GC 没有足够的内存，供存活者和/或晋升对象使用。Java 堆不能扩展，因为已达到最大值。示例消息：</p>
+
+<p>924.897: [GC pause (G1 Evacuation Pause) (mixed) (to-space exhausted), 0.1957310 secs]</p>
+
+<p>或</p>
+
+<p>924.897:[GC pause (G1 Evacuation Pause) (mixed) (to-space overflow), 0.1957310 secs]</p>
+
+<p>要缓解此问题，请尝试以下调整：</p>
+
+<p>增加 <code>-XX:G1ReservePercent</code> 选项的值（并相应增加总的堆大小），为“目标空间”增加预留内存量。</p>
+
+<p>通过减少 <code>-XX:InitiatingHeapOccupancyPercent</code> 提前启动标记周期。</p>
+
+<p>您也可以通过增加 <code>-XX:ConcGCThreads</code> 选项的值来增加并行标记线程的数目。</p>
+
+<p><strong>方法</strong>：不断的调整jvm内存比例，老年代、年轻代、以及持久代的比例，直到测试出一个比较满意的值</p>
+
+<ul>
+<li><a href="https://allegro.tech/2018/05/a-comedy-of-errors-debugging-java-memory-leaks.html" rel="nofollow noreferrer" target="_blank">case2</a><a href="http://www.importnew.com/29591.html" rel="nofollow noreferrer" target="_blank">翻译</a></li>
+</ul>
+
+<p>在这个例子里面, 主要的问题是 <strong>premature tenuring</strong>(过早提升), 用了 <code>-XX:G1NewSizePercent=5</code> &amp; <code>-XX:G1MaxNewSizePercent=60</code> &amp; <code>-XX:G1MixedGCLiveThresholdPercent=65</code> 这三个参数, 虽然并没有直接解决问题. 虽然都是提高young 的大小,但是使用的参数是不一样的.</p>
+
+<h2 id="jvm-的静态绑定和动态绑定">JVM 的静态绑定和动态绑定</h2>
+
+<p>waiting&hellip;</p>
+
+<p><br></p>
+
+<p><center>  ·End·  </center></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>leiheng </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://leiheng.github.io/posts/java/jvm/jvm-infra/>https://leiheng.github.io/posts/java/jvm/jvm-infra/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://leiheng.github.io/tags/java/">
+                    #java</a></span>
+            
+            <span class="tag"><a href="https://leiheng.github.io/tags/jvm/">
+                    #jvm</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://leiheng.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://leiheng.github.io/posts/linux/linux-sharing/" class="prev" rel="prev" title="NFS Sharing"><i class="iconfont icon-left"></i>&nbsp;NFS Sharing</a>
+         
+        
+    </div>
+
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://leiheng.github.io">leiheng</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
