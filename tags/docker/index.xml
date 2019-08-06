@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on Ray&#39;s Blog</title>
+    <link>https://leiheng.github.io/tags/docker/</link>
+    <description>Recent content in docker on Ray&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 31 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://leiheng.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Https for Harbor</title>
+      <link>https://leiheng.github.io/posts/docker/https-for-harbor/</link>
+      <pubDate>Wed, 31 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/docker/https-for-harbor/</guid>
+      <description>https Exercise install Harbor and configure https.
+prepare  install docker by get-docker script. install compose by compose github install wiki install harbor by harbor wiki  lets getting CA  mkdir /data/harbor-cert &amp;amp; cd /data/harbor-cert generate CA key
+openssl genrsa -out ca.key 4096  CA crt
+openssl req -x509 -new -nodes -sha512 -days 3650 \ -subj &amp;quot;/CN=yourdomain.com&amp;quot; \ -key ca.key \ -out ca.crt   lets getting server certificate  server key</description>
+    </item>
+    
+  </channel>
+</rss>

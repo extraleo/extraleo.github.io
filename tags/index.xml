@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Ray&#39;s Blog</title>
+    <link>https://leiheng.github.io/tags/</link>
+    <description>Recent content in Tags on Ray&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 05 Aug 2019 18:27:25 +0800</lastBuildDate>
+    
+	<atom:link href="https://leiheng.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>java</title>
+      <link>https://leiheng.github.io/tags/java/</link>
+      <pubDate>Mon, 05 Aug 2019 18:27:25 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jvm</title>
+      <link>https://leiheng.github.io/tags/jvm/</link>
+      <pubDate>Mon, 05 Aug 2019 18:27:25 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/tags/jvm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://leiheng.github.io/tags/linux/</link>
+      <pubDate>Mon, 05 Aug 2019 16:12:53 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>design-pattern</title>
+      <link>https://leiheng.github.io/tags/design-pattern/</link>
+      <pubDate>Fri, 02 Aug 2019 16:50:38 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/tags/design-pattern/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>k8s</title>
+      <link>https://leiheng.github.io/tags/k8s/</link>
+      <pubDate>Fri, 02 Aug 2019 15:53:01 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/tags/k8s/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>code-style</title>
+      <link>https://leiheng.github.io/tags/code-style/</link>
+      <pubDate>Thu, 01 Aug 2019 19:25:47 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/tags/code-style/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://leiheng.github.io/tags/docker/</link>
+      <pubDate>Wed, 31 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://leiheng.github.io/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://leiheng.github.io/tags/git/</link>
+      <pubDate>Fri, 05 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://leiheng.github.io/tags/git/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
