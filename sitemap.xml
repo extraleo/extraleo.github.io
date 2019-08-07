@@ -2,9 +2,79 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
+      <loc>https://leiheng.github.io/posts/hugo/add-favicon/</loc>
+      
+      <lastmod>2019-08-07T10:30:55+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
       <loc>https://leiheng.github.io/categories/</loc>
       
-      <lastmod>2019-08-05T18:27:25+08:00</lastmod>
+      <lastmod>2019-08-07T10:30:55+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/posts/</loc>
+      
+      <lastmod>2019-08-07T10:30:55+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/</loc>
+      
+      <lastmod>2019-08-07T10:30:55+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/tags/</loc>
+      
+      <lastmod>2019-08-07T10:30:55+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/categories/hugo/</loc>
+      
+      <lastmod>2019-08-07T10:30:55+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/tags/hugo/</loc>
+      
+      <lastmod>2019-08-07T10:30:55+08:00</lastmod>
       
       
       
@@ -19,42 +89,6 @@
       <lastmod>2019-08-05T18:27:25+08:00</lastmod>
       
       
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://leiheng.github.io/posts/</loc>
-      
-      <lastmod>2019-08-05T18:27:25+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://leiheng.github.io/</loc>
-      
-      <lastmod>2019-08-05T18:27:25+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://leiheng.github.io/tags/</loc>
-      
-      <lastmod>2019-08-05T18:27:25+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
       
       
     </url>

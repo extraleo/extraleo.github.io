@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 05 Aug 2019 18:27:25 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 07 Aug 2019 10:30:55 +0800</lastBuildDate>
     
 	<atom:link href="https://leiheng.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Add Favicon</title>
+      <link>https://leiheng.github.io/posts/hugo/add-favicon/</link>
+      <pubDate>Wed, 07 Aug 2019 10:30:55 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/hugo/add-favicon/</guid>
+      <description>找张你喜欢的图, 传到 realfavicongenerator.net 上去, 这个网站会生成各种适应图和 html 供你直接使用. 下载他给你生成的包, 解压到 static, 这个 static 是你根目录的那个, 不是 themes 里的那个. 给</description>
+    </item>
     
     <item>
       <title>Jvm Infra</title>
