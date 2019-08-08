@@ -2,19 +2,9 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
-      <loc>https://leiheng.github.io/posts/hugo/add-favicon/</loc>
-      
-      <lastmod>2019-08-07T10:30:55+08:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
       <loc>https://leiheng.github.io/categories/</loc>
       
-      <lastmod>2019-08-07T10:30:55+08:00</lastmod>
+      <lastmod>2019-08-08T13:20:14+08:00</lastmod>
       
       
       
@@ -24,9 +14,31 @@
     </url>
   
     <url>
+      <loc>https://leiheng.github.io/categories/</loc>
+      
+      <lastmod>2019-08-08T13:20:14+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/posts/hugo/change-dns/</loc>
+      
+      <lastmod>2019-08-08T13:20:14+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
       <loc>https://leiheng.github.io/posts/</loc>
       
-      <lastmod>2019-08-07T10:30:55+08:00</lastmod>
+      <lastmod>2019-08-08T13:20:14+08:00</lastmod>
       
       
       
@@ -38,7 +50,7 @@
     <url>
       <loc>https://leiheng.github.io/</loc>
       
-      <lastmod>2019-08-07T10:30:55+08:00</lastmod>
+      <lastmod>2019-08-08T13:20:14+08:00</lastmod>
       
       
       
@@ -48,13 +60,81 @@
     </url>
   
     <url>
+      <loc>https://leiheng.github.io/posts/java/playframwork/play-with-playframworl-01/</loc>
+      
+      <lastmod>2019-08-08T13:16:32+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
       <loc>https://leiheng.github.io/tags/</loc>
       
-      <lastmod>2019-08-07T10:30:55+08:00</lastmod>
+      <lastmod>2019-08-08T13:16:32+08:00</lastmod>
       
       
       
       <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/tags/akka/</loc>
+      
+      <lastmod>2019-08-08T13:16:32+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/categories/java/</loc>
+      
+      <lastmod>2019-08-08T13:16:32+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/tags/java/</loc>
+      
+      <lastmod>2019-08-08T13:16:32+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/tags/playframwork/</loc>
+      
+      <lastmod>2019-08-08T13:16:32+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/posts/hugo/add-favicon/</loc>
+      
+      <lastmod>2019-08-07T10:30:55+08:00</lastmod>
+      
+      
       
       
     </url>
@@ -89,18 +169,6 @@
       <lastmod>2019-08-05T18:27:25+08:00</lastmod>
       
       
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://leiheng.github.io/tags/java/</loc>
-      
-      <lastmod>2019-08-05T18:27:25+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
       
       
     </url>
@@ -263,18 +331,6 @@
   
     <url>
       <loc>https://leiheng.github.io/tags/code-style/</loc>
-      
-      <lastmod>2019-08-01T19:25:47+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://leiheng.github.io/categories/java/</loc>
       
       <lastmod>2019-08-01T19:25:47+08:00</lastmod>
       

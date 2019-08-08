@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>playframwork on Ray&#39;s Blog</title>
+    <link>https://leiheng.github.io/tags/playframwork/</link>
+    <description>Recent content in playframwork on Ray&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 08 Aug 2019 13:16:32 +0800</lastBuildDate>
+    
+	<atom:link href="https://leiheng.github.io/tags/playframwork/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Play With Playframworl 01</title>
+      <link>https://leiheng.github.io/posts/java/playframwork/play-with-playframworl-01/</link>
+      <pubDate>Thu, 08 Aug 2019 13:16:32 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/playframwork/play-with-playframworl-01/</guid>
+      <description>lets install sbt hello world 
+ ·End·</description>
+    </item>
+    
+  </channel>
+</rss>
