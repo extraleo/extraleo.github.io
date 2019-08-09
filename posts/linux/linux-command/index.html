@@ -57,7 +57,7 @@
     "datePublished": "2019-08-05 15:53:33 \x2b0800 CST",
     "dateModified" : "2019-08-05 15:53:33 \x2b0800 CST",
     "url" : "https:\/\/leiheng.github.io\/posts\/linux\/linux-command\/",
-    "wordCount" : "1327",
+    "wordCount" : "1323",
     "keywords" : [ "linux", "Ray\x27s Blog"]
 }
 </script>
@@ -154,7 +154,7 @@
                         <a href="https://leiheng.github.io/categories/linux/"> linux </a>
                         
                 </span>
-                <span class="post-word-count">, 1327 words</span>
+                <span class="post-word-count">, 1323 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -201,23 +201,27 @@ I use</p>
 <ul>
 <li><code>set -e</code></li>
 </ul>
-</blockquote>
-
-<p>在<code>set -e</code>之后出现的代码，一旦出现了除0之外的返回值，整个脚本直接退出
-&gt; - <code>bash -c</code>
-&gt; - <code>bash -x</code></p>
-
-<pre><code>bash -x -c &quot;curl www.google.com &amp;&amp; ls&quot;
-</code></pre></li>
+</blockquote></li>
 </ul>
 
-<p><code>-x</code>:表示debug,会将执行的命令一个一个打出来; <code>-c</code>：则是执行收到的字符串 (如例子就是执行<code>curl www.google.com &amp;&amp; ls</code>)</p>
+<p>在<code>set -e</code>之后出现的代码，一旦出现了除0之外的返回值，整个脚本直接退出</p>
 
 <blockquote>
 <ul>
-<li>source</li>
-<li>. ./filename</li>
-<li>./filename <strong><a href="https://superuser.com/questions/176783/what-is-the-difference-between-executing-a-bash-script-vs-sourcing-it?noredirect=1&amp;lq=1" rel="nofollow noreferrer" target="_blank">reference</a></strong></li>
+<li><code>bash -c</code></li>
+
+<li><p><code>bash -x</code></p>
+
+<pre><code class="language-bash">bash -x -c &quot;curl www.google.com &amp;&amp; ls&quot;
+</code></pre>
+
+<p><code>-x</code>:表示debug,会将执行的命令一个一个打出来; <code>-c</code>：则是执行收到的字符串 (如例子就是执行<code>curl www.google.com &amp;&amp; ls</code>)</p></li>
+
+<li><p>source</p></li>
+
+<li><p>. ./filename</p></li>
+
+<li><p>./filename <strong><a href="https://superuser.com/questions/176783/what-is-the-difference-between-executing-a-bash-script-vs-sourcing-it?noredirect=1&amp;lq=1" rel="nofollow noreferrer" target="_blank">reference</a></strong></p></li>
 </ul>
 </blockquote>
 
@@ -348,7 +352,7 @@ EOF
 
 <p><code>get -r filename</code></p>
 
-<pre><code>bye                                Quit sftp
+<pre><code class="language-console">bye                                Quit sftp
 cd path                            Change remote directory to 'path'
 chgrp grp path                     Change group of file 'path' to 'grp'
 chmod mode path                    Change permissions of file 'path' to 'mode'

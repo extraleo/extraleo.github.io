@@ -21,16 +21,261 @@
     </item>
     
     <item>
-      <title>Play With Playframworl 01</title>
+      <title>Play With Playframwork-01</title>
       <link>https://leiheng.github.io/posts/java/playframwork/play-with-playframworl-01/</link>
       <pubDate>Thu, 08 Aug 2019 13:16:32 +0800</pubDate>
       
       <guid>https://leiheng.github.io/posts/java/playframwork/play-with-playframworl-01/</guid>
       <description>
 
-&lt;h2 id=&#34;lets-install-sbt&#34;&gt;lets install sbt&lt;/h2&gt;
+&lt;h2 id=&#34;prepare&#34;&gt;prepare&lt;/h2&gt;
 
-&lt;h2 id=&#34;hello-world&#34;&gt;hello world&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;install gradle&lt;/li&gt;
+&lt;li&gt;install sbt&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;gradle&#34;&gt;gradle&lt;/h3&gt;
+
+&lt;p&gt;我尝试去使用 gradle 去构建项目, 但是一时半会还没能理解 gradle 里面 plugins 怎么玩的, 遂放弃, 先把 play 玩起来再说.&lt;/p&gt;
+
+&lt;h3 id=&#34;sbt&#34;&gt;sbt&lt;/h3&gt;
+
+&lt;p&gt;I&amp;rsquo;m new one for playframwork. My intellij cannot import sbt project so that tried to run &lt;code&gt;sbt&lt;/code&gt; directly.&lt;/p&gt;
+
+&lt;p&gt;Run: &lt;code&gt;sbt&lt;/code&gt; at empty folder and get this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;Getting org.scala-sbt sbt 1.2.8  (this may take some time)...
+
+:: problems summary ::
+:::: WARNINGS
+                module not found: org.scala-sbt#sbt;1.2.8
+
+        ==== local: tried
+
+          C:\Users\leih.CORPDOM\.ivy2\local\org.scala-sbt\sbt\1.2.8\ivys\ivy.xml
+
+          -- artifact org.scala-sbt#sbt;1.2.8!sbt.jar:
+
+          C:\Users\leih.CORPDOM\.ivy2\local\org.scala-sbt\sbt\1.2.8\jars\sbt.jar
+
+        ==== local-preloaded-ivy: tried
+
+          file:/C:/Users/leih.CORPDOM/.sbt/preloaded/org.scala-sbt/sbt/1.2.8/ivys/ivy.xml
+
+        ==== local-preloaded: tried
+
+          file:/C:/Users/leih.CORPDOM/.sbt/preloaded/org/scala-sbt/sbt/1.2.8/sbt-1.2.8.pom
+
+          -- artifact org.scala-sbt#sbt;1.2.8!sbt.jar:
+
+          file:/C:/Users/leih.CORPDOM/.sbt/preloaded/org/scala-sbt/sbt/1.2.8/sbt-1.2.8.jar
+
+        ==== Maven Central: tried
+
+          https://repo1.maven.org/maven2/org/scala-sbt/sbt/1.2.8/sbt-1.2.8.pom
+
+          -- artifact org.scala-sbt#sbt;1.2.8!sbt.jar:
+
+          https://repo1.maven.org/maven2/org/scala-sbt/sbt/1.2.8/sbt-1.2.8.jar
+
+        ==== sbt-maven-releases: tried
+
+          https://repo.scala-sbt.org/scalasbt/maven-releases/org/scala-sbt/sbt/1.2.8/sbt-1.2.8.pom
+
+          -- artifact org.scala-sbt#sbt;1.2.8!sbt.jar:
+
+          https://repo.scala-sbt.org/scalasbt/maven-releases/org/scala-sbt/sbt/1.2.8/sbt-1.2.8.jar
+
+        ==== sbt-maven-snapshots: tried
+
+          https://repo.scala-sbt.org/scalasbt/maven-snapshots/org/scala-sbt/sbt/1.2.8/sbt-1.2.8.pom
+
+          -- artifact org.scala-sbt#sbt;1.2.8!sbt.jar:
+
+          https://repo.scala-sbt.org/scalasbt/maven-snapshots/org/scala-sbt/sbt/1.2.8/sbt-1.2.8.jar
+
+        ==== typesafe-ivy-releases: tried
+
+          https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt/1.2.8/ivys/ivy.xml
+
+        ==== sbt-ivy-snapshots: tried
+
+          https://repo.scala-sbt.org/scalasbt/ivy-snapshots/org.scala-sbt/sbt/1.2.8/ivys/ivy.xml
+
+                ::::::::::::::::::::::::::::::::::::::::::::::
+
+                ::          UNRESOLVED DEPENDENCIES         ::
+
+                ::::::::::::::::::::::::::::::::::::::::::::::
+
+                :: org.scala-sbt#sbt;1.2.8: not found
+
+                ::::::::::::::::::::::::::::::::::::::::::::::
+
+
+:::: ERRORS
+        Server access Error: Received fatal alert: access_denied url=https://repo1.maven.org/maven2/org/scala-sbt/sbt/1.2.8/sbt-1.2.8.pom
+
+        Server access Error: Received fatal alert: access_denied url=https://repo1.maven.org/maven2/org/scala-sbt/sbt/1.2.8/sbt-1.2.8.jar
+
+        Server access Error: Received fatal alert: access_denied url=https://repo.scala-sbt.org/scalasbt/maven-releases/org/scala-sbt/sbt/1.2.8/sbt-1.2.8.pom
+
+        Server access Error: Received fatal alert: access_denied url=https://repo.scala-sbt.org/scalasbt/maven-releases/org/scala-sbt/sbt/1.2.8/sbt-1.2.8.jar
+
+        Server access Error: Received fatal alert: access_denied url=https://repo.scala-sbt.org/scalasbt/maven-snapshots/org/scala-sbt/sbt/1.2.8/sbt-1.2.8.pom
+
+        Server access Error: Received fatal alert: access_denied url=https://repo.scala-sbt.org/scalasbt/maven-snapshots/org/scala-sbt/sbt/1.2.8/sbt-1.2.8.jar
+
+        Server access Error: Received fatal alert: access_denied url=https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt/1.2.8/ivys/ivy.xml
+
+        Server access Error: Received fatal alert: access_denied url=https://repo.scala-sbt.org/scalasbt/ivy-snapshots/org.scala-sbt/sbt/1.2.8/ivys/ivy.xml
+
+
+:: USE VERBOSE OR DEBUG MESSAGE LEVEL FOR MORE DETAILS
+unresolved dependency: org.scala-sbt#sbt;1.2.8: not found
+Error during sbt execution: Error retrieving required libraries
+  (see C:\Users\leih.CORPDOM\.sbt\boot\update.log for complete log)
+Error: Could not retrieve sbt 1.2.8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;My java version on win10:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;openjdk version &amp;quot;1.8.0_181&amp;quot;
+OpenJDK Runtime Environment (Zulu 8.31.0.1-win64) (build 1.8.0_181-b02)
+OpenJDK 64-Bit Server VM (Zulu 8.31.0.1-win64) (build 25.181-b02, mixed mode)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Refer this &lt;a href=&#34;https://stackoverflow.com/questions/43984715/sbt-error-retrieving-required-libraries&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;answer&lt;/a&gt; to add &lt;code&gt;repositories&lt;/code&gt; at &lt;code&gt;.stb&lt;/code&gt; and re-run &lt;code&gt;sbt&lt;/code&gt;, get maven repo success. But failed when I tried to &lt;code&gt;sbt run&lt;/code&gt; run at &lt;code&gt;hello-world&lt;/code&gt; smaple project:&lt;/p&gt;
+
+&lt;p&gt;repositories is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;[repositories]
+  local
+  sbt-releases-repo: http://repo.typesafe.com/typesafe/ivy-releases/, [organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]
+  sbt-plugins-repo: http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/, [organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]
+  maven-central: http://repo1.maven.org/maven2/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Added proxy by:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;set JAVA_OPTS=-Dhttp.proxyHost=yourserver -Dhttp.proxyPort=8080&lt;/code&gt;
+re run &lt;code&gt;sbt&lt;/code&gt; failed.&lt;/p&gt;
+
+&lt;p&gt;Then added &lt;code&gt;.sbtopts&lt;/code&gt;: &lt;code&gt;-Dsbt.repository.secure=false&lt;/code&gt;, but still failed.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;[warn]  ::::::::::::::::::::::::::::::::::::::::::::::
+[warn]  ::          UNRESOLVED DEPENDENCIES         ::
+[warn]  ::::::::::::::::::::::::::::::::::::::::::::::
+...
+[warn]  typesafe-ivy-releases: unable to get resource for com.typesafe#npm_2.12;1.2.1: res=https://repo.typesafe.com/typesafe/ivy-releases/com.typesafe/npm_2.12/1.2.1/jars/npm_2.12.jar: javax.net.ssl.SSLHandshakeException: Received fatal alert: access_denied
+[warn]  ::::::::::::::::::::::::::::::::::::::::::::::
+[warn]
+[warn]  Note: Unresolved dependencies path:
+[warn]          org.scala-lang.modules:scala-parser-combinators_2.12:1.1.1
+[warn]            +- com.typesafe.sbt:sbt-native-packager:1.3.20 (scalaVersion=2.12, sbtVersion=1.0)
+[warn]            +- com.typesafe.play:sbt-plugin:2.7.3 (scalaVersion=2.12, sbtVersion=1.0) (C:\Users\leih.CORPDOM\Documents\node\Exercise\play-samples-play-java-hello-world-tutorial\project\plugins.sbt#L1-2)
+[warn]            +- default:play-samples-play-java-hello-world-tutorial-build:0.1.0-SNAPSHOT (scalaVersion=2.12, sbtVersion=1.0)
+[warn]          org.webjars:webjars-locator-core:0.36
+[warn]            +- com.typesafe.sbt:sbt-web:1.4.4 (scalaVersion=2.12, sbtVersion=1.0)
+[warn]            +- com.typesafe.sbt:sbt-js-engine:1.2.3 (scalaVersion=2.12, sbtVersion=1.0)
+[warn]            +- com.typesafe.play:sbt-plugin:2.7.3 (scalaVersion=2.12, sbtVersion=1.0) (C:\Users\leih.CORPDOM\Documents\node\Exercise\play-samples-play-java-hello-world-tutorial\project\plugins.sbt#L1-2)
+[warn]            +- default:play-samples-play-java-hello-world-tutorial-build:0.1.0-SNAPSHOT (scalaVersion=2.12, sbtVersion=1.0)
+[warn]          com.typesafe.play:twirl-compiler_2.12:1.4.2
+[warn]            +- com.typesafe.sbt:sbt-twirl:1.4.2 (scalaVersion=2.12, sbtVersion=1.0)
+[warn]            +- com.typesafe.play:sbt-plugin:2.7.3 (scalaVersion=2.12, sbtVersion=1.0) (C:\Users\leih.CORPDOM\Documents\node\Exercise\play-samples-play-java-hello-world-tutorial\project\plugins.sbt#L1-2)
+[warn]            +- default:play-samples-play-java-hello-world-tutorial-build:0.1.0-SNAPSHOT (scalaVersion=2.12, sbtVersion=1.0)
+[warn]          com.lightbend.play:play-file-watch_2.12:1.1.8
+...
+[error]         typesafe-ivy-releases: unable to get resource for com.typesafe#npm_2.12;1.2.1: res=https://repo.typesafe.com/typesafe/ivy-releases/com.typesafe/npm_2.12/1.2.1/jars/npm_2.12.jar: javax.net.ssl.SSLHandshakeException: Received fatal alert: access_denied
+[error]
+[error]         at sbt.internal.librarymanagement.IvyActions$.resolveAndRetrieve(IvyActions.scala:332)
+[error]         at sbt.internal.librarymanagement.IvyActions$.$anonfun$updateEither$1(IvyActions.scala:208)
+[error]         at sbt.internal.librarymanagement.IvySbt$Module.$anonfun$withModule$1(Ivy.scala:239)
+[error]         at sbt.internal.librarymanagement.IvySbt.$anonfun$withIvy$1(Ivy.scala:204)
+[error]         at sbt.internal.librarymanagement.IvySbt.sbt$internal$librarymanagement$IvySbt$$action$1(Ivy.scala:70)
+[error]         at sbt.internal.librarymanagement.IvySbt$$anon$3.call(Ivy.scala:77)
+[error]         at xsbt.boot.Locks$GlobalLock.withChannel$1(Locks.scala:95)
+[error]         at xsbt.boot.Locks$GlobalLock.xsbt$boot$Locks$GlobalLock$$withChannelRetries$1(Locks.scala:80)
+[error]         at xsbt.boot.Locks$GlobalLock$$anonfun$withFileLock$1.apply(Locks.scala:99)
+[error]         at xsbt.boot.Using$.withResource(Using.scala:10)
+[error]         at xsbt.boot.Using$.apply(Using.scala:9)
+[error]         at xsbt.boot.Locks$GlobalLock.ignoringDeadlockAvoided(Locks.scala:60)
+[error]         at xsbt.boot.Locks$GlobalLock.withLock(Locks.scala:50)
+[error]         at xsbt.boot.Locks$.apply0(Locks.scala:31)
+[error]         at xsbt.boot.Locks$.apply(Locks.scala:28)
+[error]         at sbt.internal.librarymanagement.IvySbt.withDefaultLogger(Ivy.scala:77)
+[error]         at sbt.internal.librarymanagement.IvySbt.withIvy(Ivy.scala:199)
+[error]         at sbt.internal.librarymanagement.IvySbt.withIvy(Ivy.scala:196)
+[error]         at sbt.internal.librarymanagement.IvySbt$Module.withModule(Ivy.scala:238)
+[error]         at sbt.internal.librarymanagement.IvyActions$.updateEither(IvyActions.scala:193)
+[error]         at sbt.librarymanagement.ivy.IvyDependencyResolution.update(IvyDependencyResolution.scala:20)
+[error]         at sbt.librarymanagement.DependencyResolution.update(DependencyResolution.scala:56)
+[error]         at sbt.internal.LibraryManagement$.resolve$1(LibraryManagement.scala:45)
+[error]         at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$12(LibraryManagement.scala:93)
+[error]         at sbt.util.Tracked$.$anonfun$lastOutput$1(Tracked.scala:68)
+[error]         at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$19(LibraryManagement.scala:106)
+[error]         at scala.util.control.Exception$Catch.apply(Exception.scala:224)
+[error]         at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$11(LibraryManagement.scala:106)
+[error]         at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$11$adapted(LibraryManagement.scala:89)
+[error]         at sbt.util.Tracked$.$anonfun$inputChanged$1(Tracked.scala:149)
+[error]         at sbt.internal.LibraryManagement$.cachedUpdate(LibraryManagement.scala:120)
+[error]         at sbt.Classpaths$.$anonfun$updateTask$5(Defaults.scala:2561)
+[error]         at scala.Function1.$anonfun$compose$1(Function1.scala:44)
+[error]         at sbt.internal.util.$tilde$greater.$anonfun$$u2219$1(TypeFunctions.scala:40)
+[error]         at sbt.std.Transform$$anon$4.work(System.scala:67)
+[error]         at sbt.Execute.$anonfun$submit$2(Execute.scala:269)
+[error]         at sbt.internal.util.ErrorHandling$.wideConvert(ErrorHandling.scala:16)
+[error]         at sbt.Execute.work(Execute.scala:278)
+[error]         at sbt.Execute.$anonfun$submit$1(Execute.scala:269)
+[error]         at sbt.ConcurrentRestrictions$$anon$4.$anonfun$submitValid$1(ConcurrentRestrictions.scala:178)
+[error]         at sbt.CompletionService$$anon$2.call(CompletionService.scala:37)
+[error]         at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+[error]         at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+[error]         at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+[error]         at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+[error]         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+[error]         at java.lang.Thread.run(Thread.java:748)
+[error] (update) sbt.librarymanagement.ResolveException: unresolved dependency: com.typesafe.play#sbt-routes-compiler_2.12;2.7.3: Resolution failed several times for dependency: com.typesafe.play#sbt-routes-compiler_2.12;2.7.3 {compile=[default(compile)]}::
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;finally&#34;&gt;Finally&lt;/h3&gt;
+
+&lt;p&gt;I opened the sample project as the interllij project and &lt;code&gt;install scala plugin&lt;/code&gt; twice(first failed) and restart intellij. Build the project with &lt;code&gt;JAVA_OPTS&lt;/code&gt;, and failed with dependency evcited error.&lt;/p&gt;
+
+&lt;p&gt;So I delete &lt;code&gt;.sbt&lt;/code&gt; and &lt;code&gt;.lvy2&lt;/code&gt; the two folders and reinstall &lt;code&gt;sbt&lt;/code&gt; and restart computer.&lt;/p&gt;
+
+&lt;p&gt;Rerun project success.&lt;/p&gt;
+
+&lt;p&gt;Here is my vm options:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;-Dhttp.proxyHost=proxyServer
+-Dhttp.proxyPort=8080
+-Dsbt.repository.secure=false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and haven&amp;rsquo;t repository file.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;del&gt;Still don&amp;rsquo;t know why failed at the bash/cmd&lt;/del&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;update:&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s wrong if don&amp;rsquo;t set https_proxy.
+Create &lt;code&gt;HTTPS_PROXY&lt;/code&gt; and &lt;code&gt;HTTP_PROXY&lt;/code&gt; with windows way. If the proxy server doesn&amp;rsquo;t accept https, add http protocol like &lt;code&gt;HTTPS_PROXY=http://proxyServer:port&lt;/code&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;NO repository file, no vm options, just set &lt;code&gt;HTTPS_PROXY&lt;/code&gt; rightly.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;refer&#34;&gt;REFER&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/43984715/sbt-error-retrieving-required-libraries&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;add repository&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
@@ -94,7 +339,7 @@
 
 &lt;li&gt;&lt;p&gt;标记-整理：年老代&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;Q:FullGC 不是针对持久代的么
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;Q:FullGC 不是针对持久代的么
 A:FullGC is cleaning the entire Heap - both Young and Tenured spaces
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -604,23 +849,27 @@ I use&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;set -e&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;在&lt;code&gt;set -e&lt;/code&gt;之后出现的代码，一旦出现了除0之外的返回值，整个脚本直接退出
-&amp;gt; - &lt;code&gt;bash -c&lt;/code&gt;
-&amp;gt; - &lt;code&gt;bash -x&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;bash -x -c &amp;quot;curl www.google.com &amp;amp;&amp;amp; ls&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;code&gt;-x&lt;/code&gt;:表示debug,会将执行的命令一个一个打出来; &lt;code&gt;-c&lt;/code&gt;：则是执行收到的字符串 (如例子就是执行&lt;code&gt;curl www.google.com &amp;amp;&amp;amp; ls&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;set -e&lt;/code&gt;之后出现的代码，一旦出现了除0之外的返回值，整个脚本直接退出&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;source&lt;/li&gt;
-&lt;li&gt;. ./filename&lt;/li&gt;
-&lt;li&gt;./filename &lt;strong&gt;&lt;a href=&#34;https://superuser.com/questions/176783/what-is-the-difference-between-executing-a-bash-script-vs-sourcing-it?noredirect=1&amp;amp;lq=1&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;reference&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;bash -c&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;bash -x&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;bash -x -c &amp;quot;curl www.google.com &amp;amp;&amp;amp; ls&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;-x&lt;/code&gt;:表示debug,会将执行的命令一个一个打出来; &lt;code&gt;-c&lt;/code&gt;：则是执行收到的字符串 (如例子就是执行&lt;code&gt;curl www.google.com &amp;amp;&amp;amp; ls&lt;/code&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;source&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;. ./filename&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;./filename &lt;strong&gt;&lt;a href=&#34;https://superuser.com/questions/176783/what-is-the-difference-between-executing-a-bash-script-vs-sourcing-it?noredirect=1&amp;amp;lq=1&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;reference&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 
@@ -751,7 +1000,7 @@ EOF
 
 &lt;p&gt;&lt;code&gt;get -r filename&lt;/code&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;bye                                Quit sftp
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;bye                                Quit sftp
 cd path                            Change remote directory to &#39;path&#39;
 chgrp grp path                     Change group of file &#39;path&#39; to &#39;grp&#39;
 chmod mode path                    Change permissions of file &#39;path&#39; to &#39;mode&#39;
