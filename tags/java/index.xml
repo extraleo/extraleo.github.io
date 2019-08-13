@@ -6,10 +6,19 @@
     <description>Recent content in java on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 08 Aug 2019 13:16:32 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 13 Aug 2019 17:16:54 +0800</lastBuildDate>
     
 	<atom:link href="https://leiheng.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Maven Dependencies Pom Type</title>
+      <link>https://leiheng.github.io/posts/java/maven-dependencies/</link>
+      <pubDate>Tue, 13 Aug 2019 17:16:54 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/maven-dependencies/</guid>
+      <description>终于有一天, 我看到我自己 java 练习项目依赖, 配置乱成一坨糟, 心里很糟心, 就打算整理整理整理. 于是创建了 common-dependency-parent, 项目结构如下: . |-- common-dep | `-- pom.xml |-- pom.xml `-- shared-pom `-- pom.xml 其</description>
+    </item>
     
     <item>
       <title>Play With Playframwork-01</title>

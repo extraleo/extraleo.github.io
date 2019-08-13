@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 13 Aug 2019 11:30:34 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 13 Aug 2019 17:16:54 +0800</lastBuildDate>
     
 	<atom:link href="https://leiheng.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>java</title>
+      <link>https://leiheng.github.io/tags/java/</link>
+      <pubDate>Tue, 13 Aug 2019 17:16:54 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>maven</title>
+      <link>https://leiheng.github.io/tags/maven/</link>
+      <pubDate>Tue, 13 Aug 2019 17:16:54 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/tags/maven/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>k8s</title>
@@ -26,15 +44,6 @@
       <pubDate>Thu, 08 Aug 2019 13:16:32 +0800</pubDate>
       
       <guid>https://leiheng.github.io/tags/akka/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>java</title>
-      <link>https://leiheng.github.io/tags/java/</link>
-      <pubDate>Thu, 08 Aug 2019 13:16:32 +0800</pubDate>
-      
-      <guid>https://leiheng.github.io/tags/java/</guid>
       <description></description>
     </item>
     

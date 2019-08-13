@@ -4,7 +4,7 @@
     <url>
       <loc>https://leiheng.github.io/categories/</loc>
       
-      <lastmod>2019-08-13T11:30:34+08:00</lastmod>
+      <lastmod>2019-08-13T17:16:54+08:00</lastmod>
       
       
       
@@ -16,7 +16,89 @@
     <url>
       <loc>https://leiheng.github.io/categories/</loc>
       
-      <lastmod>2019-08-13T11:30:34+08:00</lastmod>
+      <lastmod>2019-08-13T17:16:54+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/posts/java/maven-dependencies/</loc>
+      
+      <lastmod>2019-08-13T17:16:54+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/posts/</loc>
+      
+      <lastmod>2019-08-13T17:16:54+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/</loc>
+      
+      <lastmod>2019-08-13T17:16:54+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/tags/</loc>
+      
+      <lastmod>2019-08-13T17:16:54+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/categories/java/</loc>
+      
+      <lastmod>2019-08-13T17:16:54+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/tags/java/</loc>
+      
+      <lastmod>2019-08-13T17:16:54+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/tags/maven/</loc>
+      
+      <lastmod>2019-08-13T17:16:54+08:00</lastmod>
       
       
       
@@ -36,31 +118,7 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/posts/</loc>
-      
-      <lastmod>2019-08-13T11:30:34+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://leiheng.github.io/</loc>
-      
-      <lastmod>2019-08-13T11:30:34+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://leiheng.github.io/tags/</loc>
+      <loc>https://leiheng.github.io/categories/k8s/</loc>
       
       <lastmod>2019-08-13T11:30:34+08:00</lastmod>
       
@@ -73,18 +131,6 @@
   
     <url>
       <loc>https://leiheng.github.io/tags/k8s/</loc>
-      
-      <lastmod>2019-08-13T11:30:34+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://leiheng.github.io/categories/k8s/</loc>
       
       <lastmod>2019-08-13T11:30:34+08:00</lastmod>
       
@@ -128,30 +174,6 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/tags/java/</loc>
-      
-      <lastmod>2019-08-08T13:16:32+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://leiheng.github.io/categories/java/</loc>
-      
-      <lastmod>2019-08-08T13:16:32+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
       <loc>https://leiheng.github.io/tags/playframwork/</loc>
       
       <lastmod>2019-08-08T13:16:32+08:00</lastmod>
@@ -174,7 +196,7 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/tags/hugo/</loc>
+      <loc>https://leiheng.github.io/categories/hugo/</loc>
       
       <lastmod>2019-08-07T10:30:55+08:00</lastmod>
       
@@ -186,7 +208,7 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/categories/hugo/</loc>
+      <loc>https://leiheng.github.io/tags/hugo/</loc>
       
       <lastmod>2019-08-07T10:30:55+08:00</lastmod>
       
@@ -208,7 +230,7 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/tags/jvm/</loc>
+      <loc>https://leiheng.github.io/categories/jvm/</loc>
       
       <lastmod>2019-08-05T18:27:25+08:00</lastmod>
       
@@ -220,7 +242,7 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/categories/jvm/</loc>
+      <loc>https://leiheng.github.io/tags/jvm/</loc>
       
       <lastmod>2019-08-05T18:27:25+08:00</lastmod>
       
@@ -242,7 +264,7 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/tags/linux/</loc>
+      <loc>https://leiheng.github.io/categories/linux/</loc>
       
       <lastmod>2019-08-05T16:12:53+08:00</lastmod>
       
@@ -254,7 +276,7 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/categories/linux/</loc>
+      <loc>https://leiheng.github.io/tags/linux/</loc>
       
       <lastmod>2019-08-05T16:12:53+08:00</lastmod>
       
@@ -286,7 +308,7 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/tags/design-pattern/</loc>
+      <loc>https://leiheng.github.io/categories/design-pattern/</loc>
       
       <lastmod>2019-08-02T16:50:38+08:00</lastmod>
       
@@ -298,7 +320,7 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/categories/design-pattern/</loc>
+      <loc>https://leiheng.github.io/tags/design-pattern/</loc>
       
       <lastmod>2019-08-02T16:50:38+08:00</lastmod>
       

@@ -9,9 +9,9 @@
   
   
   
-  <link rel="prev" href="https://leiheng.github.io/posts/hugo/change-dns/" />
-  <link rel="next" href="https://leiheng.github.io/posts/java/maven-dependencies/" />
-  <link rel="canonical" href="https://leiheng.github.io/posts/k8s/odds-and-ends/" />
+  <link rel="prev" href="https://leiheng.github.io/posts/k8s/odds-and-ends/" />
+  
+  <link rel="canonical" href="https://leiheng.github.io/posts/java/maven-dependencies/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -22,10 +22,10 @@
   <title>
        
        
-           Odds and Ends | Ray&#39;s Blog
+           Maven Dependencies Pom Type | Ray&#39;s Blog
        
   </title>
-  <meta name="title" content="Odds and Ends | Ray&#39;s Blog">
+  <meta name="title" content="Maven Dependencies Pom Type | Ray&#39;s Blog">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -44,9 +44,9 @@
          "@id": "https:\/\/leiheng.github.io"
     },
     "articleSection" : "posts",
-    "name" : "Odds and Ends",
-    "headline" : "Odds and Ends",
-    "description" : "terminationGracePeriod 在05-\x26gt;08中，nginx从deployment-\x26gt;daemonset,用k8s的upgrade policy并不起作用。up",
+    "name" : "Maven Dependencies Pom Type",
+    "headline" : "Maven Dependencies Pom Type",
+    "description" : "终于有一天, 我看到我自己 java 练习项目依赖, 配置乱成一坨糟, 心里很糟心, 就打算整理整理整理. 于是创建了 common-dependency-parent, 项目结构如下: . |-- common-dep | `-- pom.xml |-- pom.xml `-- shared-pom `-- pom.xml 其",
     "inLanguage" : "zh-cn",
     "author" : "leiheng",
     "creator" : "leiheng",
@@ -54,11 +54,11 @@
     "accountablePerson" : "leiheng",
     "copyrightHolder" : "leiheng",
     "copyrightYear" : "2019",
-    "datePublished": "2019-08-13 11:30:34 \x2b0800 CST",
-    "dateModified" : "2019-08-13 11:30:34 \x2b0800 CST",
-    "url" : "https:\/\/leiheng.github.io\/posts\/k8s\/odds-and-ends\/",
-    "wordCount" : "460",
-    "keywords" : [ "k8s", "Ray\x27s Blog"]
+    "datePublished": "2019-08-13 17:16:54 \x2b0800 CST",
+    "dateModified" : "2019-08-13 17:16:54 \x2b0800 CST",
+    "url" : "https:\/\/leiheng.github.io\/posts\/java\/maven-dependencies\/",
+    "wordCount" : "403",
+    "keywords" : [ "maven","java", "Ray\x27s Blog"]
 }
 </script>
 
@@ -142,7 +142,7 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Odds and Ends</h1>
+        <h1 class="post-title" itemprop="name headline">Maven Dependencies Pom Type</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://leiheng.github.io" rel="author">leiheng</a> with ♥ 
                 <span class="post-time">
@@ -151,10 +151,10 @@
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
-                        <a href="https://leiheng.github.io/categories/k8s/"> k8s </a>
+                        <a href="https://leiheng.github.io/categories/java/"> java </a>
                         
                 </span>
-                <span class="post-word-count">, 460 words</span>
+                <span class="post-word-count">, 403 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -172,23 +172,61 @@
           
           
 
-          <ul>
-<li><p>terminationGracePeriod</p>
+          <p>终于有一天, 我看到我自己 java 练习项目依赖, 配置乱成一坨糟, 心里很糟心, 就打算整理整理整理.</p>
+
+<p>于是创建了 <code>common-dependency-parent</code>, 项目结构如下:</p>
+
+<pre><code class="language-console">.
+|-- common-dep
+|   `-- pom.xml
+|-- pom.xml
+`-- shared-pom
+    `-- pom.xml
+
+</code></pre>
+
+<p>其中, <code>shared-pom</code> 将会作为其他project 的 parent project, 并引用 common-dep 来import 常用的 dependencies. 在我install之后, 尝试引用parent 和 common-dep 失败, 并报错:</p>
 
 <blockquote>
-<p>在05-&gt;08中，nginx从deployment-&gt;daemonset,用k8s的upgrade policy并不起作用。upgrade 的动作是applying新接收到的yaml，出现的状况是创建了一个Daemonset出来但是pod并没有更新(<a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#pod-selector" rel="nofollow noreferrer" target="_blank">官方文档</a>),由于已经存在了一个Daemonset controller选择的pod，Daemonset 认为这个pod就是他创建出来的，但是并没有实际控制pod 所以需要先手动kill pod，但是由于old yaml 中定义了terminationGracePeriod=60，nginx pod会有60sec的时间收尾，60sec之后才会真正的完全清理干净(<a href="https://youtu.be/Z_l_kE1MDTc" rel="nofollow noreferrer" target="_blank">官方视频</a>)</p>
-</blockquote></li>
+<p>&lsquo;dependencies.dependency.version&rsquo; for com.leih:common-dep:jar</p>
+</blockquote>
 
-<li><p>use kubeadm install k8s(single master)</p>
+<p>找了大半天, 为啥会去找jar, 对着settings 文件找错, <code>offline</code> 开了又关关了又开, 还是没有找到原因.</p>
 
-<ul>
-<li>taint and toleration</li>
-</ul>
+<p>最后, 发现引用 common-dep 的时候忘记加 <code>&lt;type&gt;pom&lt;/type&gt;</code> 了. 如果不显示指定依赖,那么 maven 就会自动认为这个是个 jar 包, 并从local, remote 查找.
+单独拉出一个project 当作依赖项, 内容只有pom.xml 的时候, 不指定packaging type是pom 的话, 那么mvn install 就会给你生成一个空的jar包.</p>
 
-<blockquote>
-<p>我在kubeadm init output中看到了<code>[markmaster] Marking the node shc-sma-cd180.hpeswlab.net as master by adding the taints [node-role.kubernetes.io/master:NoSchedule]</code>，除了podselect和affinity另外一种调度方式。<code>kubectl describe node nodeName</code>可以看到taint</p>
-</blockquote></li>
-</ul>
+<p>所以, 如果很不幸没有指定packaging并且引用的时候也没有指定type,基本上就emmmm.</p>
+
+<p>share-pom pom.xml:</p>
+
+<pre><code class="language-xml">    &lt;artifactId&gt;shared-pom&lt;/artifactId&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;packaging&gt;pom&lt;/packaging&gt;
+    ...
+    &lt;dependencyManagement&gt;
+      &lt;dependencies&gt;
+      ...
+        &lt;dependency&gt;
+          &lt;groupId&gt;com.leih&lt;/groupId&gt;
+          &lt;artifactId&gt;common-dep&lt;/artifactId&gt;
+          &lt;version&gt;${project.version}&lt;/version&gt;
+          &lt;type&gt;pom&lt;/type&gt;
+        &lt;/dependency&gt;
+      &lt;/dependencies&gt;
+    &lt;/dependencyManagement&gt;
+</code></pre>
+
+<p>your project module pom.xml:</p>
+
+<pre><code class="language-xml">    &lt;dependency&gt;
+      &lt;groupId&gt;com.leih&lt;/groupId&gt;
+      &lt;artifactId&gt;common-dep&lt;/artifactId&gt;
+      &lt;type&gt;pom&lt;/type&gt;
+    &lt;/dependency&gt;
+</code></pre>
+
+<p>common project in [github]()</p>
 
 <p><br></p>
 
@@ -207,7 +245,7 @@
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://leiheng.github.io/posts/k8s/odds-and-ends/>https://leiheng.github.io/posts/k8s/odds-and-ends/</span>
+                    <a href=https://leiheng.github.io/posts/java/maven-dependencies/>https://leiheng.github.io/posts/java/maven-dependencies/</span>
             </p>
             
              
@@ -223,8 +261,11 @@
             <section>
             <i class="iconfont icon-tag"></i>Tag(s): 
             
-            <span class="tag"><a href="https://leiheng.github.io/tags/k8s/">
-                    #k8s</a></span>
+            <span class="tag"><a href="https://leiheng.github.io/tags/maven/">
+                    #maven</a></span>
+            
+            <span class="tag"><a href="https://leiheng.github.io/tags/java/">
+                    #java</a></span>
             
             </section>
         
@@ -236,10 +277,8 @@
 
     <div class="post-nav">
         
-        <a href="https://leiheng.github.io/posts/hugo/change-dns/" class="prev" rel="prev" title="Change DNS"><i class="iconfont icon-left"></i>&nbsp;Change DNS</a>
+        <a href="https://leiheng.github.io/posts/k8s/odds-and-ends/" class="prev" rel="prev" title="Odds and Ends"><i class="iconfont icon-left"></i>&nbsp;Odds and Ends</a>
          
-        
-        <a href="https://leiheng.github.io/posts/java/maven-dependencies/" class="next" rel="next" title="Maven Dependencies Pom Type">Maven Dependencies Pom Type&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

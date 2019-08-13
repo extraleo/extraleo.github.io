@@ -5,8 +5,76 @@
     <description>Recent content in Ray&#39;s Blog on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 13 Aug 2019 11:30:34 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 13 Aug 2019 17:16:54 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Maven Dependencies Pom Type</title>
+      <link>https://leiheng.github.io/posts/java/maven-dependencies/</link>
+      <pubDate>Tue, 13 Aug 2019 17:16:54 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/maven-dependencies/</guid>
+      <description>&lt;p&gt;终于有一天, 我看到我自己 java 练习项目依赖, 配置乱成一坨糟, 心里很糟心, 就打算整理整理整理.&lt;/p&gt;
+
+&lt;p&gt;于是创建了 &lt;code&gt;common-dependency-parent&lt;/code&gt;, 项目结构如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;.
+|-- common-dep
+|   `-- pom.xml
+|-- pom.xml
+`-- shared-pom
+    `-- pom.xml
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中, &lt;code&gt;shared-pom&lt;/code&gt; 将会作为其他project 的 parent project, 并引用 common-dep 来import 常用的 dependencies. 在我install之后, 尝试引用parent 和 common-dep 失败, 并报错:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&amp;lsquo;dependencies.dependency.version&amp;rsquo; for com.leih:common-dep:jar&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;找了大半天, 为啥会去找jar, 对着settings 文件找错, &lt;code&gt;offline&lt;/code&gt; 开了又关关了又开, 还是没有找到原因.&lt;/p&gt;
+
+&lt;p&gt;最后, 发现引用 common-dep 的时候忘记加 &lt;code&gt;&amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt;&lt;/code&gt; 了. 如果不显示指定依赖,那么 maven 就会自动认为这个是个 jar 包, 并从local, remote 查找.
+单独拉出一个project 当作依赖项, 内容只有pom.xml 的时候, 不指定packaging type是pom 的话, 那么mvn install 就会给你生成一个空的jar包.&lt;/p&gt;
+
+&lt;p&gt;所以, 如果很不幸没有指定packaging并且引用的时候也没有指定type,基本上就emmmm.&lt;/p&gt;
+
+&lt;p&gt;share-pom pom.xml:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;artifactId&amp;gt;shared-pom&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;packaging&amp;gt;pom&amp;lt;/packaging&amp;gt;
+    ...
+    &amp;lt;dependencyManagement&amp;gt;
+      &amp;lt;dependencies&amp;gt;
+      ...
+        &amp;lt;dependency&amp;gt;
+          &amp;lt;groupId&amp;gt;com.leih&amp;lt;/groupId&amp;gt;
+          &amp;lt;artifactId&amp;gt;common-dep&amp;lt;/artifactId&amp;gt;
+          &amp;lt;version&amp;gt;${project.version}&amp;lt;/version&amp;gt;
+          &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+      &amp;lt;/dependencies&amp;gt;
+    &amp;lt;/dependencyManagement&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;your project module pom.xml:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;dependency&amp;gt;
+      &amp;lt;groupId&amp;gt;com.leih&amp;lt;/groupId&amp;gt;
+      &amp;lt;artifactId&amp;gt;common-dep&amp;lt;/artifactId&amp;gt;
+      &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;common project in [github]()&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Odds and Ends</title>
