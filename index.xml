@@ -5,8 +5,38 @@
     <description>Recent content in Ray&#39;s Blog on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 08 Aug 2019 13:20:14 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 13 Aug 2019 11:30:34 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Odds and Ends</title>
+      <link>https://leiheng.github.io/posts/k8s/odds-and-ends/</link>
+      <pubDate>Tue, 13 Aug 2019 11:30:34 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/k8s/odds-and-ends/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;terminationGracePeriod&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;在05-&amp;gt;08中，nginx从deployment-&amp;gt;daemonset,用k8s的upgrade policy并不起作用。upgrade 的动作是applying新接收到的yaml，出现的状况是创建了一个Daemonset出来但是pod并没有更新(&lt;a href=&#34;https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#pod-selector&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;官方文档&lt;/a&gt;),由于已经存在了一个Daemonset controller选择的pod，Daemonset 认为这个pod就是他创建出来的，但是并没有实际控制pod 所以需要先手动kill pod，但是由于old yaml 中定义了terminationGracePeriod=60，nginx pod会有60sec的时间收尾，60sec之后才会真正的完全清理干净(&lt;a href=&#34;https://youtu.be/Z_l_kE1MDTc&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;官方视频&lt;/a&gt;)&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;use kubeadm install k8s(single master)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;taint and toleration&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;我在kubeadm init output中看到了&lt;code&gt;[markmaster] Marking the node shc-sma-cd180.hpeswlab.net as master by adding the taints [node-role.kubernetes.io/master:NoSchedule]&lt;/code&gt;，除了podselect和affinity另外一种调度方式。&lt;code&gt;kubectl describe node nodeName&lt;/code&gt;可以看到taint&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Change DNS</title>

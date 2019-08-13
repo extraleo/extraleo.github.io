@@ -9,9 +9,9 @@
   
   
   
-  <link rel="prev" href="https://leiheng.github.io/posts/java/playframwork/play-with-playframworl-01/" />
-  <link rel="next" href="https://leiheng.github.io/posts/k8s/odds-and-ends/" />
-  <link rel="canonical" href="https://leiheng.github.io/posts/hugo/change-dns/" />
+  <link rel="prev" href="https://leiheng.github.io/posts/hugo/change-dns/" />
+  
+  <link rel="canonical" href="https://leiheng.github.io/posts/k8s/odds-and-ends/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -22,10 +22,10 @@
   <title>
        
        
-           Change DNS | Ray&#39;s Blog
+           Odds and Ends | Ray&#39;s Blog
        
   </title>
-  <meta name="title" content="Change DNS | Ray&#39;s Blog">
+  <meta name="title" content="Odds and Ends | Ray&#39;s Blog">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -44,9 +44,9 @@
          "@id": "https:\/\/leiheng.github.io"
     },
     "articleSection" : "posts",
-    "name" : "Change DNS",
-    "headline" : "Change DNS",
-    "description" : "·End·",
+    "name" : "Odds and Ends",
+    "headline" : "Odds and Ends",
+    "description" : "terminationGracePeriod 在05-\x26gt;08中，nginx从deployment-\x26gt;daemonset,用k8s的upgrade policy并不起作用。up",
     "inLanguage" : "zh-cn",
     "author" : "leiheng",
     "creator" : "leiheng",
@@ -54,11 +54,11 @@
     "accountablePerson" : "leiheng",
     "copyrightHolder" : "leiheng",
     "copyrightYear" : "2019",
-    "datePublished": "2019-08-08 13:20:14 \x2b0800 CST",
-    "dateModified" : "2019-08-08 13:20:14 \x2b0800 CST",
-    "url" : "https:\/\/leiheng.github.io\/posts\/hugo\/change-dns\/",
-    "wordCount" : "1",
-    "keywords" : [  "Ray\x27s Blog"]
+    "datePublished": "2019-08-13 11:30:34 \x2b0800 CST",
+    "dateModified" : "2019-08-13 11:30:34 \x2b0800 CST",
+    "url" : "https:\/\/leiheng.github.io\/posts\/k8s\/odds-and-ends\/",
+    "wordCount" : "460",
+    "keywords" : [ "k8s", "Ray\x27s Blog"]
 }
 </script>
 
@@ -142,18 +142,19 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Change DNS</h1>
+        <h1 class="post-title" itemprop="name headline">Odds and Ends</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://leiheng.github.io" rel="author">leiheng</a> with ♥ 
                 <span class="post-time">
-                on <time datetime=2019-08-08 itemprop="datePublished">August 8, 2019</time>
+                on <time datetime=2019-08-13 itemprop="datePublished">August 13, 2019</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
+                        <a href="https://leiheng.github.io/categories/k8s/"> k8s </a>
                         
                 </span>
-                <span class="post-word-count">, 1 words</span>
+                <span class="post-word-count">, 460 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -171,7 +172,25 @@
           
           
 
-          <p><br></p>
+          <ul>
+<li><p>terminationGracePeriod</p>
+
+<blockquote>
+<p>在05-&gt;08中，nginx从deployment-&gt;daemonset,用k8s的upgrade policy并不起作用。upgrade 的动作是applying新接收到的yaml，出现的状况是创建了一个Daemonset出来但是pod并没有更新(<a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#pod-selector" rel="nofollow noreferrer" target="_blank">官方文档</a>),由于已经存在了一个Daemonset controller选择的pod，Daemonset 认为这个pod就是他创建出来的，但是并没有实际控制pod 所以需要先手动kill pod，但是由于old yaml 中定义了terminationGracePeriod=60，nginx pod会有60sec的时间收尾，60sec之后才会真正的完全清理干净(<a href="https://youtu.be/Z_l_kE1MDTc" rel="nofollow noreferrer" target="_blank">官方视频</a>)</p>
+</blockquote></li>
+
+<li><p>use kubeadm install k8s(single master)</p>
+
+<ul>
+<li>taint and toleration</li>
+</ul>
+
+<blockquote>
+<p>我在kubeadm init output中看到了<code>[markmaster] Marking the node shc-sma-cd180.hpeswlab.net as master by adding the taints [node-role.kubernetes.io/master:NoSchedule]</code>，除了podselect和affinity另外一种调度方式。<code>kubectl describe node nodeName</code>可以看到taint</p>
+</blockquote></li>
+</ul>
+
+<p><br></p>
 
 <p><center>  ·End·  </center></p>
 
@@ -188,7 +207,7 @@
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://leiheng.github.io/posts/hugo/change-dns/>https://leiheng.github.io/posts/hugo/change-dns/</span>
+                    <a href=https://leiheng.github.io/posts/k8s/odds-and-ends/>https://leiheng.github.io/posts/k8s/odds-and-ends/</span>
             </p>
             
              
@@ -201,6 +220,14 @@
   
     <div class="post-tags">
         
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://leiheng.github.io/tags/k8s/">
+                    #k8s</a></span>
+            
+            </section>
+        
         <section>
                 <a href="javascript:window.history.back();">back</a></span> · 
                 <span><a href="https://leiheng.github.io">home</a></span>
@@ -209,10 +236,8 @@
 
     <div class="post-nav">
         
-        <a href="https://leiheng.github.io/posts/java/playframwork/play-with-playframworl-01/" class="prev" rel="prev" title="Play With Playframwork-01"><i class="iconfont icon-left"></i>&nbsp;Play With Playframwork-01</a>
+        <a href="https://leiheng.github.io/posts/hugo/change-dns/" class="prev" rel="prev" title="Change DNS"><i class="iconfont icon-left"></i>&nbsp;Change DNS</a>
          
-        
-        <a href="https://leiheng.github.io/posts/k8s/odds-and-ends/" class="next" rel="next" title="Odds and Ends">Odds and Ends&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 
