@@ -57,7 +57,7 @@
     "datePublished": "2019-08-13 17:16:54 \x2b0800 CST",
     "dateModified" : "2019-08-13 17:16:54 \x2b0800 CST",
     "url" : "https:\/\/leiheng.github.io\/posts\/java\/maven-dependencies\/",
-    "wordCount" : "403",
+    "wordCount" : "351",
     "keywords" : [ "maven","java", "Ray\x27s Blog"]
 }
 </script>
@@ -154,7 +154,7 @@
                         <a href="https://leiheng.github.io/categories/java/"> java </a>
                         
                 </span>
-                <span class="post-word-count">, 403 words</span>
+                <span class="post-word-count">, 351 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -172,7 +172,9 @@
           
           
 
-          <p>终于有一天, 我看到我自己 java 练习项目依赖, 配置乱成一坨糟, 心里很糟心, 就打算整理整理整理.</p>
+          
+
+<p>终于有一天, 我看到我自己 java 练习项目依赖, 配置乱成一坨糟, 心里很糟心, 就打算整理整理整理.</p>
 
 <p>于是创建了 <code>common-dependency-parent</code>, 项目结构如下:</p>
 
@@ -185,20 +187,21 @@
 
 </code></pre>
 
-<p>其中, <code>shared-pom</code> 将会作为其他project 的 parent project, 并引用 common-dep 来import 常用的 dependencies. 在我install之后, 尝试引用parent 和 common-dep 失败, 并报错:</p>
+<p>其中, <code>shared-pom</code> 将会作为其他 project 的<strong>parent project</strong>, 并引用 <code>common-dep</code> 来 import 常用的 dependencies. install之后, 尝试引用 parent 和 common-dep 失败, 并报错:</p>
 
 <blockquote>
 <p>&lsquo;dependencies.dependency.version&rsquo; for com.leih:common-dep:jar</p>
 </blockquote>
 
-<p>找了大半天, 为啥会去找jar, 对着settings 文件找错, <code>offline</code> 开了又关关了又开, 还是没有找到原因.</p>
+<p>找了大半天, 为啥会去找<code>jar</code>, 对着 settings.xml 文件找错, <code>offline</code> 开了又关关了又开, 还是没有找到原因.</p>
 
-<p>最后, 发现引用 common-dep 的时候忘记加 <code>&lt;type&gt;pom&lt;/type&gt;</code> 了. 如果不显示指定依赖,那么 maven 就会自动认为这个是个 jar 包, 并从local, remote 查找.
-单独拉出一个project 当作依赖项, 内容只有pom.xml 的时候, 不指定packaging type是pom 的话, 那么mvn install 就会给你生成一个空的jar包.</p>
+<p>最后, 发现引用 <code>common-dep</code> 的时候忘记加 <code>&lt;type&gt;pom&lt;/type&gt;</code> 了. 如果不显示指定依赖,那么 maven 就会自动认为这个是个 jar 包, 并从local, remote 查找.</p>
 
-<p>所以, 如果很不幸没有指定packaging并且引用的时候也没有指定type,基本上就emmmm.</p>
+<p>单独拉出一个project 当作依赖项, 内容只有 pom.xml 的时候, 不指定 <code>packaging type</code> 是 pom 的话, 那么 <code>mvn install</code> 就会给你生成一个<strong>空的jar包</strong>.</p>
 
-<p>share-pom pom.xml:</p>
+<p>所以, 如果很不幸没有指定 <code>packaging</code> 并且引用的时候也没有指定 type ,基本上就emmmm.</p>
+
+<h3 id="share-pom-pom-xml">share-pom pom.xml:</h3>
 
 <pre><code class="language-xml">    &lt;artifactId&gt;shared-pom&lt;/artifactId&gt;
     &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
@@ -217,7 +220,7 @@
     &lt;/dependencyManagement&gt;
 </code></pre>
 
-<p>your project module pom.xml:</p>
+<h3 id="your-project-module-pom-xml">your project module pom.xml:</h3>
 
 <pre><code class="language-xml">    &lt;dependency&gt;
       &lt;groupId&gt;com.leih&lt;/groupId&gt;
@@ -226,7 +229,7 @@
     &lt;/dependency&gt;
 </code></pre>
 
-<p>common project in [github]()</p>
+<h3 id="common-project-in-github-https-github-com-leiheng-common-dependency-git">common project in <a href="https://github.com/leiheng/common-dependency.git" rel="nofollow noreferrer" target="_blank">github</a></h3>
 
 <p><br></p>
 

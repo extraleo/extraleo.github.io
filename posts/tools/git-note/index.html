@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "Git Note",
     "headline" : "Git Note",
-    "description" : "Add git 创建并添加ssh key git config --global user.name \x26quot;leiheng\x26quot; git config --global user.email \x26quot;heng.lei@hpe.com\x26quot; ssh-keygen -t rsa -C \x26quot;heng.lei@hpe.com\x26quot; 但是如果要在电脑上添加自己的github accout，refer this ssh-add error refer this final: git clone git@git-personal:leiheng\\repo final: git clone",
+    "description" : "Add git 创建并添加ssh key git config --global user.name \x26quot;leiheng\x26quot; git config --global user.email \x26quot;heng.lei@XXX.com\x26quot; ssh-keygen -t rsa -C \x26quot;heng.lei@XXX.com\x26quot; 但是如果要在电脑上添加自己的github accout，refer this ssh-add error refer this final: git clone git@git-personal:leiheng\\repo final: git clone",
     "inLanguage" : "zh-cn",
     "author" : "leiheng",
     "creator" : "leiheng",
@@ -57,7 +57,7 @@
     "datePublished": "2019-07-05 00:00:00 \x2b0000 UTC",
     "dateModified" : "2019-07-05 00:00:00 \x2b0000 UTC",
     "url" : "https:\/\/leiheng.github.io\/posts\/tools\/git-note\/",
-    "wordCount" : "697",
+    "wordCount" : "862",
     "keywords" : [ "git", "Ray\x27s Blog"]
 }
 </script>
@@ -154,7 +154,7 @@
                         <a href="https://leiheng.github.io/categories/tools/"> tools </a>
                         
                 </span>
-                <span class="post-word-count">, 697 words</span>
+                <span class="post-word-count">, 862 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -181,8 +181,8 @@
 <p>创建并添加ssh key</p>
 
 <pre><code class="language-bash">git config --global user.name &quot;leiheng&quot;
-git config --global user.email &quot;heng.lei@hpe.com&quot;
-ssh-keygen -t rsa -C &quot;heng.lei@hpe.com&quot;
+git config --global user.email &quot;heng.lei@XXX.com&quot;
+ssh-keygen -t rsa -C &quot;heng.lei@XXX.com&quot;
 </code></pre>
 
 <p>但是如果要在电脑上添加自己的github accout，refer <a href="https://code.tutsplus.com/tutorials/quick-tip-how-to-work-with-github-and-multiple-accounts--net-22574" rel="nofollow noreferrer" target="_blank">this</a></p>
@@ -192,6 +192,20 @@ ssh-keygen -t rsa -C &quot;heng.lei@hpe.com&quot;
 <p>final: <code>git clone git@git-personal:leiheng\repo</code></p>
 
 <p>final: <code>git clone git@github.com:leiheng\repo</code></p>
+
+<hr />
+
+<h4 id="change-auth">change auth</h4>
+
+<p>我有段时间一直很困惑为啥我提交了东西, 但是contribution 那张表上面没有我的历史呢. 于是发现了有个commit email 的设置, 可以在GitHub上改成你全局的user email, 也可以在单个repo里面改autor:</p>
+
+<pre><code class="language-bash">git clone repo
+cd repo # then set user email, dont need unset global settings
+git config user.email &quot;ray.leiheng@qq.com&quot;
+git config user.name &quot;leih&quot;
+</code></pre>
+
+<p>我 gitlab 和 github 还有公司github都不是一个账号, 所以emmmm, 就先这样吧.</p>
 
 <h2 id="配置了-gitignore-但是并没有起作用">配置了<code>.gitignore</code>但是并没有起作用</h2>
 

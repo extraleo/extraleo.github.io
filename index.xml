@@ -14,7 +14,9 @@
       <pubDate>Tue, 13 Aug 2019 17:16:54 +0800</pubDate>
       
       <guid>https://leiheng.github.io/posts/java/maven-dependencies/</guid>
-      <description>&lt;p&gt;终于有一天, 我看到我自己 java 练习项目依赖, 配置乱成一坨糟, 心里很糟心, 就打算整理整理整理.&lt;/p&gt;
+      <description>
+
+&lt;p&gt;终于有一天, 我看到我自己 java 练习项目依赖, 配置乱成一坨糟, 心里很糟心, 就打算整理整理整理.&lt;/p&gt;
 
 &lt;p&gt;于是创建了 &lt;code&gt;common-dependency-parent&lt;/code&gt;, 项目结构如下:&lt;/p&gt;
 
@@ -27,20 +29,21 @@
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;其中, &lt;code&gt;shared-pom&lt;/code&gt; 将会作为其他project 的 parent project, 并引用 common-dep 来import 常用的 dependencies. 在我install之后, 尝试引用parent 和 common-dep 失败, 并报错:&lt;/p&gt;
+&lt;p&gt;其中, &lt;code&gt;shared-pom&lt;/code&gt; 将会作为其他 project 的&lt;strong&gt;parent project&lt;/strong&gt;, 并引用 &lt;code&gt;common-dep&lt;/code&gt; 来 import 常用的 dependencies. install之后, 尝试引用 parent 和 common-dep 失败, 并报错:&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;&amp;lsquo;dependencies.dependency.version&amp;rsquo; for com.leih:common-dep:jar&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;找了大半天, 为啥会去找jar, 对着settings 文件找错, &lt;code&gt;offline&lt;/code&gt; 开了又关关了又开, 还是没有找到原因.&lt;/p&gt;
+&lt;p&gt;找了大半天, 为啥会去找&lt;code&gt;jar&lt;/code&gt;, 对着 settings.xml 文件找错, &lt;code&gt;offline&lt;/code&gt; 开了又关关了又开, 还是没有找到原因.&lt;/p&gt;
 
-&lt;p&gt;最后, 发现引用 common-dep 的时候忘记加 &lt;code&gt;&amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt;&lt;/code&gt; 了. 如果不显示指定依赖,那么 maven 就会自动认为这个是个 jar 包, 并从local, remote 查找.
-单独拉出一个project 当作依赖项, 内容只有pom.xml 的时候, 不指定packaging type是pom 的话, 那么mvn install 就会给你生成一个空的jar包.&lt;/p&gt;
+&lt;p&gt;最后, 发现引用 &lt;code&gt;common-dep&lt;/code&gt; 的时候忘记加 &lt;code&gt;&amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt;&lt;/code&gt; 了. 如果不显示指定依赖,那么 maven 就会自动认为这个是个 jar 包, 并从local, remote 查找.&lt;/p&gt;
 
-&lt;p&gt;所以, 如果很不幸没有指定packaging并且引用的时候也没有指定type,基本上就emmmm.&lt;/p&gt;
+&lt;p&gt;单独拉出一个project 当作依赖项, 内容只有 pom.xml 的时候, 不指定 &lt;code&gt;packaging type&lt;/code&gt; 是 pom 的话, 那么 &lt;code&gt;mvn install&lt;/code&gt; 就会给你生成一个&lt;strong&gt;空的jar包&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;share-pom pom.xml:&lt;/p&gt;
+&lt;p&gt;所以, 如果很不幸没有指定 &lt;code&gt;packaging&lt;/code&gt; 并且引用的时候也没有指定 type ,基本上就emmmm.&lt;/p&gt;
+
+&lt;h3 id=&#34;share-pom-pom-xml&#34;&gt;share-pom pom.xml:&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;artifactId&amp;gt;shared-pom&amp;lt;/artifactId&amp;gt;
     &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
@@ -59,7 +62,7 @@
     &amp;lt;/dependencyManagement&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;your project module pom.xml:&lt;/p&gt;
+&lt;h3 id=&#34;your-project-module-pom-xml&#34;&gt;your project module pom.xml:&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;dependency&amp;gt;
       &amp;lt;groupId&amp;gt;com.leih&amp;lt;/groupId&amp;gt;
@@ -68,7 +71,7 @@
     &amp;lt;/dependency&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;common project in [github]()&lt;/p&gt;
+&lt;h3 id=&#34;common-project-in-github-https-github-com-leiheng-common-dependency-git&#34;&gt;common project in &lt;a href=&#34;https://github.com/leiheng/common-dependency.git&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;github&lt;/a&gt;&lt;/h3&gt;
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
@@ -2555,8 +2558,8 @@ systemctl restart docker
 &lt;p&gt;创建并添加ssh key&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git config --global user.name &amp;quot;leiheng&amp;quot;
-git config --global user.email &amp;quot;heng.lei@hpe.com&amp;quot;
-ssh-keygen -t rsa -C &amp;quot;heng.lei@hpe.com&amp;quot;
+git config --global user.email &amp;quot;heng.lei@XXX.com&amp;quot;
+ssh-keygen -t rsa -C &amp;quot;heng.lei@XXX.com&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;但是如果要在电脑上添加自己的github accout，refer &lt;a href=&#34;https://code.tutsplus.com/tutorials/quick-tip-how-to-work-with-github-and-multiple-accounts--net-22574&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;this&lt;/a&gt;&lt;/p&gt;
@@ -2566,6 +2569,20 @@ ssh-keygen -t rsa -C &amp;quot;heng.lei@hpe.com&amp;quot;
 &lt;p&gt;final: &lt;code&gt;git clone git@git-personal:leiheng\repo&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;final: &lt;code&gt;git clone git@github.com:leiheng\repo&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&#34;change-auth&#34;&gt;change auth&lt;/h4&gt;
+
+&lt;p&gt;我有段时间一直很困惑为啥我提交了东西, 但是contribution 那张表上面没有我的历史呢. 于是发现了有个commit email 的设置, 可以在GitHub上改成你全局的user email, 也可以在单个repo里面改autor:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git clone repo
+cd repo # then set user email, dont need unset global settings
+git config user.email &amp;quot;ray.leiheng@qq.com&amp;quot;
+git config user.name &amp;quot;leih&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我 gitlab 和 github 还有公司github都不是一个账号, 所以emmmm, 就先这样吧.&lt;/p&gt;
 
 &lt;h2 id=&#34;配置了-gitignore-但是并没有起作用&#34;&gt;配置了&lt;code&gt;.gitignore&lt;/code&gt;但是并没有起作用&lt;/h2&gt;
 
