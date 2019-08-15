@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Ray&#39;s Blog</title>
+    <title>Ray&#39;s Blog</title>
     <link>https://leiheng.github.io/categories/</link>
-    <description>Recent content in Categories on Ray&#39;s Blog</description>
+    <description>Recent content on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 13 Aug 2019 17:16:54 +0800</lastBuildDate>
@@ -12,16 +12,16 @@
     
     
     <item>
-      <title></title>
-      <link>https://leiheng.github.io/categories/</link>
-      <pubDate>Tue, 13 Aug 2019 17:16:54 +0800</pubDate>
+      <title>Change DNS</title>
+      <link>https://leiheng.github.io/posts/hugo/change-dns/</link>
+      <pubDate>Thu, 08 Aug 2019 13:20:14 +0800</pubDate>
       
-      <guid>https://leiheng.github.io/categories/</guid>
-      <description></description>
+      <guid>https://leiheng.github.io/posts/hugo/change-dns/</guid>
+      <description>·End·</description>
     </item>
     
-    <item>
-      <title>java</title>
+  </channel>
+</rss>title>
       <link>https://leiheng.github.io/categories/java/</link>
       <pubDate>Tue, 13 Aug 2019 17:16:54 +0800</pubDate>
       
