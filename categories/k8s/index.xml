@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>k8s on Ray&#39;s Blog</title>
+    <link>https://leiheng.github.io/categories/k8s/</link>
+    <description>Recent content in k8s on Ray&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 13 Aug 2019 11:30:34 +0800</lastBuildDate>
+    
+	<atom:link href="https://leiheng.github.io/categories/k8s/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Odds and Ends</title>
+      <link>https://leiheng.github.io/posts/k8s/odds-and-ends/</link>
+      <pubDate>Tue, 13 Aug 2019 11:30:34 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/k8s/odds-and-ends/</guid>
+      <description>terminationGracePeriod 在05-&amp;gt;08中，nginx从deployment-&amp;gt;daemonset,用k8s的upgrade policy并不起作用。up</description>
+    </item>
+    
+    <item>
+      <title>Diff StatefulSet and Deployment</title>
+      <link>https://leiheng.github.io/posts/k8s/diff-statefulset-and-deployment/</link>
+      <pubDate>Fri, 02 Aug 2019 15:53:01 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/k8s/diff-statefulset-and-deployment/</guid>
+      <description>Deployment - You specify a PersistentVolumeClaim that is shared by all pod replicas. In other words, shared volume. The backing storage obviously must have ReadWriteMany or ReadOnlyMany accessMode if you have more than one replica pod. StatefulSet - You specify a volumeClaimTemplates so that each replica pod gets a unique PersistentVolumeClaim associated with it. In other words, no shared volume. Here, the backing storage can have ReadWriteOnce accessMode The deployment</description>
+    </item>
+    
+    <item>
+      <title>Install K8s The Hard Way</title>
+      <link>https://leiheng.github.io/posts/k8s/install-k8s-hard-way/</link>
+      <pubDate>Fri, 02 Aug 2019 15:20:37 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/k8s/install-k8s-hard-way/</guid>
+      <description>Language is simple, show me your code. # close swap setenforce 0 sudo sed -i &#39;/SELINUX=enforcing/ s/enforcing/disabled/&#39; /etc/selinux/config sudo swapoff -a sudo sed -i &#39;/ swap / s/^/#/g&#39; /etc/fstab reboot # set proxy cat&amp;gt;&amp;gt;/etc/profile&amp;lt;&amp;lt;-EOF export http_proxy=http://proxy.houston.hpecorp.net:8080 export https_proxy=http://proxy.houston.hpecorp.net:8080 EOF source /etc/profile mkdir /root/all-file cd /root/all-file # get docker and set proxy for docker curl -fsSL https://get.docker.com -o get-docker.sh sh get-docker.sh mkdir -p /etc/systemd/system/docker.service.d cat&amp;gt;&amp;gt;/etc/systemd/system/docker.service.d/http-proxy.conf&amp;lt;&amp;lt;-EOF [Service] Environment=&amp;quot;HTTP_PROXY=http://proxy-llb-hpm01.sgp.hp.com:8080&amp;quot; &amp;quot;HTTPS_PROXY=http://proxy-llb-hpm01.sgp.hp.com:8080&amp;quot; &amp;quot;NO_PROXY=localhost,127.0.0.1,.hp.com,.hpe.com,.hpeswlab.net,.hpecorp.net,.softwaregrp.net,.swinfra.net&amp;quot; EOF sudo</description>
+    </item>
+    
+  </channel>
+</rss>

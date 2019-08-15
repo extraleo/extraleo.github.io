@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Ray&#39;s Blog</title>
+    <link>https://leiheng.github.io/posts/</link>
+    <description>Recent content in Posts on Ray&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 13 Aug 2019 17:16:54 +0800</lastBuildDate>
+    
+	<atom:link href="https://leiheng.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Maven Dependencies Pom Type</title>
+      <link>https://leiheng.github.io/posts/java/maven-dependencies/</link>
+      <pubDate>Tue, 13 Aug 2019 17:16:54 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/maven-dependencies/</guid>
+      <description>终于有一天, 我看到我自己 java 练习项目依赖, 配置乱成一坨糟, 心里很糟心, 就打算整理整理整理. 于是创建了 common-dependency-parent, 项目结构如下: . |-- common-dep | `-- pom.xml |-- pom.xml `-- shared-pom `-- pom.xml 其</description>
+    </item>
+    
+    <item>
+      <title>Odds and Ends</title>
+      <link>https://leiheng.github.io/posts/k8s/odds-and-ends/</link>
+      <pubDate>Tue, 13 Aug 2019 11:30:34 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/k8s/odds-and-ends/</guid>
+      <description>terminationGracePeriod 在05-&amp;gt;08中，nginx从deployment-&amp;gt;daemonset,用k8s的upgrade policy并不起作用。up</description>
+    </item>
+    
+    <item>
+      <title>Change DNS</title>
+      <link>https://leiheng.github.io/posts/hugo/change-dns/</link>
+      <pubDate>Thu, 08 Aug 2019 13:20:14 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/hugo/change-dns/</guid>
+      <description>·End·</description>
+    </item>
+    
+    <item>
+      <title>Play With Playframwork-01</title>
+      <link>https://leiheng.github.io/posts/java/playframwork/play-with-playframworl-01/</link>
+      <pubDate>Thu, 08 Aug 2019 13:16:32 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/playframwork/play-with-playframworl-01/</guid>
+      <description>prepare install gradle install sbt gradle 我尝试去使用 gradle 去构建项目, 但是一时半会还没能理解 gradle 里面 plugins 怎么玩的, 遂放弃, 先把 play 玩起来再说. sbt I&amp;rsquo;m new one for playframwork. My intellij cannot import sbt project so that tried to run sbt</description>
+    </item>
+    
+    <item>
+      <title>Add Favicon</title>
+      <link>https://leiheng.github.io/posts/hugo/add-favicon/</link>
+      <pubDate>Wed, 07 Aug 2019 10:30:55 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/hugo/add-favicon/</guid>
+      <description>找张你喜欢的图, 传到 realfavicongenerator.net 上去, 这个网站会生成各种适应图和 html 供你直接使用. 下载他给你生成的包, 解压到 static, 这个 static 是你根目录的那个, 不是 themes 里的那个. 给</description>
+    </item>
+    
+    <item>
+      <title>Jvm Infra</title>
+      <link>https://leiheng.github.io/posts/java/jvm/jvm-infra/</link>
+      <pubDate>Mon, 05 Aug 2019 18:27:25 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/jvm/jvm-infra/</guid>
+      <description>infra java 虚拟机分heap、vm stack(虚拟机栈)、method area、 native method stack(本地方法栈)、program counter register(程序</description>
+    </item>
+    
+    <item>
+      <title>NFS Sharing</title>
+      <link>https://leiheng.github.io/posts/linux/linux-sharing/</link>
+      <pubDate>Mon, 05 Aug 2019 16:12:53 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/linux/linux-sharing/</guid>
+      <description>参考文档：鸟哥 NFS：NetFileSystem 在启动NFS之前就要启动 Remote Procedure Call（RPC） RPC： 因为 NFS 支持的功能相当的多，而不同的功能</description>
+    </item>
+    
+    <item>
+      <title>Linux Command</title>
+      <link>https://leiheng.github.io/posts/linux/linux-command/</link>
+      <pubDate>Mon, 05 Aug 2019 15:53:33 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/linux/linux-command/</guid>
+      <description>bash script include other bash file in your script Above answers is correct, but if run script in other folder, there will be some problem. For example, the a.sh and b.sh are in same folder, a include b with . ./b.sh to include. When run script out of the folder, for example with xx/xx/xx/a.sh, file b.sh will not found: ./b.sh: No such file or directory. I use . $(dirname &amp;quot;$0&amp;quot;)/b.sh</description>
+    </item>
+    
+    <item>
+      <title>Create an Object</title>
+      <link>https://leiheng.github.io/posts/design-patterns/create-an-object/</link>
+      <pubDate>Fri, 02 Aug 2019 16:50:38 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/design-patterns/create-an-object/</guid>
+      <description>Builder Pattern @Getter @Setter public class BuilderSample { private String compo; private boolean flag; private BuilderSample(SampleBuild build) { this.compo = build.compo; this.flag = build.flag; } public static class SampleBuild { private String compo; private boolean flag = false; public BuilderSample build() { return new BuilderSample(this); } public SampleBuild setCompo(String compon) { this.compo = compon; return this; } public SampleBuild setFlag(boolean flag) { this.flag = flag; return this; } } }  OR use @Bulid ,everything is simple.</description>
+    </item>
+    
+    <item>
+      <title>Diff StatefulSet and Deployment</title>
+      <link>https://leiheng.github.io/posts/k8s/diff-statefulset-and-deployment/</link>
+      <pubDate>Fri, 02 Aug 2019 15:53:01 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/k8s/diff-statefulset-and-deployment/</guid>
+      <description>Deployment - You specify a PersistentVolumeClaim that is shared by all pod replicas. In other words, shared volume. The backing storage obviously must have ReadWriteMany or ReadOnlyMany accessMode if you have more than one replica pod. StatefulSet - You specify a volumeClaimTemplates so that each replica pod gets a unique PersistentVolumeClaim associated with it. In other words, no shared volume. Here, the backing storage can have ReadWriteOnce accessMode The deployment</description>
+    </item>
+    
+    <item>
+      <title>Install K8s The Hard Way</title>
+      <link>https://leiheng.github.io/posts/k8s/install-k8s-hard-way/</link>
+      <pubDate>Fri, 02 Aug 2019 15:20:37 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/k8s/install-k8s-hard-way/</guid>
+      <description>Language is simple, show me your code. # close swap setenforce 0 sudo sed -i &#39;/SELINUX=enforcing/ s/enforcing/disabled/&#39; /etc/selinux/config sudo swapoff -a sudo sed -i &#39;/ swap / s/^/#/g&#39; /etc/fstab reboot # set proxy cat&amp;gt;&amp;gt;/etc/profile&amp;lt;&amp;lt;-EOF export http_proxy=http://proxy.houston.hpecorp.net:8080 export https_proxy=http://proxy.houston.hpecorp.net:8080 EOF source /etc/profile mkdir /root/all-file cd /root/all-file # get docker and set proxy for docker curl -fsSL https://get.docker.com -o get-docker.sh sh get-docker.sh mkdir -p /etc/systemd/system/docker.service.d cat&amp;gt;&amp;gt;/etc/systemd/system/docker.service.d/http-proxy.conf&amp;lt;&amp;lt;-EOF [Service] Environment=&amp;quot;HTTP_PROXY=http://proxy-llb-hpm01.sgp.hp.com:8080&amp;quot; &amp;quot;HTTPS_PROXY=http://proxy-llb-hpm01.sgp.hp.com:8080&amp;quot; &amp;quot;NO_PROXY=localhost,127.0.0.1,.hp.com,.hpe.com,.hpeswlab.net,.hpecorp.net,.softwaregrp.net,.swinfra.net&amp;quot; EOF sudo</description>
+    </item>
+    
+    <item>
+      <title>Code Style</title>
+      <link>https://leiheng.github.io/posts/java/code-style/</link>
+      <pubDate>Thu, 01 Aug 2019 19:25:47 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/code-style/</guid>
+      <description>到 resource 文件夹里面拿文件 String response = Resources.toString(Resources.getResource(&amp;quot;response.json&amp;quot;), Charsets.UTF_8); // bytes: Resources.asByteSource(Resources.getResource(&amp;quot;datain_100000.log&amp;quot;).toURI().toURL()).openBufferedStream(); // Guava: public static URL getResource(String resourceName) { ClassLoader loader = MoreObjects.firstNonNull( Thread.currentThread().getContextClassLoader(), Resources.class.getClassLoader()); URL url = loader.getResource(resourceName); checkArgument(url != null, &amp;quot;resource %s not found.&amp;quot;, resourceName); return url; } get env in SpringBoot // define properties in application.yaml like: project: service: name: smarta-installer feature: mgmt: job-setting: job-retry-time: ${JOB_RETRY_TIME:100} job-interval-time: ${JOB_INTERVAL_TIME:60} then, create</description>
+    </item>
+    
+    <item>
+      <title>Https for Harbor</title>
+      <link>https://leiheng.github.io/posts/docker/https-for-harbor/</link>
+      <pubDate>Wed, 31 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/docker/https-for-harbor/</guid>
+      <description>https Exercise install Harbor and configure https.
+prepare  install docker by get-docker script. install compose by compose github install wiki install harbor by harbor wiki  lets getting CA  mkdir /data/harbor-cert &amp;amp; cd /data/harbor-cert generate CA key
+openssl genrsa -out ca.key 4096  CA crt
+openssl req -x509 -new -nodes -sha512 -days 3650 \ -subj &amp;quot;/CN=yourdomain.com&amp;quot; \ -key ca.key \ -out ca.crt   lets getting server certificate  server key</description>
+    </item>
+    
+    <item>
+      <title>Git Note</title>
+      <link>https://leiheng.github.io/posts/tools/git-note/</link>
+      <pubDate>Fri, 05 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/tools/git-note/</guid>
+      <description>Add git 创建并添加ssh key git config --global user.name &amp;quot;leiheng&amp;quot; git config --global user.email &amp;quot;heng.lei@XXX.com&amp;quot; ssh-keygen -t rsa -C &amp;quot;heng.lei@XXX.com&amp;quot; 但是如果要在电脑上添加自己的github accout，refer this ssh-add error refer this final: git clone git@git-personal:leiheng\repo final: git clone</description>
+    </item>
+    
+  </channel>
+</rss>
