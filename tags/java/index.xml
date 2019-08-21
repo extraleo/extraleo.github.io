@@ -6,10 +6,22 @@
     <description>Recent content in java on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 13 Aug 2019 17:16:54 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 15 Aug 2019 17:11:34 +0800</lastBuildDate>
     
 	<atom:link href="https://leiheng.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Grpc 1</title>
+      <link>https://leiheng.github.io/posts/rpc/java/grpc-1/</link>
+      <pubDate>Thu, 15 Aug 2019 17:11:34 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/rpc/java/grpc-1/</guid>
+      <description>Step 1 Of course we need clone project from github, now I goto example folder and compile project.
+Ooooooooooooooops! It failed even already behind proxy, so I set proxy i gradle.properties at example path. For example:
+#http proxy setup #dont need protocal &amp;quot;http&amp;quot; systemProp.http.proxyHost=server systemProp.http.proxyPort=8080 #https proxy setup #dont need protocal &amp;quot;http&amp;quot; systemProp.https.proxyHost=server systemProp.https.proxyPort=8080  Step 2 lets use akka-grpc generate grpc proto 
+ ·End·</description>
+    </item>
     
     <item>
       <title>Maven Dependencies Pom Type</title>

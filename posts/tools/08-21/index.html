@@ -9,9 +9,9 @@
   
   
   
-  <link rel="prev" href="https://leiheng.github.io/posts/k8s/odds-and-ends/" />
-  <link rel="next" href="https://leiheng.github.io/posts/rpc/java/grpc-1/" />
-  <link rel="canonical" href="https://leiheng.github.io/posts/java/maven-dependencies/" />
+  <link rel="prev" href="https://leiheng.github.io/posts/rpc/java/grpc-1/" />
+  
+  <link rel="canonical" href="https://leiheng.github.io/posts/tools/08-21/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -21,10 +21,10 @@
   <title>
        
        
-           Maven Dependencies Pom Type | Ray&#39;s Blog
+           08 21 | Ray&#39;s Blog
        
   </title>
-  <meta name="title" content="Maven Dependencies Pom Type | Ray&#39;s Blog">
+  <meta name="title" content="08 21 | Ray&#39;s Blog">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -43,9 +43,9 @@
          "@id": "https:\/\/leiheng.github.io"
     },
     "articleSection" : "posts",
-    "name" : "Maven Dependencies Pom Type",
-    "headline" : "Maven Dependencies Pom Type",
-    "description" : "终于有一天, 我看到我自己 java 练习项目依赖, 配置乱成一坨糟, 心里很糟心, 就打算整理整理整理. 于是创建了 common-dependency-parent, 项目结构如下: . |-- common-dep | `-- pom.xml |-- pom.xml `-- shared-pom `-- pom.xml 其",
+    "name" : "08 21",
+    "headline" : "08 21",
+    "description" : "About proxy windows 设置 proxy 必须从环境变量 设置, 这里不是说从 powershell\/cmd\/gitbash 设置. 它可以设置protocol: HTTPS_PROXY=http:\/\/server:port 这种样式. Linux 大家都知道能够设置protocol. maven \x26amp; gradle 必须",
     "inLanguage" : "zh-cn",
     "author" : "leiheng",
     "creator" : "leiheng",
@@ -53,11 +53,11 @@
     "accountablePerson" : "leiheng",
     "copyrightHolder" : "leiheng",
     "copyrightYear" : "2019",
-    "datePublished": "2019-08-13 17:16:54 \x2b0800 CST",
-    "dateModified" : "2019-08-13 17:16:54 \x2b0800 CST",
-    "url" : "https:\/\/leiheng.github.io\/posts\/java\/maven-dependencies\/",
-    "wordCount" : "351",
-    "keywords" : [ "maven","java", "Ray\x27s Blog"]
+    "datePublished": "2019-08-21 10:42:36 \x2b0800 CST",
+    "dateModified" : "2019-08-21 10:42:36 \x2b0800 CST",
+    "url" : "https:\/\/leiheng.github.io\/posts\/tools\/08-21\/",
+    "wordCount" : "196",
+    "keywords" : [ "Stuff", "Ray\x27s Blog"]
 }
 </script>
 
@@ -141,19 +141,19 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Maven Dependencies Pom Type</h1>
+        <h1 class="post-title" itemprop="name headline">08 21</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://leiheng.github.io" rel="author">leiheng</a> with ♥ 
                 <span class="post-time">
-                on <time datetime=2019-08-13 itemprop="datePublished">August 13, 2019</time>
+                on <time datetime=2019-08-21 itemprop="datePublished">August 21, 2019</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
-                        <a href="https://leiheng.github.io/categories/java/"> java </a>
+                        <a href="https://leiheng.github.io/categories/stuff/"> Stuff </a>
                         
                 </span>
-                <span class="post-word-count">, 351 words</span>
+                <span class="post-word-count">, 196 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -173,62 +173,17 @@
 
           
 
-<p>终于有一天, 我看到我自己 java 练习项目依赖, 配置乱成一坨糟, 心里很糟心, 就打算整理整理整理.</p>
+<h2 id="about-proxy">About proxy</h2>
 
-<p>于是创建了 <code>common-dependency-parent</code>, 项目结构如下:</p>
+<ol>
+<li>windows 设置 proxy 必须从<strong>环境变量</strong> 设置, 这里不是说从 <code>powershell/cmd/gitbash</code> 设置. 它可以设置protocol: <code>HTTPS_PROXY=http://server:port</code> 这种样式.</li>
+<li>Linux 大家都知道能够设置protocol.</li>
+<li>maven &amp; gradle 必须从 <code>settings.xml/gradle.properties</code> 中读取 proxy 配置, 且不支持设置 protocol.</li>
+<li>npm &amp; git 支持设置protocol, 且支持disable https.</li>
+<li>sbt 的 proxy首先是读取的 <code>JAVA_OPTS</code>, 如果里面设置了http, 那么就读这种proxy, 但是, <code>JAVA_OPTS</code> 不支持设置 protocol.</li>
+</ol>
 
-<pre><code class="language-console">.
-|-- common-dep
-|   `-- pom.xml
-|-- pom.xml
-`-- shared-pom
-    `-- pom.xml
-
-</code></pre>
-
-<p>其中, <code>shared-pom</code> 将会作为其他 project 的<strong>parent project</strong>, 并引用 <code>common-dep</code> 来 import 常用的 dependencies. install之后, 尝试引用 parent 和 common-dep 失败, 并报错:</p>
-
-<blockquote>
-<p>&lsquo;dependencies.dependency.version&rsquo; for com.leih:common-dep:jar</p>
-</blockquote>
-
-<p>找了大半天, 为啥会去找<code>jar</code>, 对着 settings.xml 文件找错, <code>offline</code> 开了又关关了又开, 还是没有找到原因.</p>
-
-<p>最后, 发现引用 <code>common-dep</code> 的时候忘记加 <code>&lt;type&gt;pom&lt;/type&gt;</code> 了. 如果不显示指定依赖,那么 maven 就会自动认为这个是个 jar 包, 并从local, remote 查找.</p>
-
-<p>单独拉出一个project 当作依赖项, 内容只有 pom.xml 的时候, 不指定 <code>packaging type</code> 是 pom 的话, 那么 <code>mvn install</code> 就会给你生成一个<strong>空的jar包</strong>.</p>
-
-<p>所以, 如果很不幸没有指定 <code>packaging</code> 并且引用的时候也没有指定 type ,基本上就emmmm.</p>
-
-<h3 id="share-pom-pom-xml">share-pom pom.xml:</h3>
-
-<pre><code class="language-xml">    &lt;artifactId&gt;shared-pom&lt;/artifactId&gt;
-    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
-    &lt;packaging&gt;pom&lt;/packaging&gt;
-    ...
-    &lt;dependencyManagement&gt;
-      &lt;dependencies&gt;
-      ...
-        &lt;dependency&gt;
-          &lt;groupId&gt;com.leih&lt;/groupId&gt;
-          &lt;artifactId&gt;common-dep&lt;/artifactId&gt;
-          &lt;version&gt;${project.version}&lt;/version&gt;
-          &lt;type&gt;pom&lt;/type&gt;
-        &lt;/dependency&gt;
-      &lt;/dependencies&gt;
-    &lt;/dependencyManagement&gt;
-</code></pre>
-
-<h3 id="your-project-module-pom-xml">your project module pom.xml:</h3>
-
-<pre><code class="language-xml">    &lt;dependency&gt;
-      &lt;groupId&gt;com.leih&lt;/groupId&gt;
-      &lt;artifactId&gt;common-dep&lt;/artifactId&gt;
-      &lt;type&gt;pom&lt;/type&gt;
-    &lt;/dependency&gt;
-</code></pre>
-
-<h3 id="common-project-in-github-https-github-com-leiheng-common-dependency-git">common project in <a href="https://github.com/leiheng/common-dependency.git" rel="nofollow noreferrer" target="_blank">github</a></h3>
+<h3 id="所以-如果你的-proxy-不支持https-方式连接-那么酌情混合使用">所以, 如果你的 proxy 不支持https 方式连接, 那么酌情混合使用.</h3>
 
 <p><br></p>
 
@@ -247,7 +202,7 @@
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://leiheng.github.io/posts/java/maven-dependencies/>https://leiheng.github.io/posts/java/maven-dependencies/</span>
+                    <a href=https://leiheng.github.io/posts/tools/08-21/>https://leiheng.github.io/posts/tools/08-21/</span>
             </p>
             
              
@@ -263,11 +218,8 @@
             <section>
             <i class="iconfont icon-tag"></i>Tag(s): 
             
-            <span class="tag"><a href="https://leiheng.github.io/tags/maven/">
-                    #maven</a></span>
-            
-            <span class="tag"><a href="https://leiheng.github.io/tags/java/">
-                    #java</a></span>
+            <span class="tag"><a href="https://leiheng.github.io/tags/stuff/">
+                    #Stuff</a></span>
             
             </section>
         
@@ -279,10 +231,8 @@
 
     <div class="post-nav">
         
-        <a href="https://leiheng.github.io/posts/k8s/odds-and-ends/" class="prev" rel="prev" title="Odds and Ends"><i class="iconfont icon-left"></i>&nbsp;Odds and Ends</a>
+        <a href="https://leiheng.github.io/posts/rpc/java/grpc-1/" class="prev" rel="prev" title="Grpc 1"><i class="iconfont icon-left"></i>&nbsp;Grpc 1</a>
          
-        
-        <a href="https://leiheng.github.io/posts/rpc/java/grpc-1/" class="next" rel="next" title="Grpc 1">Grpc 1&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

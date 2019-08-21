@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rpc on Ray&#39;s Blog</title>
+    <link>https://leiheng.github.io/tags/rpc/</link>
+    <description>Recent content in rpc on Ray&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 15 Aug 2019 17:11:34 +0800</lastBuildDate>
+    
+	<atom:link href="https://leiheng.github.io/tags/rpc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Grpc 1</title>
+      <link>https://leiheng.github.io/posts/rpc/java/grpc-1/</link>
+      <pubDate>Thu, 15 Aug 2019 17:11:34 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/rpc/java/grpc-1/</guid>
+      <description>Step 1 Of course we need clone project from github, now I goto example folder and compile project.
+Ooooooooooooooops! It failed even already behind proxy, so I set proxy i gradle.properties at example path. For example:
+#http proxy setup #dont need protocal &amp;quot;http&amp;quot; systemProp.http.proxyHost=server systemProp.http.proxyPort=8080 #https proxy setup #dont need protocal &amp;quot;http&amp;quot; systemProp.https.proxyHost=server systemProp.https.proxyPort=8080  Step 2 lets use akka-grpc generate grpc proto 
+ ·End·</description>
+    </item>
+    
+  </channel>
+</rss>
