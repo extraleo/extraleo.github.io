@@ -13,11 +13,11 @@
     
     <item>
       <title>Proxy</title>
-      <link>https://leiheng.github.io/posts/tools/08-21/</link>
+      <link>https://leiheng.github.io/posts/tools/about-proxy/</link>
       <pubDate>Wed, 21 Aug 2019 10:42:36 +0800</pubDate>
       
-      <guid>https://leiheng.github.io/posts/tools/08-21/</guid>
-      <description>About proxy windows 设置 proxy 必须从环境变量 设置, 这里不是说从 powershell/cmd/gitbash 设置. 它可以设置protocol: HTTPS_PROXY=http://server:port 这种样式. Linux 大家都知道能够设置protocol. maven &amp;amp; gradle 必须</description>
+      <guid>https://leiheng.github.io/posts/tools/about-proxy/</guid>
+      <description>About proxy windows 设置 proxy 必须从环境变量 设置, 这里不是说从 powershell/cmd/gitbash 设置. 并且它可以设置protocol: HTTPS_PROXY=http://server:port 这种样式. Linux 大家都知道能够设置protocol. maven &amp;amp; gradle</description>
     </item>
     
     <item>
