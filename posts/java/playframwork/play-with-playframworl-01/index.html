@@ -56,7 +56,7 @@
     "datePublished": "2019-08-08 13:16:32 \x2b0800 CST",
     "dateModified" : "2019-08-08 13:16:32 \x2b0800 CST",
     "url" : "https:\/\/leiheng.github.io\/posts\/java\/playframwork\/play-with-playframworl-01\/",
-    "wordCount" : "720",
+    "wordCount" : "767",
     "keywords" : [ "playframwork","java","akka", "Ray\x27s Blog"]
 }
 </script>
@@ -153,7 +153,7 @@
                         <a href="https://leiheng.github.io/categories/java/"> java </a>
                         
                 </span>
-                <span class="post-word-count">, 720 words</span>
+                <span class="post-word-count">, 767 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -413,13 +413,38 @@ re run <code>sbt</code> failed.</p>
 Create <code>HTTPS_PROXY</code> and <code>HTTP_PROXY</code> with windows way. If the proxy server doesn&rsquo;t accept https, add http protocol like <code>HTTPS_PROXY=http://proxyServer:port</code>.</p>
 
 <blockquote>
-<p>NO repository file, no vm options, just set <code>HTTPS_PROXY</code> rightly.</p>
+<p>NO repository file, no vm options, just set <code>HTTPS_PROXY</code> rightly and your <code>JAVA_OPTS</code>.</p>
 </blockquote>
+
+<h3 id="lets-get-faster">lets get faster</h3>
+
+<p>Make sure set proxy rightly.</p>
+
+<ol>
+<li><p>add ~/.sbt/1.0/plugins/plugins.sbt file</p>
+
+<pre><code class="language-console">addSbtPlugin(&quot;io.get-coursier&quot; % &quot;sbt-coursier&quot; % &quot;1.1.0-M7&quot;)
+
+libraryDependencies ++= Seq(
+&quot;org.vafer&quot; % &quot;jdeb&quot; % &quot;1.6&quot;
+)
+</code></pre></li>
+
+<li><p>add ~/.sbt/1.0/sbt-coursier.sbt file</p>
+
+<pre><code class="language-console">import coursier.Keys._
+
+classpathTypes += &quot;maven-plugin&quot;
+</code></pre></li>
+
+<li><p>Have fun. If get <code>502</code>, retry.</p></li>
+</ol>
 
 <h3 id="refer">REFER</h3>
 
 <ul>
 <li><a href="https://stackoverflow.com/questions/43984715/sbt-error-retrieving-required-libraries" rel="nofollow noreferrer" target="_blank">add repository</a></li>
+<li><a href="https://leiheng.github.io/posts/tools/about-proxy/" rel="nofollow noreferrer" target="_blank">about how to set proxy</a></li>
 </ul>
 
 <p><br></p>

@@ -50,12 +50,12 @@
 &lt;p&gt;Ooooooooooooooops! It failed even already behind proxy, so I set proxy i  &lt;code&gt;gradle.properties&lt;/code&gt; at example path. For example:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#http proxy setup
-#dont need protocal &amp;quot;http&amp;quot;
+#dont need protocol &amp;quot;http&amp;quot;
 systemProp.http.proxyHost=server
 systemProp.http.proxyPort=8080
 
 #https proxy setup
-#dont need protocal &amp;quot;http&amp;quot;
+#dont need protocol &amp;quot;http&amp;quot;
 systemProp.https.proxyHost=server
 systemProp.https.proxyPort=8080
 &lt;/code&gt;&lt;/pre&gt;
@@ -431,13 +431,38 @@ re run &lt;code&gt;sbt&lt;/code&gt; failed.&lt;/p&gt;
 Create &lt;code&gt;HTTPS_PROXY&lt;/code&gt; and &lt;code&gt;HTTP_PROXY&lt;/code&gt; with windows way. If the proxy server doesn&amp;rsquo;t accept https, add http protocol like &lt;code&gt;HTTPS_PROXY=http://proxyServer:port&lt;/code&gt;.&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;NO repository file, no vm options, just set &lt;code&gt;HTTPS_PROXY&lt;/code&gt; rightly.&lt;/p&gt;
+&lt;p&gt;NO repository file, no vm options, just set &lt;code&gt;HTTPS_PROXY&lt;/code&gt; rightly and your &lt;code&gt;JAVA_OPTS&lt;/code&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
+
+&lt;h3 id=&#34;lets-get-faster&#34;&gt;lets get faster&lt;/h3&gt;
+
+&lt;p&gt;Make sure set proxy rightly.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;add ~/.sbt/1.0/plugins/plugins.sbt file&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;addSbtPlugin(&amp;quot;io.get-coursier&amp;quot; % &amp;quot;sbt-coursier&amp;quot; % &amp;quot;1.1.0-M7&amp;quot;)
+
+libraryDependencies ++= Seq(
+&amp;quot;org.vafer&amp;quot; % &amp;quot;jdeb&amp;quot; % &amp;quot;1.6&amp;quot;
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;add ~/.sbt/1.0/sbt-coursier.sbt file&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;import coursier.Keys._
+
+classpathTypes += &amp;quot;maven-plugin&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Have fun. If get &lt;code&gt;502&lt;/code&gt;, retry.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;h3 id=&#34;refer&#34;&gt;REFER&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/43984715/sbt-error-retrieving-required-libraries&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;add repository&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://leiheng.github.io/posts/tools/about-proxy/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;about how to set proxy&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;

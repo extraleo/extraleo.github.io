@@ -19,7 +19,7 @@
       <guid>https://leiheng.github.io/posts/rpc/java/grpc-1/</guid>
       <description>Step 1 Of course we need clone project from github, now I goto example folder and compile project.
 Ooooooooooooooops! It failed even already behind proxy, so I set proxy i gradle.properties at example path. For example:
-#http proxy setup #dont need protocal &amp;quot;http&amp;quot; systemProp.http.proxyHost=server systemProp.http.proxyPort=8080 #https proxy setup #dont need protocal &amp;quot;http&amp;quot; systemProp.https.proxyHost=server systemProp.https.proxyPort=8080  Step 2 lets use akka-grpc generate grpc proto 
+#http proxy setup #dont need protocol &amp;quot;http&amp;quot; systemProp.http.proxyHost=server systemProp.http.proxyPort=8080 #https proxy setup #dont need protocol &amp;quot;http&amp;quot; systemProp.https.proxyHost=server systemProp.https.proxyPort=8080  Step 2 lets use akka-grpc generate grpc proto 
  ·End·</description>
     </item>
     
