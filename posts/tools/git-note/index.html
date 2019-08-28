@@ -56,7 +56,7 @@
     "datePublished": "2019-07-05 00:00:00 \x2b0000 UTC",
     "dateModified" : "2019-07-05 00:00:00 \x2b0000 UTC",
     "url" : "https:\/\/leiheng.github.io\/posts\/tools\/git-note\/",
-    "wordCount" : "862",
+    "wordCount" : "1052",
     "keywords" : [ "git", "Ray\x27s Blog"]
 }
 </script>
@@ -153,7 +153,7 @@
                         <a href="https://leiheng.github.io/categories/tools/"> tools </a>
                         
                 </span>
-                <span class="post-word-count">, 862 words</span>
+                <span class="post-word-count">, 1052 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -237,6 +237,8 @@ git commit -m &quot;add gitignore file&quot;
 
 <hr />
 
+<p>rebase vs pull</p>
+
 <pre><code class="language-bash">git fetch upstream
 //rebase branch which you want, most is default branch
 // Do not rebase branch which other guy work on it
@@ -251,11 +253,6 @@ git pull origin master
 <hr />
 
 <ul>
-<li>前提</li>
-</ul>
-
-<blockquote>
-<ul>
 <li>多个commit合并成一个commit(这些&rsquo;多个commit&rsquo;指只做一件事的commit)</li>
 <li>pr 尽可能的细</li>
 <li>一个pr，一个分支只能做一件事</li>
@@ -263,12 +260,21 @@ git pull origin master
 <li><code>git commit --amend --no-edit</code> 补提交，但不增加commit 节点 <strong>love it</strong></li>
 <li><code>git commit --amend</code> change your commit msg</li>
 </ul>
-</blockquote>
+
+<p><strong>Reset is my love:</strong></p>
 
 <pre><code class="language-bash">git reset 某次commit的id
-相当于
+equal
 git reset --soft HEAD~
 </code></pre>
+
+<h2 id="lf-and-crlf">LF and CRLF</h2>
+
+<hr />
+
+<p>关于这个大坑, 用 window的同学总是有那么一两次能够碰到. 一年前我遇到这个坑的时候, git config 配起来啊,也搞得不咋好看. 但是最后发现其实只要你所有的编辑器配置正确, 都是用的LF/CRLF, 这个问题就不会老来搞你.</p>
+
+<p>写这么一段是因为, git auto change 挺好用的. 但是抵不过有些傻逼提交上去的时候就是一个文件LF, 一个文件CRLF&hellip;&hellip;我能怎么办, 当然是手动再来一遍啊.</p>
 
 <h2 id="拉pr到本地分支">拉pr到本地分支</h2>
 
@@ -278,10 +284,8 @@ git reset --soft HEAD~
 git checkout repack-org-apache
 </code></pre>
 
-<blockquote>
 <p>在checkout之前不要手动创建这个<code>repack-org-apache</code>分支
 <a href="https://www.huangyunkun.com/2018/06/15/pull-github-pr-to-local-branch/" rel="nofollow noreferrer" target="_blank">refer</a></p>
-</blockquote>
 
 <h2 id="git-stash">git stash</h2>
 
@@ -299,10 +303,13 @@ git checkout repack-org-apache
 
 <p><code>git submodule add url folder</code>
 在一个module里面添加ignore的submodule，顺序是很重要的。
-我在其中还看到了empty repo的一些特性。
-1. submodule remote repo 不能为空
-2. <code>.gitignore</code> 必须在添加完 submodule 之后才能把这个 folder 添加上去，要是之前就添上去了咋搞，指路<code>git rm --cached</code>
-3. update submodule 指路 <code>git submodule --help</code></p>
+我在其中还看到了empty repo的一些特性。</p>
+
+<ol>
+<li>submodule remote repo 不能为空</li>
+<li><code>.gitignore</code> 必须在添加完 submodule 之后才能把这个 folder 添加上去，要是之前就添上去了咋搞，指路<code>git rm --cached</code></li>
+<li>update submodule 指路 <code>git submodule --help</code></li>
+</ol>
 
 <h2 id="git-de-bug-bisect-https-git-scm-com-book-zh-v1-git-e5-b7-a5-e5-85-b7-e4-bd-bf-e7-94-a8-git-e8-b0-83-e8-af-95">Git de-bug <em>bisect</em><a href="https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E4%BD%BF%E7%94%A8-Git-%E8%B0%83%E8%AF%95" rel="nofollow noreferrer" target="_blank">!!!</a></h2>
 
