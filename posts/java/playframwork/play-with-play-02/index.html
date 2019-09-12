@@ -9,9 +9,9 @@
   
   
   
-  <link rel="prev" href="https://leiheng.github.io/posts/java/maven-dependencies/" />
-  <link rel="next" href="https://leiheng.github.io/posts/misc/about-proxy/" />
-  <link rel="canonical" href="https://leiheng.github.io/posts/rpc/java/grpc-1/" />
+  <link rel="prev" href="https://leiheng.github.io/posts/misc/about-proxy/" />
+  <link rel="next" href="https://leiheng.github.io/posts/java/stackoverflow-error/" />
+  <link rel="canonical" href="https://leiheng.github.io/posts/java/playframwork/play-with-play-02/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -21,10 +21,10 @@
   <title>
        
        
-           Grpc 1 | Ray&#39;s Blog
+           Play With Playp!-02 | Ray&#39;s Blog
        
   </title>
-  <meta name="title" content="Grpc 1 | Ray&#39;s Blog">
+  <meta name="title" content="Play With Playp!-02 | Ray&#39;s Blog">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -43,9 +43,9 @@
          "@id": "https:\/\/leiheng.github.io"
     },
     "articleSection" : "posts",
-    "name" : "Grpc 1",
-    "headline" : "Grpc 1",
-    "description" : "let\x27s get grpc",
+    "name" : "Play With Playp!-02",
+    "headline" : "Play With Playp!-02",
+    "description" : "Get request body 拿到body 并且转换成dto,而且我再吐槽一句, playframwork的官方guid上写的body 转 dto居然是自己写个annota",
     "inLanguage" : "zh-cn",
     "author" : "leiheng",
     "creator" : "leiheng",
@@ -53,11 +53,11 @@
     "accountablePerson" : "leiheng",
     "copyrightHolder" : "leiheng",
     "copyrightYear" : "2019",
-    "datePublished": "2019-08-15 17:11:34 \x2b0800 CST",
-    "dateModified" : "2019-08-15 17:11:34 \x2b0800 CST",
-    "url" : "https:\/\/leiheng.github.io\/posts\/rpc\/java\/grpc-1\/",
-    "wordCount" : "63",
-    "keywords" : [ "rpc","grpc","java", "Ray\x27s Blog"]
+    "datePublished": "2019-09-09 18:14:43 \x2b0800 CST",
+    "dateModified" : "2019-09-09 18:14:43 \x2b0800 CST",
+    "url" : "https:\/\/leiheng.github.io\/posts\/java\/playframwork\/play-with-play-02\/",
+    "wordCount" : "248",
+    "keywords" : [ "playframwork","java","akka", "Ray\x27s Blog"]
 }
 </script>
 
@@ -141,19 +141,19 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Grpc 1</h1>
+        <h1 class="post-title" itemprop="name headline">Play With Playp!-02</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://leiheng.github.io" rel="author">leiheng</a> with ♥ 
                 <span class="post-time">
-                on <time datetime=2019-08-15 itemprop="datePublished">August 15, 2019</time>
+                on <time datetime=2019-09-09 itemprop="datePublished">September 9, 2019</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
-                        <a href="https://leiheng.github.io/categories/rpc/"> rpc </a>
+                        <a href="https://leiheng.github.io/categories/java/"> java </a>
                         
                 </span>
-                <span class="post-word-count">, 63 words</span>
+                <span class="post-word-count">, 248 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -173,26 +173,30 @@
 
           
 
-<h2 id="step-1">Step 1</h2>
+<h2 id="get-request-body">Get request body</h2>
 
-<p>Of course we need clone project from github, now I goto example folder and compile project.</p>
+<p>拿到body 并且转换成dto,而且我再吐槽一句, playframwork的官方guid上写的body 转 dto居然是自己写个annotation去转&hellip;.这不是有毛病吗????</p>
 
-<p>Ooooooooooooooops! It failed even already behind proxy, so I set proxy i  <code>gradle.properties</code> at example path. For example:</p>
+<p>本来我之前的写法是自己用<code>Json.fromJson()</code>来转换的, 但是后来发现play自己给我包装了一个, 所以hhhh,就用这个吧.</p>
 
-<pre><code class="language-bash">#http proxy setup
-#dont need protocol &quot;http&quot;
-systemProp.http.proxyHost=server
-systemProp.http.proxyPort=8080
-
-#https proxy setup
-#dont need protocol &quot;http&quot;
-systemProp.https.proxyHost=server
-systemProp.https.proxyPort=8080
+<pre><code class="language-java">    Optional&lt;Info&gt; optional = request.body().parseJson(Info.class);
+    if (!optional.isPresent()) {
+      return apiBadRequest(&quot;Cannot create Info&quot;);
+    }
 </code></pre>
 
-<h2 id="step-2">Step 2</h2>
+<p>当然我们还有更加装逼式的写法那就是 <code>Maybe</code>:</p>
 
-<h3 id="lets-use-akka-grpc-generate-grpc-proto">lets use akka-grpc generate grpc proto</h3>
+<pre><code class="language-java">Optional&lt;Info&gt; optional = request.body().parseJson(Info.class);
+Maybe.just(optional)
+.filter(filter-&gt;optional.isPresent())
+.map(op-&gt;op.get())
+.switchIfEmpty(Maybe.error(new Exception(&quot;Unable to find.&quot;)))
+.map()
+.....subscribe()
+</code></pre>
+
+<p>当然这种方式太有侵入性了.而且我现在也<strong>不能确定</strong>到底这种写法是否符合<strong>play! practice.</strong></p>
 
 <p><br></p>
 
@@ -211,7 +215,7 @@ systemProp.https.proxyPort=8080
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://leiheng.github.io/posts/rpc/java/grpc-1/>https://leiheng.github.io/posts/rpc/java/grpc-1/</span>
+                    <a href=https://leiheng.github.io/posts/java/playframwork/play-with-play-02/>https://leiheng.github.io/posts/java/playframwork/play-with-play-02/</span>
             </p>
             
              
@@ -227,14 +231,14 @@ systemProp.https.proxyPort=8080
             <section>
             <i class="iconfont icon-tag"></i>Tag(s): 
             
-            <span class="tag"><a href="https://leiheng.github.io/tags/rpc/">
-                    #rpc</a></span>
-            
-            <span class="tag"><a href="https://leiheng.github.io/tags/grpc/">
-                    #grpc</a></span>
+            <span class="tag"><a href="https://leiheng.github.io/tags/playframwork/">
+                    #playframwork</a></span>
             
             <span class="tag"><a href="https://leiheng.github.io/tags/java/">
                     #java</a></span>
+            
+            <span class="tag"><a href="https://leiheng.github.io/tags/akka/">
+                    #akka</a></span>
             
             </section>
         
@@ -246,10 +250,10 @@ systemProp.https.proxyPort=8080
 
     <div class="post-nav">
         
-        <a href="https://leiheng.github.io/posts/java/maven-dependencies/" class="prev" rel="prev" title="Maven Dependencies Pom Type"><i class="iconfont icon-left"></i>&nbsp;Maven Dependencies Pom Type</a>
+        <a href="https://leiheng.github.io/posts/misc/about-proxy/" class="prev" rel="prev" title="Proxy"><i class="iconfont icon-left"></i>&nbsp;Proxy</a>
          
         
-        <a href="https://leiheng.github.io/posts/misc/about-proxy/" class="next" rel="next" title="Proxy">Proxy&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="https://leiheng.github.io/posts/java/stackoverflow-error/" class="next" rel="next" title="StackOverflow Error">StackOverflow Error&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

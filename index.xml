@@ -5,15 +5,80 @@
     <description>Recent content in Ray&#39;s Blog on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 21 Aug 2019 10:42:36 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 12 Sep 2019 11:23:34 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>StackOverflow Error</title>
+      <link>https://leiheng.github.io/posts/java/stackoverflow-error/</link>
+      <pubDate>Thu, 12 Sep 2019 11:23:34 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/stackoverflow-error/</guid>
+      <description>
+
+&lt;p&gt;我还没想到我居然能够遇到StackOverflow 这种级别的错.&lt;/p&gt;
+
+&lt;p&gt;先来复习一下什么叫StackOverflow Error.&lt;/p&gt;
+
+&lt;h2 id=&#34;error-review&#34;&gt;ERROR - review&lt;/h2&gt;
+
+&lt;h3 id=&#34;stackoverflow-error&#34;&gt;StackOverflow Error&lt;/h3&gt;
+
+&lt;h2 id=&#34;object-to-json&#34;&gt;object to json&lt;/h2&gt;
+
+&lt;h3 id=&#34;fix&#34;&gt;Fix&lt;/h3&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Play With Playp!-02</title>
+      <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-02/</link>
+      <pubDate>Mon, 09 Sep 2019 18:14:43 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/playframwork/play-with-play-02/</guid>
+      <description>
+
+&lt;h2 id=&#34;get-request-body&#34;&gt;Get request body&lt;/h2&gt;
+
+&lt;p&gt;拿到body 并且转换成dto,而且我再吐槽一句, playframwork的官方guid上写的body 转 dto居然是自己写个annotation去转&amp;hellip;.这不是有毛病吗????&lt;/p&gt;
+
+&lt;p&gt;本来我之前的写法是自己用&lt;code&gt;Json.fromJson()&lt;/code&gt;来转换的, 但是后来发现play自己给我包装了一个, 所以hhhh,就用这个吧.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    Optional&amp;lt;Info&amp;gt; optional = request.body().parseJson(Info.class);
+    if (!optional.isPresent()) {
+      return apiBadRequest(&amp;quot;Cannot create Info&amp;quot;);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当然我们还有更加装逼式的写法那就是 &lt;code&gt;Maybe&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Optional&amp;lt;Info&amp;gt; optional = request.body().parseJson(Info.class);
+Maybe.just(optional)
+.filter(filter-&amp;gt;optional.isPresent())
+.map(op-&amp;gt;op.get())
+.switchIfEmpty(Maybe.error(new Exception(&amp;quot;Unable to find.&amp;quot;)))
+.map()
+.....subscribe()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当然这种方式太有侵入性了.而且我现在也&lt;strong&gt;不能确定&lt;/strong&gt;到底这种写法是否符合&lt;strong&gt;play! practice.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Proxy</title>
-      <link>https://leiheng.github.io/posts/tools/about-proxy/</link>
+      <link>https://leiheng.github.io/posts/misc/about-proxy/</link>
       <pubDate>Wed, 21 Aug 2019 10:42:36 +0800</pubDate>
       
-      <guid>https://leiheng.github.io/posts/tools/about-proxy/</guid>
+      <guid>https://leiheng.github.io/posts/misc/about-proxy/</guid>
       <description>
 
 &lt;h2 id=&#34;about-proxy&#34;&gt;About proxy&lt;/h2&gt;
@@ -28,6 +93,12 @@
 &lt;/ol&gt;
 
 &lt;h3 id=&#34;所以-如果你的-proxy-不支持https-方式连接-那么酌情混合使用&#34;&gt;所以, 如果你的 proxy 不支持https 方式连接, 那么酌情混合使用.&lt;/h3&gt;
+
+&lt;h4 id=&#34;说一说为啥我的postman总是找不到localhost和-127-0-0-1-吧&#34;&gt;说一说为啥我的postman总是找不到localhost和&lt;code&gt;127.0.0.1&lt;/code&gt;吧&lt;/h4&gt;
+
+&lt;p&gt;这也是配置的问题, 我一直觉得postman用系统proxy是走的那个网络proxy, 就是通过&lt;code&gt;chrome:/settings&lt;/code&gt;找到的那个配置proxy的地方. 但其实不是, 他妈的去找环境变量了, 就是&lt;code&gt;HTTP_PROXY&lt;/code&gt;这个环境变量, 所以, 你还的配置一个 &lt;code&gt;NO_PROXY&lt;/code&gt; 这样的环境变量&amp;hellip;..&lt;/p&gt;
+
+&lt;p&gt;顺便记录一下, postman dev tool 挺好用的, 打开它去看request,还能看到具体的报错信息, 解决postman proxy 的问题就是通过看他具体报错看出来的&amp;hellip;&amp;hellip;..&lt;/p&gt;
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
@@ -185,10 +256,10 @@ systemProp.https.proxyPort=8080
     
     <item>
       <title>Play With Playframwork-01</title>
-      <link>https://leiheng.github.io/posts/java/playframwork/play-with-playframworl-01/</link>
+      <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-01/</link>
       <pubDate>Thu, 08 Aug 2019 13:16:32 +0800</pubDate>
       
-      <guid>https://leiheng.github.io/posts/java/playframwork/play-with-playframworl-01/</guid>
+      <guid>https://leiheng.github.io/posts/java/playframwork/play-with-play-01/</guid>
       <description>
 
 &lt;h2 id=&#34;prepare&#34;&gt;prepare&lt;/h2&gt;
@@ -2356,277 +2427,6 @@ systemctl status kube-proxy
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Code Style</title>
-      <link>https://leiheng.github.io/posts/java/code-style/</link>
-      <pubDate>Thu, 01 Aug 2019 19:25:47 +0800</pubDate>
-      
-      <guid>https://leiheng.github.io/posts/java/code-style/</guid>
-      <description>
-
-&lt;h2 id=&#34;到-resource-文件夹里面拿文件&#34;&gt;到 resource 文件夹里面拿文件&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;String response = Resources.toString(Resources.getResource(&amp;quot;response.json&amp;quot;), Charsets.UTF_8);
-// bytes:
-Resources.asByteSource(Resources.getResource(&amp;quot;datain_100000.log&amp;quot;).toURI().toURL()).openBufferedStream();
-
-// Guava:
-  public static URL getResource(String resourceName) {
-    ClassLoader loader =
-        MoreObjects.firstNonNull(
-            Thread.currentThread().getContextClassLoader(), Resources.class.getClassLoader());
-    URL url = loader.getResource(resourceName);
-    checkArgument(url != null, &amp;quot;resource %s not found.&amp;quot;, resourceName);
-    return url;
-  }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;get-env-in-springboot&#34;&gt;get env in SpringBoot&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;// define properties in application.yaml like:
-project:
-  service:
-    name: smarta-installer
-    feature:
-      mgmt:
-        job-setting:
-          job-retry-time: ${JOB_RETRY_TIME:100}
-          job-interval-time: ${JOB_INTERVAL_TIME:60}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;then, create Bean:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Data
-@ConfigurationProperties(prefix = &amp;quot;project.service.feature.mgmt&amp;quot;)
-public class AppConfigProperties {
-	private ScaleJobSetting JobSetting;
-
-	@Data
-	public static class JobSetting {
-		private long jobRetryTime = 100;
-		private long jobIntervalTime = 60;
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;now, have fun.&lt;/p&gt;
-
-&lt;h2 id=&#34;try-with-resource&#34;&gt;try with resource&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;能&lt;code&gt;try with resource&lt;/code&gt;的类必须继承&lt;code&gt;AutoCloseable&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;流式处理I/O&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void queryEncode2() throws Exception {
-   AciServerDetails aciServerDetails = getServerDetails(Constants.idolHost, Constants.idolQueryPort, Constants.idolOemKey);
-   try (
-           InputStream inputStream = Resources.asByteSource(Resources.getResource(&amp;quot;datain_100000.log&amp;quot;).toURI().toURL()).openBufferedStream();
-           BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-           OutputStream outputStream = Files.asByteSink(new File(&amp;quot;output/querys.txt&amp;quot;)).openBufferedStream();
-   ) {
-     Flux.fromStream(bufferedReader.lines())
-             .subscribe( query -&amp;gt; {
-                       try {
-                         log.info(&amp;quot;query is, {}&amp;quot;, query);
-                         outputStream.write(SimpleQuery.encode(aciServerDetails, query).getBytes());
-                         outputStream.write(&amp;quot;\n&amp;quot;.getBytes());
-                       } catch (Exception e) {
-                         log.info(&amp;quot;error query is, {}&amp;quot;, query);
-                         log.error(&amp;quot;&amp;quot;, e);
-                       }
-                     }
-             );
-   }
- }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;or&lt;/strong&gt; vertx.fileSytem()&lt;/p&gt;
-
-&lt;h3 id=&#34;refer&#34;&gt;refer&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;java-string-immutable&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;java-string-immutable&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.baeldung.com/java-immutable-object&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;java-immutable-object&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;java-string-pool&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;java-string-pool&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Https for Harbor</title>
-      <link>https://leiheng.github.io/posts/docker/https-for-harbor/</link>
-      <pubDate>Wed, 31 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://leiheng.github.io/posts/docker/https-for-harbor/</guid>
-      <description>
-
-&lt;h2 id=&#34;https&#34;&gt;https&lt;/h2&gt;
-
-&lt;p&gt;Exercise install Harbor and configure https.&lt;/p&gt;
-
-&lt;h3 id=&#34;prepare&#34;&gt;prepare&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;install docker by get-docker script.&lt;/li&gt;
-&lt;li&gt;install compose by compose github install wiki&lt;/li&gt;
-&lt;li&gt;install harbor by harbor wiki&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;lets-getting-ca&#34;&gt;lets getting CA&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;mkdir /data/harbor-cert &amp;amp; cd /data/harbor-cert&lt;/code&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;generate CA key&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;openssl genrsa -out ca.key 4096
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;CA crt&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;openssl req -x509 -new -nodes -sha512 -days 3650 \
--subj &amp;quot;/CN=yourdomain.com&amp;quot; \
--key ca.key \
--out ca.crt
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;lets-getting-server-certificate&#34;&gt;lets getting server certificate&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;server key&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;openssl genrsa -out yourdomain.com.key 4096
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Generate a Certificate Signing request&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;openssl req -sha512 -new \
--subj &amp;quot;/CN=yourdomain.com&amp;quot; \
--key yourdomain.com.key \
--out yourdomain.com.csr 
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Generate Certificate for Harbor:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cat &amp;gt; v3.ext &amp;lt;&amp;lt;-EOF
-authorityKeyIdentifier=keyid,issuer
-basicConstraints=CA:FALSE
-keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
-extendedKeyUsage = serverAuth 
-subjectAltName = @alt_names
-[alt_names]
-DNS.1=yourdomain.com
-DNS.2=yourdomain
-DNS.3=hostname
-EOF
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;then:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;openssl x509 -req -sha512 -days 3650 \
--extfile v3.ext \
--CA ca.crt -CAkey ca.key -CAcreateserial \
--in yourdomain.com.csr \
--out yourdomain.com.crt
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;configure-harbor&#34;&gt;configure Harbor&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Convert server yourdomain.com.crt to yourdomain.com.cert:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;openssl x509 -inform PEM -in yourdomain.com.crt -out yourdomain.com.cert
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Delpoy yourdomain.com.cert, yourdomain.com.key, and ca.crt for Docker:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# if /etc/docker/certs.d/yourdomain.com/ not exist, mkdir.
-cp yourdomain.com.cert /etc/docker/certs.d/yourdomain.com/
-cp yourdomain.com.key /etc/docker/certs.d/yourdomain.com/
-cp ca.crt /etc/docker/certs.d/yourdomain.com/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The following illustrates a configuration with custom certificates:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;/etc/docker/certs.d/
-└── yourdomain.com:port   
-   ├── yourdomain.com.cert  &amp;lt;-- Server certificate signed by CA
-   ├── yourdomain.com.key   &amp;lt;-- Server key signed by CA
-   └── ca.crt               &amp;lt;-- Certificate authority that signed the registry certificate
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Edit harbor.yml, add certificate, harbor.yml should be like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#set hostnamehostname: yourdomain.com
-http:
-port: 80
-https:
-# https port for harbor, default is 443
-port: 443
-# The path of cert and key files for nginx
-certificate: /data/cert/yourdomain.com.crt
-private_key: /data/cert/yourdomain.com.key
-......
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Generate configuration files for Harbor:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker-compose down -v # if harbor is running, down first, then run prepare script
-./prepare
-docker-compose up -d
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Valid https&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Open browser, and open &lt;code&gt;https://yourdomain.com&lt;/code&gt;, see the harbor login page.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;docker login yourdomain.com&lt;/code&gt;  should success.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;ts&#34;&gt;TS&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;if use chrome open harbor, may have a &lt;strong&gt;NET::ERR_CERT_INVALID&lt;/strong&gt;. It is Chrome&amp;rsquo;s bug when visiting numerous top sites. Our self-signing certificate belonging this &lt;code&gt;numerous&lt;/code&gt; category. So, open harbor with firefox.&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;if your docker has &lt;code&gt;Insecure Registries&lt;/code&gt; (you can see it by &lt;code&gt;docker ifno&lt;/code&gt;), add the harbor registry:(Centos7)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cat &amp;gt; /etc/docker/daemon.json &amp;lt;&amp;lt;-EOF
-{
-&amp;quot;insecure-registries&amp;quot; : [ &amp;quot;SGDLITVM0531.hpeswlab.net&amp;quot; ]
-}
-EOF
-# then restart docker
-systemctl daemon-reload
-systemctl restart docker
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;I still dont know how to add insecure registry into docker on windos. I have tried install &lt;code&gt;ca.crt&lt;/code&gt;&amp;amp;&lt;code&gt;harbor.crt&lt;/code&gt; into &lt;code&gt;Trusted Root Certification&lt;/code&gt; and restart computer, still cannot connect the harbor.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;refer&#34;&gt;Refer&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://get.docker.com/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;get-docker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/config/daemon/systemd/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;docker set proxy&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/docker/compose/releases&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;compose wiki&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/goharbor/harbor/blob/master/docs/installation_guide.md&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;harbor install&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://appuals.com/fix-google-chrome-error-neterr_cert_invalid/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Chrome&amp;rsquo;s ssl bug&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/42211380/add-insecure-registry-to-docker&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;docker insecure registry&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/registry/insecure/#windows&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Windows docker insecure registry but failed&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

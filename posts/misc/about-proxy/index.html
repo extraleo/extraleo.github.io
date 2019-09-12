@@ -10,8 +10,8 @@
   
   
   <link rel="prev" href="https://leiheng.github.io/posts/rpc/java/grpc-1/" />
-  
-  <link rel="canonical" href="https://leiheng.github.io/posts/tools/about-proxy/" />
+  <link rel="next" href="https://leiheng.github.io/posts/java/playframwork/play-with-play-02/" />
+  <link rel="canonical" href="https://leiheng.github.io/posts/misc/about-proxy/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -55,8 +55,8 @@
     "copyrightYear" : "2019",
     "datePublished": "2019-08-21 10:42:36 \x2b0800 CST",
     "dateModified" : "2019-08-21 10:42:36 \x2b0800 CST",
-    "url" : "https:\/\/leiheng.github.io\/posts\/tools\/about-proxy\/",
-    "wordCount" : "198",
+    "url" : "https:\/\/leiheng.github.io\/posts\/misc\/about-proxy\/",
+    "wordCount" : "464",
     "keywords" : [ "Stuff", "Ray\x27s Blog"]
 }
 </script>
@@ -153,7 +153,7 @@
                         <a href="https://leiheng.github.io/categories/stuff/"> Stuff </a>
                         
                 </span>
-                <span class="post-word-count">, 198 words</span>
+                <span class="post-word-count">, 464 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -186,6 +186,12 @@
 
 <h3 id="所以-如果你的-proxy-不支持https-方式连接-那么酌情混合使用">所以, 如果你的 proxy 不支持https 方式连接, 那么酌情混合使用.</h3>
 
+<h4 id="说一说为啥我的postman总是找不到localhost和-127-0-0-1-吧">说一说为啥我的postman总是找不到localhost和<code>127.0.0.1</code>吧</h4>
+
+<p>这也是配置的问题, 我一直觉得postman用系统proxy是走的那个网络proxy, 就是通过<code>chrome:/settings</code>找到的那个配置proxy的地方. 但其实不是, 他妈的去找环境变量了, 就是<code>HTTP_PROXY</code>这个环境变量, 所以, 你还的配置一个 <code>NO_PROXY</code> 这样的环境变量&hellip;..</p>
+
+<p>顺便记录一下, postman dev tool 挺好用的, 打开它去看request,还能看到具体的报错信息, 解决postman proxy 的问题就是通过看他具体报错看出来的&hellip;&hellip;..</p>
+
 <p><br></p>
 
 <p><center>  ·End·  </center></p>
@@ -203,7 +209,7 @@
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://leiheng.github.io/posts/tools/about-proxy/>https://leiheng.github.io/posts/tools/about-proxy/</span>
+                    <a href=https://leiheng.github.io/posts/misc/about-proxy/>https://leiheng.github.io/posts/misc/about-proxy/</span>
             </p>
             
              
@@ -234,6 +240,8 @@
         
         <a href="https://leiheng.github.io/posts/rpc/java/grpc-1/" class="prev" rel="prev" title="Grpc 1"><i class="iconfont icon-left"></i>&nbsp;Grpc 1</a>
          
+        
+        <a href="https://leiheng.github.io/posts/java/playframwork/play-with-play-02/" class="next" rel="next" title="Play With Playp!-02">Play With Playp!-02&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

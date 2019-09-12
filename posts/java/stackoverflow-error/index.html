@@ -9,9 +9,9 @@
   
   
   
-  <link rel="prev" href="https://leiheng.github.io/posts/java/maven-dependencies/" />
-  <link rel="next" href="https://leiheng.github.io/posts/misc/about-proxy/" />
-  <link rel="canonical" href="https://leiheng.github.io/posts/rpc/java/grpc-1/" />
+  <link rel="prev" href="https://leiheng.github.io/posts/java/playframwork/play-with-play-02/" />
+  
+  <link rel="canonical" href="https://leiheng.github.io/posts/java/stackoverflow-error/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -21,10 +21,10 @@
   <title>
        
        
-           Grpc 1 | Ray&#39;s Blog
+           StackOverflow Error | Ray&#39;s Blog
        
   </title>
-  <meta name="title" content="Grpc 1 | Ray&#39;s Blog">
+  <meta name="title" content="StackOverflow Error | Ray&#39;s Blog">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -43,9 +43,9 @@
          "@id": "https:\/\/leiheng.github.io"
     },
     "articleSection" : "posts",
-    "name" : "Grpc 1",
-    "headline" : "Grpc 1",
-    "description" : "let\x27s get grpc",
+    "name" : "StackOverflow Error",
+    "headline" : "StackOverflow Error",
+    "description" : "我还没想到我居然能够遇到StackOverflow 这种级别的错. 先来复习一下什么叫StackOverflow Error. ERROR - review StackOverflow Error object to json Fix ·End·",
     "inLanguage" : "zh-cn",
     "author" : "leiheng",
     "creator" : "leiheng",
@@ -53,11 +53,11 @@
     "accountablePerson" : "leiheng",
     "copyrightHolder" : "leiheng",
     "copyrightYear" : "2019",
-    "datePublished": "2019-08-15 17:11:34 \x2b0800 CST",
-    "dateModified" : "2019-08-15 17:11:34 \x2b0800 CST",
-    "url" : "https:\/\/leiheng.github.io\/posts\/rpc\/java\/grpc-1\/",
-    "wordCount" : "63",
-    "keywords" : [ "rpc","grpc","java", "Ray\x27s Blog"]
+    "datePublished": "2019-09-12 11:23:34 \x2b0800 CST",
+    "dateModified" : "2019-09-12 11:23:34 \x2b0800 CST",
+    "url" : "https:\/\/leiheng.github.io\/posts\/java\/stackoverflow-error\/",
+    "wordCount" : "69",
+    "keywords" : [ "java", "Ray\x27s Blog"]
 }
 </script>
 
@@ -141,19 +141,19 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Grpc 1</h1>
+        <h1 class="post-title" itemprop="name headline">StackOverflow Error</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://leiheng.github.io" rel="author">leiheng</a> with ♥ 
                 <span class="post-time">
-                on <time datetime=2019-08-15 itemprop="datePublished">August 15, 2019</time>
+                on <time datetime=2019-09-12 itemprop="datePublished">September 12, 2019</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
-                        <a href="https://leiheng.github.io/categories/rpc/"> rpc </a>
+                        <a href="https://leiheng.github.io/categories/java/"> java </a>
                         
                 </span>
-                <span class="post-word-count">, 63 words</span>
+                <span class="post-word-count">, 69 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -173,26 +173,17 @@
 
           
 
-<h2 id="step-1">Step 1</h2>
+<p>我还没想到我居然能够遇到StackOverflow 这种级别的错.</p>
 
-<p>Of course we need clone project from github, now I goto example folder and compile project.</p>
+<p>先来复习一下什么叫StackOverflow Error.</p>
 
-<p>Ooooooooooooooops! It failed even already behind proxy, so I set proxy i  <code>gradle.properties</code> at example path. For example:</p>
+<h2 id="error-review">ERROR - review</h2>
 
-<pre><code class="language-bash">#http proxy setup
-#dont need protocol &quot;http&quot;
-systemProp.http.proxyHost=server
-systemProp.http.proxyPort=8080
+<h3 id="stackoverflow-error">StackOverflow Error</h3>
 
-#https proxy setup
-#dont need protocol &quot;http&quot;
-systemProp.https.proxyHost=server
-systemProp.https.proxyPort=8080
-</code></pre>
+<h2 id="object-to-json">object to json</h2>
 
-<h2 id="step-2">Step 2</h2>
-
-<h3 id="lets-use-akka-grpc-generate-grpc-proto">lets use akka-grpc generate grpc proto</h3>
+<h3 id="fix">Fix</h3>
 
 <p><br></p>
 
@@ -211,7 +202,7 @@ systemProp.https.proxyPort=8080
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://leiheng.github.io/posts/rpc/java/grpc-1/>https://leiheng.github.io/posts/rpc/java/grpc-1/</span>
+                    <a href=https://leiheng.github.io/posts/java/stackoverflow-error/>https://leiheng.github.io/posts/java/stackoverflow-error/</span>
             </p>
             
              
@@ -227,12 +218,6 @@ systemProp.https.proxyPort=8080
             <section>
             <i class="iconfont icon-tag"></i>Tag(s): 
             
-            <span class="tag"><a href="https://leiheng.github.io/tags/rpc/">
-                    #rpc</a></span>
-            
-            <span class="tag"><a href="https://leiheng.github.io/tags/grpc/">
-                    #grpc</a></span>
-            
             <span class="tag"><a href="https://leiheng.github.io/tags/java/">
                     #java</a></span>
             
@@ -246,10 +231,8 @@ systemProp.https.proxyPort=8080
 
     <div class="post-nav">
         
-        <a href="https://leiheng.github.io/posts/java/maven-dependencies/" class="prev" rel="prev" title="Maven Dependencies Pom Type"><i class="iconfont icon-left"></i>&nbsp;Maven Dependencies Pom Type</a>
+        <a href="https://leiheng.github.io/posts/java/playframwork/play-with-play-02/" class="prev" rel="prev" title="Play With Playp!-02"><i class="iconfont icon-left"></i>&nbsp;Play With Playp!-02</a>
          
-        
-        <a href="https://leiheng.github.io/posts/misc/about-proxy/" class="next" rel="next" title="Proxy">Proxy&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

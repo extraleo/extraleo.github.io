@@ -6,10 +6,28 @@
     <description>Recent content in java on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 15 Aug 2019 17:11:34 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 12 Sep 2019 11:23:34 +0800</lastBuildDate>
     
 	<atom:link href="https://leiheng.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>StackOverflow Error</title>
+      <link>https://leiheng.github.io/posts/java/stackoverflow-error/</link>
+      <pubDate>Thu, 12 Sep 2019 11:23:34 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/stackoverflow-error/</guid>
+      <description>我还没想到我居然能够遇到StackOverflow 这种级别的错. 先来复习一下什么叫StackOverflow Error. ERROR - review StackOverflow Error object to json Fix ·End·</description>
+    </item>
+    
+    <item>
+      <title>Play With Playp!-02</title>
+      <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-02/</link>
+      <pubDate>Mon, 09 Sep 2019 18:14:43 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/playframwork/play-with-play-02/</guid>
+      <description>Get request body 拿到body 并且转换成dto,而且我再吐槽一句, playframwork的官方guid上写的body 转 dto居然是自己写个annota</description>
+    </item>
     
     <item>
       <title>Grpc 1</title>
@@ -34,10 +52,10 @@ Ooooooooooooooops! It failed even already behind proxy, so I set proxy i gradle.
     
     <item>
       <title>Play With Playframwork-01</title>
-      <link>https://leiheng.github.io/posts/java/playframwork/play-with-playframworl-01/</link>
+      <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-01/</link>
       <pubDate>Thu, 08 Aug 2019 13:16:32 +0800</pubDate>
       
-      <guid>https://leiheng.github.io/posts/java/playframwork/play-with-playframworl-01/</guid>
+      <guid>https://leiheng.github.io/posts/java/playframwork/play-with-play-01/</guid>
       <description>prepare install gradle install sbt gradle 我尝试去使用 gradle 去构建项目, 但是一时半会还没能理解 gradle 里面 plugins 怎么玩的, 遂放弃, 先把 play 玩起来再说. sbt I&amp;rsquo;m new one for playframwork. My intellij cannot import sbt project so that tried to run sbt</description>
     </item>
     

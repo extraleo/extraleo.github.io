@@ -13,10 +13,10 @@
     
     <item>
       <title>Git Note</title>
-      <link>https://leiheng.github.io/posts/tools/git-note/</link>
+      <link>https://leiheng.github.io/posts/misc/git-note/</link>
       <pubDate>Fri, 05 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://leiheng.github.io/posts/tools/git-note/</guid>
+      <guid>https://leiheng.github.io/posts/misc/git-note/</guid>
       <description>Add git 创建并添加ssh key git config --global user.name &amp;quot;leiheng&amp;quot; git config --global user.email &amp;quot;heng.lei@XXX.com&amp;quot; ssh-keygen -t rsa -C &amp;quot;heng.lei@XXX.com&amp;quot; 但是如果要在电脑上添加自己的github accout，refer this ssh-add error refer this final: git clone git@git-personal:leiheng\repo final: git clone</description>
     </item>
     
