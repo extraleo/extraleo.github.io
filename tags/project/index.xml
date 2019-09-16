@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>project on Ray&#39;s Blog</title>
+    <link>https://leiheng.github.io/tags/project/</link>
+    <description>Recent content in project on Ray&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 16 Sep 2019 14:00:48 +0800</lastBuildDate>
+    
+	<atom:link href="https://leiheng.github.io/tags/project/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>做工程的一些道理</title>
+      <link>https://leiheng.github.io/posts/misc/about-project/</link>
+      <pubDate>Mon, 16 Sep 2019 14:00:48 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/misc/about-project/</guid>
+      <description>数据模型的构建 论需求和解决方法 ·End·</description>
+    </item>
+    
+  </channel>
+</rss>

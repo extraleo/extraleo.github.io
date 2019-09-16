@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 12 Sep 2019 11:23:34 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 16 Sep 2019 14:00:48 +0800</lastBuildDate>
     
 	<atom:link href="https://leiheng.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>做工程的一些道理</title>
+      <link>https://leiheng.github.io/posts/misc/about-project/</link>
+      <pubDate>Mon, 16 Sep 2019 14:00:48 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/misc/about-project/</guid>
+      <description>数据模型的构建 论需求和解决方法 ·End·</description>
+    </item>
     
     <item>
       <title>StackOverflow Error</title>

@@ -6,7 +6,7 @@
     <description>Recent content in Categories on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 12 Sep 2019 11:23:34 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 16 Sep 2019 14:00:48 +0800</lastBuildDate>
     
 	<atom:link href="https://leiheng.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title></title>
       <link>https://leiheng.github.io/categories/</link>
-      <pubDate>Thu, 12 Sep 2019 11:23:34 +0800</pubDate>
+      <pubDate>Mon, 16 Sep 2019 14:00:48 +0800</pubDate>
       
       <guid>https://leiheng.github.io/categories/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>misc</title>
+      <link>https://leiheng.github.io/categories/misc/</link>
+      <pubDate>Mon, 16 Sep 2019 14:00:48 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/categories/misc/</guid>
       <description></description>
     </item>
     
