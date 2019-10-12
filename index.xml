@@ -5,8 +5,55 @@
     <description>Recent content in Ray&#39;s Blog on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 16 Sep 2019 14:00:48 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 10 Oct 2019 15:35:00 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>UT Practice</title>
+      <link>https://leiheng.github.io/posts/java/ut-practice/</link>
+      <pubDate>Thu, 10 Oct 2019 15:35:00 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/ut-practice/</guid>
+      <description>&lt;p&gt;PowerMock vs Mockito&lt;/p&gt;
+
+&lt;p&gt;只有在mock static method 时候才使用 PowerMock, 其余时间都用Mockito&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Windows Misc</title>
+      <link>https://leiheng.github.io/posts/misc/windows-misc/</link>
+      <pubDate>Thu, 10 Oct 2019 15:34:24 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/misc/windows-misc/</guid>
+      <description>
+
+&lt;h2 id=&#34;nfs-on-windows&#34;&gt;NFS on windows&lt;/h2&gt;
+
+&lt;p&gt;老是跑到一台机器上去看东西,受不了了, 于是在我本机开了个nfs client. 过程还好, 就是后来我一不小心改了一个东西, 重启之后我磁盘锁死了&amp;hellip;
+&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Bash Writing Specification</title>
+      <link>https://leiheng.github.io/posts/linux/bash-writing-specification/</link>
+      <pubDate>Tue, 24 Sep 2019 17:32:00 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/linux/bash-writing-specification/</guid>
+      <description>&lt;p&gt;Bash 写作的一些规范&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>做工程的一些道理</title>
@@ -18,9 +65,16 @@
 
 &lt;h2 id=&#34;数据模型的构建&#34;&gt;数据模型的构建&lt;/h2&gt;
 
+&lt;p&gt;数据模型非常重要, 一旦数据模型设计不咋, 之后重构就是一团糟&lt;/p&gt;
+
 &lt;h2 id=&#34;论需求和解决方法&#34;&gt;论需求和解决方法&lt;/h2&gt;
 
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;PM 提需求就提需求, 解决方案都是rd的事情.&lt;/p&gt;
+
+&lt;h2 id=&#34;论代码分层&#34;&gt;论代码分层&lt;/h2&gt;
+
+&lt;p&gt;Controller 和 service 以及中台 service 分层.
+&lt;br&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
 </description>
@@ -42,18 +96,21 @@
 
 &lt;h3 id=&#34;stackoverflow-error&#34;&gt;StackOverflow Error&lt;/h3&gt;
 
+&lt;p&gt;StackOverflow&lt;/p&gt;
+
 &lt;h2 id=&#34;object-to-json&#34;&gt;object to json&lt;/h2&gt;
 
 &lt;h3 id=&#34;fix&#34;&gt;Fix&lt;/h3&gt;
 
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;网上看到这种错一般都是用Gson, 一般解决方法就是不让他显示出来&amp;hellip;.这是什么解决方案. 于是我就用jackson, done.
+&lt;br&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>Play With Playp!-02</title>
+      <title>Play With Play!-02</title>
       <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-02/</link>
       <pubDate>Mon, 09 Sep 2019 18:14:43 +0800</pubDate>
       
@@ -273,7 +330,7 @@ systemProp.https.proxyPort=8080
     </item>
     
     <item>
-      <title>Play With Playframwork-01</title>
+      <title>Play With Play!-01</title>
       <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-01/</link>
       <pubDate>Thu, 08 Aug 2019 13:16:32 +0800</pubDate>
       
@@ -1083,471 +1140,6 @@ systemctl enable nfs-server&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;showmount -e serverhost&lt;/code&gt; 查看server端有哪些file可以被mount&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;df&lt;/code&gt;或者&lt;code&gt;mount&lt;/code&gt;查看mount file之后的情况&lt;/li&gt;
 &lt;li&gt;umount /home/nfs/public&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Linux Command</title>
-      <link>https://leiheng.github.io/posts/linux/linux-command/</link>
-      <pubDate>Mon, 05 Aug 2019 15:53:33 +0800</pubDate>
-      
-      <guid>https://leiheng.github.io/posts/linux/linux-command/</guid>
-      <description>
-
-&lt;h2 id=&#34;bash-script&#34;&gt;bash script&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;include-other-bash-file-in-your-script-https-stackoverflow-com-questions-10823635-how-to-include-file-in-a-bash-shell-script&#34;&gt;include other bash file in your &lt;a href=&#34;https://stackoverflow.com/questions/10823635/how-to-include-file-in-a-bash-shell-script&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;script&lt;/a&gt;&lt;/h3&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Above answers is correct, but if run script in other folder, there will be some problem.
-For example, the a.sh and b.sh are in same folder, a include b with  . ./b.sh to include.
-When run script out of the folder, for example with xx/xx/xx/a.sh, file b.sh will not found: ./b.sh: No such file or directory.
-I use&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;code&gt;. $(dirname &amp;quot;$0&amp;quot;)/b.sh&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;common&#34;&gt;common&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Linux提供&lt;code&gt;$?&lt;/code&gt;特殊变量来保存最后一条命令执行结束的退出状态, 正常的情况下，命令成功执行完成的退出状态是0&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;if [$? -eq 0] ; then
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;set -e&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;在&lt;code&gt;set -e&lt;/code&gt;之后出现的代码，一旦出现了除0之外的返回值，整个脚本直接退出&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;bash -c&lt;/code&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;bash -x&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;bash -x -c &amp;quot;curl www.google.com &amp;amp;&amp;amp; ls&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;-x&lt;/code&gt;:表示debug,会将执行的命令一个一个打出来; &lt;code&gt;-c&lt;/code&gt;：则是执行收到的字符串 (如例子就是执行&lt;code&gt;curl www.google.com &amp;amp;&amp;amp; ls&lt;/code&gt;)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;source&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;. ./filename&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;./filename &lt;strong&gt;&lt;a href=&#34;https://superuser.com/questions/176783/what-is-the-difference-between-executing-a-bash-script-vs-sourcing-it?noredirect=1&amp;amp;lq=1&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;reference&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;common-1&#34;&gt;Common&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;groups&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/etc/passwd&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.computerhope.com/unix/umkdir.htm&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;mkdir&lt;/a&gt; -p /&amp;hellip;. 创建目录并创建他的父目录 java中有mkdirs&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;find&lt;/code&gt;&lt;a href=&#34;http://www.oracle.com/technetwork/cn/topics/calish-find-096463-zhs.html&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;refer&lt;/a&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;create huge file: &lt;code&gt;fallocate -l 10G fileName.txt&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;查看版本信息&#34;&gt;查看版本信息&lt;/h3&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;cat /etc/*release&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;查看命令完整路径&#34;&gt;查看命令完整路径&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;readlink -f jmeter&lt;/code&gt; -&amp;gt; &lt;code&gt;/root/apach-jmeter/bin/jmeter&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;diff-between-sudo-and-su&#34;&gt;diff between sudo and su&lt;/h3&gt;
-
-&lt;h3 id=&#34;环境变量&#34;&gt;环境变量&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;printenv 打印环境变量&lt;/li&gt;
-&lt;li&gt;export PATH=$PATH:dir 导入环境变量&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;source /etc/profile //在不重启终端的情况下使修改过后的profile生效
-&amp;gt; docker 中不提倡用source&lt;/p&gt;
-
-&lt;h4 id=&#34;shell-envsubst-replace-placeholder&#34;&gt;shell &lt;code&gt;envsubst&lt;/code&gt; replace placeholder&lt;/h4&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;substitute env variables:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;source ${env_script}
-cat /opt/content/cfg.tmpl | envsubst &amp;gt; /opt/content/config/Content.cfg
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这个意思就是把tmpl文件中的placeholder 替换,然后将输出写成cfg文件&lt;/p&gt;
-
-&lt;h2 id=&#34;文件相关&#34;&gt;文件相关&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;文件权限相关&#34;&gt;文件权限相关&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;chmod -R&lt;/code&gt;: change modify 更改文件的访问权限(递归，将下层文件权限也改了)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;chmod +x&lt;/code&gt;: 加执行权限(注意的是&lt;strong&gt;X&lt;/strong&gt;和x不一样)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;chmod g+s&lt;/code&gt;: 执行此 command ，在此目录下，不管是谁创建新的目录都会与父目录有相同 own&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;chown&lt;/code&gt; ：change owner 更改文件拥有者 !!! chown doesn&amp;rsquo;t check if the uid and gid haven&amp;rsquo;t registed in /etc/group and /etc/passwd&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;groupadd -g gid uidname&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;useradd -g gid -u uid uername&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;su -u username -E nohup&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;文件目录切换&#34;&gt;文件目录切换&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;pushed +n(n 是数字)&lt;/li&gt;
-&lt;li&gt;dirs -v&lt;/li&gt;
-&lt;li&gt;popd +n&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;read-file&#34;&gt;Read file&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;屏幕持续输出-并将输出内容保存文件&#34;&gt;屏幕持续输出，并将输出内容保存文件&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;cmd|tee filename&lt;/code&gt;
-示例：
-&lt;code&gt;kl pod -f|tee filename&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;cat&#34;&gt;cat&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cat &amp;gt; filename &amp;lt;&amp;lt;-EOF
-first
-second
-EOF
-----------
-cat &amp;lt;&amp;lt;- EOF &amp;gt; filename 
-first
-second
-EOF
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;两种写法都可以&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;将输入的多行内容写入到filename这个文件中去.
-&amp;lt;&amp;lt;- 的唯一变化就是Here Document 的内容部分每行前面的 tab (制表符)将会被删除掉，这种用法是为了编写Here Document的时候可以将内容部分进行缩进，方便阅读代码.eof=&amp;gt;end of file,他可以被替换成其他合法字符&lt;/p&gt;
-
-&lt;h3 id=&#34;more-less&#34;&gt;more|less&lt;/h3&gt;
-
-&lt;p&gt;less is more
-&lt;code&gt;more file&lt;/code&gt;: 空格翻屏&lt;/p&gt;
-
-&lt;h3 id=&#34;tail&#34;&gt;tail&lt;/h3&gt;
-
-&lt;p&gt;tail 是从文件尾部读的，有篇&lt;a href=&#34;https://blog.lilydjwg.me/2018/9/20/never-tail-f-a-pipe.213518.html&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;blog&lt;/a&gt;很有意思,里面讲了一个bug，但是也讲了tail的原理&lt;/p&gt;
-
-&lt;h2 id=&#34;文件传输&#34;&gt;文件传输&lt;/h2&gt;
-
-&lt;h3 id=&#34;scp&#34;&gt;scp&lt;/h3&gt;
-
-&lt;p&gt;I love scp
-&lt;code&gt;scp remote-host:remote-file local-file&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;sftp&#34;&gt;sftp&lt;/h3&gt;
-
-&lt;p&gt;比如本地ip是li-1，远程是li-4
-- 连接远程服务器&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;sftp username@remoteIP&lt;/code&gt;
-- 本地文件传输到远端&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;put -r filename&lt;/code&gt;
-注意本地是指li-1
-- 远端文件下载到本地&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;get -r filename&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;bye                                Quit sftp
-cd path                            Change remote directory to &#39;path&#39;
-chgrp grp path                     Change group of file &#39;path&#39; to &#39;grp&#39;
-chmod mode path                    Change permissions of file &#39;path&#39; to &#39;mode&#39;
-chown own path                     Change owner of file &#39;path&#39; to &#39;own&#39;
-df [-hi] [path]                    Display statistics for current directory or
-                                   filesystem containing &#39;path&#39;
-exit                               Quit sftp
-get [-afPpRr] remote [local]       Download file
-reget [-fPpRr] remote [local]      Resume download file
-reput [-fPpRr] [local] remote      Resume upload file
-help                               Display this help text
-lcd path                           Change local directory to &#39;path&#39;
-lls [ls-options [path]]            Display local directory listing
-lmkdir path                        Create local directory
-ln [-s] oldpath newpath            Link remote file (-s for symlink)
-lpwd                               Print local working directory
-ls [-1afhlnrSt] [path]             Display remote directory listing
-lumask umask                       Set local umask to &#39;umask&#39;
-mkdir path                         Create remote directory
-progress                           Toggle display of progress meter
-put [-afPpRr] local [remote]       Upload file
-pwd                                Display remote working directory
-quit                               Quit sftp
-rename oldpath newpath             Rename remote file
-rm path                            Delete remote file
-rmdir path                         Remove remote directory
-symlink oldpath newpath            Symlink remote file
-version                            Show SFTP version
-!command                           Execute &#39;command&#39; in local shell
-!                                  Escape to local shell
-?                                  Synonym for help
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;端口相关&#34;&gt;端口相关&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;ul&gt;
-&lt;li&gt;查看这个端口有没有开放 &lt;code&gt;lsof -i:80&lt;/code&gt;,如果有显示输出就说明开放了。&lt;/li&gt;
-&lt;li&gt;查看某一端口的情况 &lt;code&gt;netstat -pan|grep 8090&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;security&#34;&gt;Security&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://wangchujiang.com/linux-command/c/iptables.html&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;防火墙iptable&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://jimmysong.io/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;list&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;上古命令&#34;&gt;上古命令&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;ul&gt;
-&lt;li&gt;在vim里面&lt;code&gt;ctrl + s&lt;/code&gt;卡死屏幕
-&lt;code&gt;ctrl + q&lt;/code&gt;恢复 (以及在有道云里面也会这样)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;process&#34;&gt;process&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;list-process&#34;&gt;list process&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;ps&lt;/code&gt; list all process&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ps -aux&lt;/code&gt; or &lt;code&gt;ps -ef&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;top -Hp pid&lt;/code&gt; list all thread in one process&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;jstack pid &amp;gt; pid.log&lt;/code&gt; 将线程栈 dump 到日志文件中&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;kill-process&#34;&gt;kill process&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;SIGINT&lt;/code&gt; 跟&lt;code&gt;ctrl+c&lt;/code&gt;关联，只能杀掉前台进程&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;SIGTERM&lt;/code&gt; 处理前台、后台进程但是可以被阻塞、被忽略。可以让程序友好的退出&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;SIGKILL&lt;/code&gt; 立即执行，大杀器，是直接发往系统内核的。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;kill -9&lt;/code&gt; 卧槽，很危险，危险到这是没有办法了才执行的。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;subshell&#34;&gt;subshell&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Create an Object</title>
-      <link>https://leiheng.github.io/posts/design-patterns/create-an-object/</link>
-      <pubDate>Fri, 02 Aug 2019 16:50:38 +0800</pubDate>
-      
-      <guid>https://leiheng.github.io/posts/design-patterns/create-an-object/</guid>
-      <description>
-
-&lt;h2 id=&#34;builder-pattern&#34;&gt;Builder Pattern&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Getter
-@Setter
-public class BuilderSample {
-  private String compo;
-  private boolean flag;
-
-  private BuilderSample(SampleBuild build) {
-    this.compo = build.compo;
-    this.flag = build.flag;
-  }
-
-  public static class SampleBuild {
-    private String compo;
-    private boolean flag = false;
-
-    public BuilderSample build() {
-      return new BuilderSample(this);
-    }
-
-    public SampleBuild setCompo(String compon) {
-      this.compo = compon;
-      return this;
-    }
-
-    public SampleBuild setFlag(boolean flag) {
-      this.flag = flag;
-      return this;
-    }
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;OR&lt;/strong&gt; use &lt;code&gt;@Bulid&lt;/code&gt; ,everything is simple.&lt;/p&gt;
-
-&lt;h2 id=&#34;factory-patterna&#34;&gt;Factory Patterna&lt;/h2&gt;
-
-&lt;h2 id=&#34;singleton-pattern&#34;&gt;Singleton Pattern&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;Best way to to implement a singleton pattern in Java is use &lt;code&gt;enum&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;a single-element enum type is the best way to implement a singleton. &amp;ndash;&amp;ldquo;Effective java&amp;rdquo;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public enum StatusEnum {
-    SUCCESS(&amp;quot;9000&amp;quot;, &amp;quot;success&amp;quot;),
-    private final String[] favoriteSongs =
-        { &amp;quot;Hound Dog&amp;quot;, &amp;quot;Heartbreak Hotel&amp;quot; };
-    public void printFavorites() {
-        System.out.println(Arrays.toString(favoriteSongs));
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;double check create singleton&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class StatusEnum{
-    private volatile static StatusEnum instance;
-    private StatusEnum(){}
-    public static StatusEnum getInstance(){
-        if(instance == null){
-            synchronized (StatusEnum.class){
-                if (instance == null){
-                    instance = new StatusEnum();
-                }
-            }
-        }
-        return instance;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Diff StatefulSet and Deployment</title>
-      <link>https://leiheng.github.io/posts/k8s/diff-statefulset-and-deployment/</link>
-      <pubDate>Fri, 02 Aug 2019 15:53:01 +0800</pubDate>
-      
-      <guid>https://leiheng.github.io/posts/k8s/diff-statefulset-and-deployment/</guid>
-      <description>
-
-&lt;ul&gt;
-&lt;li&gt;Deployment - You specify a PersistentVolumeClaim that is shared by all pod replicas. In other words, shared volume.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The backing storage obviously must have ReadWriteMany or ReadOnlyMany accessMode if you have more than one replica pod.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;StatefulSet - You specify a volumeClaimTemplates so that each replica pod gets a unique PersistentVolumeClaim associated with it. In other words, no shared volume.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Here, the backing storage can have ReadWriteOnce accessMode&lt;/p&gt;
-
-&lt;p&gt;The deployment replicas pod share the same pv but stateful set not. Each statefulset pod has own pv-pvc.&lt;/p&gt;
-
-&lt;p&gt;StatefulSet使用Headless服务来控制Pod的域名,那么这个pod的域名的FQDN为: &lt;code&gt;$(pod-name).$(service-name).$(namespace).svc.cluster.local&lt;/code&gt;. 其中,&lt;code&gt;cluster.local&lt;/code&gt;指的是集群的域名.&lt;/p&gt;
-
-&lt;h2 id=&#34;statefulset&#34;&gt;StatefulSet&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;StatefulSet 控制的 pod 都是有状态的, 而像 deployment &amp;amp; replicaSet 这种就是 Stateless 无状态的. 具体表现为 StatefulSet 控制的pod并不分享pv - pvc.
-&lt;del&gt;他们使用的&lt;code&gt;pv accessmode&lt;/code&gt; 都是 &lt;code&gt;ReadWriteOnce&lt;/code&gt;&lt;/del&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;headless-service&#34;&gt;Headless Service&lt;/h3&gt;
-
-&lt;p&gt;Headless service主要是用于分配DNS固定域名给那些 &lt;code&gt;StatefulSet&lt;/code&gt; 控制的 pod, 与这些 pod 通信主要是靠 DNS 而非 ip.&lt;/p&gt;
-
-&lt;p&gt;作为headless service [&amp;hellip;.waiting]&lt;/p&gt;
-
-&lt;h3 id=&#34;pv-pvc-volumeclaimtemple-about-statefulset&#34;&gt;pv &amp;amp; pvc &amp;amp; volumeClaimTemple about StatefulSet&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Static:
-集群管理员创建多个PV。 它们携带可供集群用户使用的真实存储的详细信息。 它们存在于Kubernetes API中，可用于消费.&lt;/li&gt;
-&lt;li&gt;Dynamic:
-当管理员创建的静态PV都不匹配用户的PersistentVolumeClaim时，集群可能会尝试为PVC动态配置卷。 此配置基于StorageClasses：PVC必须请求一个类，并且管理员必须已创建并配置该类才能进行动态配置。 要求该类的声明有效地为自己禁用动态配置&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;so, 关于 StatefulSet 的 pv pvc binding 就是:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;自己手动创建 PV &amp;amp; PVC 并且注意好 pvc 的命名&lt;/li&gt;
-&lt;li&gt;使用 &lt;code&gt;StorageClass&lt;/code&gt; 动态 绑定&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;named-pvc&#34;&gt;named pvc&lt;/h4&gt;
-
-&lt;p&gt;Create &lt;code&gt;volumeClaimTemplates&lt;/code&gt; like:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;  volumeClaimTemplates:
-  - metadata:
-      name: &amp;quot;pvc-prefix&amp;quot;
-    spec:
-      accessModes:
-      - &amp;quot;ReadWriteOnce&amp;quot;
-      storageClassName: &amp;quot;storageName&amp;quot;
-      resources:
-        requests:
-          storage: &amp;quot;1Gi&amp;quot;
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now, your pvc must named &lt;code&gt;pvc-prefix-stsName-indx&lt;/code&gt; like &lt;code&gt;rabbitmq-infra-rabbitmq-0&lt;/code&gt;, statefulSet name is infra-rabbitmq. Otherwise, pod will be always &lt;code&gt;Pending&lt;/code&gt; because of cannot find mapping pvc.&lt;/p&gt;
-
-&lt;h2 id=&#34;access-modes&#34;&gt;access modes&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Kubernetes supports 3 kinds of access mode for persistent volume: ReadWriteOnce, ReadOnlyMany, ReadWriteMany.&lt;/p&gt;
-
-&lt;p&gt;If a pod mounts a volume with &lt;strong&gt;ReadWriteOnce&lt;/strong&gt; access mode, no other pod can mount it.&lt;/p&gt;
-
-&lt;p&gt;Most of our pod mounted the pv with  &lt;code&gt;ReadWriteMany&lt;/code&gt;. These pod share same resource.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;ReadOnlyMany&lt;/code&gt; indicate this pv only can be read but no write right.&lt;/p&gt;
-
-&lt;h3 id=&#34;refer&#34;&gt;REFER&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;pv access modes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/37649541/kubernetes-persistent-volume-accessmode&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;stackoverflow k8s pv accessmode&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Dynamic Volume Provisioning - Kubernetes&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;

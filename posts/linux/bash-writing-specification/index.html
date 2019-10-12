@@ -9,9 +9,9 @@
   
   
   
-  <link rel="prev" href="https://leiheng.github.io/posts/docker/https-for-harbor/" />
-  <link rel="next" href="https://leiheng.github.io/posts/k8s/install-k8s-hard-way/" />
-  <link rel="canonical" href="https://leiheng.github.io/posts/java/code-style/" />
+  <link rel="prev" href="https://leiheng.github.io/posts/misc/about-project/" />
+  <link rel="next" href="https://leiheng.github.io/posts/misc/windows-misc/" />
+  <link rel="canonical" href="https://leiheng.github.io/posts/linux/bash-writing-specification/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -21,10 +21,10 @@
   <title>
        
        
-           Code Style | Ray&#39;s Blog
+           Bash Writing Specification | Ray&#39;s Blog
        
   </title>
-  <meta name="title" content="Code Style | Ray&#39;s Blog">
+  <meta name="title" content="Bash Writing Specification | Ray&#39;s Blog">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -43,9 +43,9 @@
          "@id": "https:\/\/leiheng.github.io"
     },
     "articleSection" : "posts",
-    "name" : "Code Style",
-    "headline" : "Code Style",
-    "description" : "到 resource 文件夹里面拿文件 String response = Resources.toString(Resources.getResource(\x26quot;response.json\x26quot;), Charsets.UTF_8); \/\/ bytes: Resources.asByteSource(Resources.getResource(\x26quot;datain_100000.log\x26quot;).toURI().toURL()).openBufferedStream(); \/\/ Guava: public static URL getResource(String resourceName) { ClassLoader loader = MoreObjects.firstNonNull( Thread.currentThread().getContextClassLoader(), Resources.class.getClassLoader()); URL url = loader.getResource(resourceName); checkArgument(url != null, \x26quot;resource %s not found.\x26quot;, resourceName); return url; } get env in SpringBoot \/\/ define properties in application.yaml like: project: service: name: smarta-installer feature: mgmt: job-setting: job-retry-time: ${JOB_RETRY_TIME:100} job-interval-time: ${JOB_INTERVAL_TIME:60} then, create",
+    "name" : "Bash Writing Specification",
+    "headline" : "Bash Writing Specification",
+    "description" : "Bash 写作的一些规范 ·End·",
     "inLanguage" : "zh-cn",
     "author" : "leiheng",
     "creator" : "leiheng",
@@ -53,11 +53,11 @@
     "accountablePerson" : "leiheng",
     "copyrightHolder" : "leiheng",
     "copyrightYear" : "2019",
-    "datePublished": "2019-08-01 19:25:47 \x2b0800 CST",
-    "dateModified" : "2019-08-01 19:25:47 \x2b0800 CST",
-    "url" : "https:\/\/leiheng.github.io\/posts\/java\/code-style\/",
-    "wordCount" : "213",
-    "keywords" : [ "java","code-style", "Ray\x27s Blog"]
+    "datePublished": "2019-09-24 17:32:00 \x2b0800 CST",
+    "dateModified" : "2019-09-24 17:32:00 \x2b0800 CST",
+    "url" : "https:\/\/leiheng.github.io\/posts\/linux\/bash-writing-specification\/",
+    "wordCount" : "13",
+    "keywords" : [ "Bash-script", "Ray\x27s Blog"]
 }
 </script>
 
@@ -141,19 +141,19 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Code Style</h1>
+        <h1 class="post-title" itemprop="name headline">Bash Writing Specification</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://leiheng.github.io" rel="author">leiheng</a> with ♥ 
                 <span class="post-time">
-                on <time datetime=2019-08-01 itemprop="datePublished">August 1, 2019</time>
+                on <time datetime=2019-09-24 itemprop="datePublished">September 24, 2019</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
-                        <a href="https://leiheng.github.io/categories/java/"> java </a>
+                        <a href="https://leiheng.github.io/categories/linux/"> Linux </a>
                         
                 </span>
-                <span class="post-word-count">, 213 words</span>
+                <span class="post-word-count">, 13 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -171,99 +171,11 @@
           
           
 
-          
+          <p>Bash 写作的一些规范</p>
 
-<h2 id="到-resource-文件夹里面拿文件">到 resource 文件夹里面拿文件</h2>
+<p><br></p>
 
-<hr />
-
-<pre><code class="language-java">String response = Resources.toString(Resources.getResource(&quot;response.json&quot;), Charsets.UTF_8);
-// bytes:
-Resources.asByteSource(Resources.getResource(&quot;datain_100000.log&quot;).toURI().toURL()).openBufferedStream();
-
-// Guava:
-  public static URL getResource(String resourceName) {
-    ClassLoader loader =
-        MoreObjects.firstNonNull(
-            Thread.currentThread().getContextClassLoader(), Resources.class.getClassLoader());
-    URL url = loader.getResource(resourceName);
-    checkArgument(url != null, &quot;resource %s not found.&quot;, resourceName);
-    return url;
-  }
-</code></pre>
-
-<h2 id="get-env-in-springboot">get env in SpringBoot</h2>
-
-<hr />
-
-<pre><code class="language-yaml">// define properties in application.yaml like:
-project:
-  service:
-    name: smarta-installer
-    feature:
-      mgmt:
-        job-setting:
-          job-retry-time: ${JOB_RETRY_TIME:100}
-          job-interval-time: ${JOB_INTERVAL_TIME:60}
-</code></pre>
-
-<p>then, create Bean:</p>
-
-<pre><code class="language-java">@Data
-@ConfigurationProperties(prefix = &quot;project.service.feature.mgmt&quot;)
-public class AppConfigProperties {
-	private ScaleJobSetting JobSetting;
-
-	@Data
-	public static class JobSetting {
-		private long jobRetryTime = 100;
-		private long jobIntervalTime = 60;
-	}
-}
-</code></pre>
-
-<p>now, have fun.</p>
-
-<h2 id="try-with-resource">try with resource</h2>
-
-<hr />
-
-<p><strong>能<code>try with resource</code>的类必须继承<code>AutoCloseable</code></strong></p>
-
-<p>流式处理I/O</p>
-
-<pre><code class="language-java">public void queryEncode2() throws Exception {
-   AciServerDetails aciServerDetails = getServerDetails(Constants.idolHost, Constants.idolQueryPort, Constants.idolOemKey);
-   try (
-           InputStream inputStream = Resources.asByteSource(Resources.getResource(&quot;datain_100000.log&quot;).toURI().toURL()).openBufferedStream();
-           BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-           OutputStream outputStream = Files.asByteSink(new File(&quot;output/querys.txt&quot;)).openBufferedStream();
-   ) {
-     Flux.fromStream(bufferedReader.lines())
-             .subscribe( query -&gt; {
-                       try {
-                         log.info(&quot;query is, {}&quot;, query);
-                         outputStream.write(SimpleQuery.encode(aciServerDetails, query).getBytes());
-                         outputStream.write(&quot;\n&quot;.getBytes());
-                       } catch (Exception e) {
-                         log.info(&quot;error query is, {}&quot;, query);
-                         log.error(&quot;&quot;, e);
-                       }
-                     }
-             );
-   }
- }
-</code></pre>
-
-<p><strong>or</strong> vertx.fileSytem()</p>
-
-<h3 id="refer">refer</h3>
-
-<ul>
-<li><a href="java-string-immutable" rel="nofollow noreferrer" target="_blank">java-string-immutable</a></li>
-<li><a href="https://www.baeldung.com/java-immutable-object" rel="nofollow noreferrer" target="_blank">java-immutable-object</a></li>
-<li><a href="java-string-pool" rel="nofollow noreferrer" target="_blank">java-string-pool</a></li>
-</ul>
+<p><center>  ·End·  </center></p>
 
     </div>
 
@@ -278,7 +190,7 @@ public class AppConfigProperties {
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://leiheng.github.io/posts/java/code-style/>https://leiheng.github.io/posts/java/code-style/</span>
+                    <a href=https://leiheng.github.io/posts/linux/bash-writing-specification/>https://leiheng.github.io/posts/linux/bash-writing-specification/</span>
             </p>
             
              
@@ -294,11 +206,8 @@ public class AppConfigProperties {
             <section>
             <i class="iconfont icon-tag"></i>Tag(s): 
             
-            <span class="tag"><a href="https://leiheng.github.io/tags/java/">
-                    #java</a></span>
-            
-            <span class="tag"><a href="https://leiheng.github.io/tags/code-style/">
-                    #code-style</a></span>
+            <span class="tag"><a href="https://leiheng.github.io/tags/bash-script/">
+                    #Bash-script</a></span>
             
             </section>
         
@@ -310,10 +219,10 @@ public class AppConfigProperties {
 
     <div class="post-nav">
         
-        <a href="https://leiheng.github.io/posts/docker/https-for-harbor/" class="prev" rel="prev" title="Https for Harbor"><i class="iconfont icon-left"></i>&nbsp;Https for Harbor</a>
+        <a href="https://leiheng.github.io/posts/misc/about-project/" class="prev" rel="prev" title="做工程的一些道理"><i class="iconfont icon-left"></i>&nbsp;做工程的一些道理</a>
          
         
-        <a href="https://leiheng.github.io/posts/k8s/install-k8s-hard-way/" class="next" rel="next" title="Install K8s The Hard Way">Install K8s The Hard Way&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="https://leiheng.github.io/posts/misc/windows-misc/" class="next" rel="next" title="Windows Misc">Windows Misc&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

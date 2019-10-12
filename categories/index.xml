@@ -6,7 +6,7 @@
     <description>Recent content in Categories on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 16 Sep 2019 14:00:48 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 10 Oct 2019 15:35:00 +0800</lastBuildDate>
     
 	<atom:link href="https://leiheng.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,27 @@
     <item>
       <title></title>
       <link>https://leiheng.github.io/categories/</link>
-      <pubDate>Mon, 16 Sep 2019 14:00:48 +0800</pubDate>
+      <pubDate>Thu, 10 Oct 2019 15:35:00 +0800</pubDate>
       
       <guid>https://leiheng.github.io/categories/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>java</title>
+      <link>https://leiheng.github.io/categories/java/</link>
+      <pubDate>Thu, 10 Oct 2019 15:35:00 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/categories/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://leiheng.github.io/categories/linux/</link>
+      <pubDate>Tue, 24 Sep 2019 17:32:00 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/categories/linux/</guid>
       <description></description>
     </item>
     
@@ -26,15 +44,6 @@
       <pubDate>Mon, 16 Sep 2019 14:00:48 +0800</pubDate>
       
       <guid>https://leiheng.github.io/categories/misc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>java</title>
-      <link>https://leiheng.github.io/categories/java/</link>
-      <pubDate>Thu, 12 Sep 2019 11:23:34 +0800</pubDate>
-      
-      <guid>https://leiheng.github.io/categories/java/</guid>
       <description></description>
     </item>
     
@@ -80,15 +89,6 @@
       <pubDate>Mon, 05 Aug 2019 18:27:25 +0800</pubDate>
       
       <guid>https://leiheng.github.io/categories/jvm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>linux</title>
-      <link>https://leiheng.github.io/categories/linux/</link>
-      <pubDate>Mon, 05 Aug 2019 16:12:53 +0800</pubDate>
-      
-      <guid>https://leiheng.github.io/categories/linux/</guid>
       <description></description>
     </item>
     

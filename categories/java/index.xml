@@ -6,10 +6,19 @@
     <description>Recent content in java on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 12 Sep 2019 11:23:34 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 10 Oct 2019 15:35:00 +0800</lastBuildDate>
     
 	<atom:link href="https://leiheng.github.io/categories/java/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>UT Practice</title>
+      <link>https://leiheng.github.io/posts/java/ut-practice/</link>
+      <pubDate>Thu, 10 Oct 2019 15:35:00 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/ut-practice/</guid>
+      <description>PowerMock vs Mockito 只有在mock static method 时候才使用 PowerMock, 其余时间都用Mockito ·End·</description>
+    </item>
     
     <item>
       <title>StackOverflow Error</title>
@@ -17,11 +26,11 @@
       <pubDate>Thu, 12 Sep 2019 11:23:34 +0800</pubDate>
       
       <guid>https://leiheng.github.io/posts/java/stackoverflow-error/</guid>
-      <description>我还没想到我居然能够遇到StackOverflow 这种级别的错. 先来复习一下什么叫StackOverflow Error. ERROR - review StackOverflow Error object to json Fix ·End·</description>
+      <description>我还没想到我居然能够遇到StackOverflow 这种级别的错. 先来复习一下什么叫StackOverflow Error. ERROR - review StackOverflow Error StackOverflow object to json Fix 网上看到这</description>
     </item>
     
     <item>
-      <title>Play With Playp!-02</title>
+      <title>Play With Play!-02</title>
       <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-02/</link>
       <pubDate>Mon, 09 Sep 2019 18:14:43 +0800</pubDate>
       
@@ -39,7 +48,7 @@
     </item>
     
     <item>
-      <title>Play With Playframwork-01</title>
+      <title>Play With Play!-01</title>
       <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-01/</link>
       <pubDate>Thu, 08 Aug 2019 13:16:32 +0800</pubDate>
       
@@ -48,11 +57,11 @@
     </item>
     
     <item>
-      <title>Code Style</title>
-      <link>https://leiheng.github.io/posts/java/code-style/</link>
+      <title>Java Writing Specification.md</title>
+      <link>https://leiheng.github.io/posts/java/java-tips/</link>
       <pubDate>Thu, 01 Aug 2019 19:25:47 +0800</pubDate>
       
-      <guid>https://leiheng.github.io/posts/java/code-style/</guid>
+      <guid>https://leiheng.github.io/posts/java/java-tips/</guid>
       <description>到 resource 文件夹里面拿文件 String response = Resources.toString(Resources.getResource(&amp;quot;response.json&amp;quot;), Charsets.UTF_8); // bytes: Resources.asByteSource(Resources.getResource(&amp;quot;datain_100000.log&amp;quot;).toURI().toURL()).openBufferedStream(); // Guava: public static URL getResource(String resourceName) { ClassLoader loader = MoreObjects.firstNonNull( Thread.currentThread().getContextClassLoader(), Resources.class.getClassLoader()); URL url = loader.getResource(resourceName); checkArgument(url != null, &amp;quot;resource %s not found.&amp;quot;, resourceName); return url; } get env in SpringBoot // define properties in application.yaml like: project: service: name: smarta-installer feature: mgmt: job-setting: job-retry-time: ${JOB_RETRY_TIME:100} job-interval-time: ${JOB_INTERVAL_TIME:60} then, create</description>
     </item>
     
