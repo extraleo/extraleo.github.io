@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>api-docs on Ray&#39;s Blog</title>
+    <link>https://leiheng.github.io/tags/api-docs/</link>
+    <description>Recent content in api-docs on Ray&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 14 Oct 2019 16:04:45 +0800</lastBuildDate>
+    
+	<atom:link href="https://leiheng.github.io/tags/api-docs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Swagger Practice</title>
+      <link>https://leiheng.github.io/posts/java/playframwork/swagger-practice/</link>
+      <pubDate>Mon, 14 Oct 2019 16:04:45 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/playframwork/swagger-practice/</guid>
+      <description>let&amp;rsquo;s use swagger to generate api docs Using Swagger in Spring project is very very simple, just import dependency and use api annotaion, done! Then you can use {projectBaseContext}/swagger.json to get apidocs!
+Now, how to use swagger on play2.7?
+add dependency in sbt 
+ ·End·</description>
+    </item>
+    
+  </channel>
+</rss>
