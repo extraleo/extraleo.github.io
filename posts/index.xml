@@ -6,10 +6,28 @@
     <description>Recent content in Posts on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 14 Oct 2019 16:49:51 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 04 Nov 2019 20:00:47 +0800</lastBuildDate>
     
 	<atom:link href="https://leiheng.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Play With Play!-03</title>
+      <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-03/</link>
+      <pubDate>Mon, 04 Nov 2019 20:00:47 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/playframwork/play-with-play-03/</guid>
+      <description>Play UT practice 怎么写play 的UT, 尤其是写跟ebean 相关的 UT, 而且还有 component inject, 以及 component mock. ·End·</description>
+    </item>
+    
+    <item>
+      <title>Jackson Practice 01</title>
+      <link>https://leiheng.github.io/posts/java/json/jackson-practice-01/</link>
+      <pubDate>Wed, 30 Oct 2019 20:17:49 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/json/jackson-practice-01/</guid>
+      <description>允许 lon 这个字段被反序列化, 但是不允许序列化. @Data @JsonIgnoreProperties(value = &amp;quot;lon&amp;quot;,allowSetters=true) public static class SimpleJson { private Long lon; private String str; } ·End·</description>
+    </item>
     
     <item>
       <title>Circular Dependencies</title>
@@ -39,7 +57,7 @@ add dependency in sbt
       <pubDate>Thu, 10 Oct 2019 15:35:00 +0800</pubDate>
       
       <guid>https://leiheng.github.io/posts/java/ut-practice/</guid>
-      <description>PowerMock vs Mockito 只有在mock static method 时候才使用 PowerMock, 其余时间都用Mockito ·End·</description>
+      <description>PowerMock vs Mockito 只有在mock static method 时候才使用 PowerMock, 其余时间都用Mockito Spring UT 说是Spring 的UT, 不如说成是 mockito 和 power mocker 的入坑笔记好了.😄 Playframwork UT play 的 ut 我专</description>
     </item>
     
     <item>

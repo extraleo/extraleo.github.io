@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ut on Ray&#39;s Blog</title>
+    <link>https://leiheng.github.io/tags/ut/</link>
+    <description>Recent content in ut on Ray&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 04 Nov 2019 20:00:47 +0800</lastBuildDate>
+    
+	<atom:link href="https://leiheng.github.io/tags/ut/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Play With Play!-03</title>
+      <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-03/</link>
+      <pubDate>Mon, 04 Nov 2019 20:00:47 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/playframwork/play-with-play-03/</guid>
+      <description>Play UT practice 怎么写play 的UT, 尤其是写跟ebean 相关的 UT, 而且还有 component inject, 以及 component mock. ·End·</description>
+    </item>
+    
+  </channel>
+</rss>

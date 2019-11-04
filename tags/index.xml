@@ -6,10 +6,46 @@
     <description>Recent content in Tags on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 14 Oct 2019 16:49:51 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 04 Nov 2019 20:00:47 +0800</lastBuildDate>
     
 	<atom:link href="https://leiheng.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>playframwork</title>
+      <link>https://leiheng.github.io/tags/playframwork/</link>
+      <pubDate>Mon, 04 Nov 2019 20:00:47 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/tags/playframwork/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ut</title>
+      <link>https://leiheng.github.io/tags/ut/</link>
+      <pubDate>Mon, 04 Nov 2019 20:00:47 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/tags/ut/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jackson</title>
+      <link>https://leiheng.github.io/tags/jackson/</link>
+      <pubDate>Wed, 30 Oct 2019 20:17:49 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/tags/jackson/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>json</title>
+      <link>https://leiheng.github.io/tags/json/</link>
+      <pubDate>Wed, 30 Oct 2019 20:17:49 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/tags/json/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Bean</title>
@@ -35,15 +71,6 @@
       <pubDate>Mon, 14 Oct 2019 16:04:45 +0800</pubDate>
       
       <guid>https://leiheng.github.io/tags/api-docs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>playframwork</title>
-      <link>https://leiheng.github.io/tags/playframwork/</link>
-      <pubDate>Mon, 14 Oct 2019 16:04:45 +0800</pubDate>
-      
-      <guid>https://leiheng.github.io/tags/playframwork/</guid>
       <description></description>
     </item>
     

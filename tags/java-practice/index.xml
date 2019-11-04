@@ -17,7 +17,7 @@
       <pubDate>Thu, 10 Oct 2019 15:35:00 +0800</pubDate>
       
       <guid>https://leiheng.github.io/posts/java/ut-practice/</guid>
-      <description>PowerMock vs Mockito 只有在mock static method 时候才使用 PowerMock, 其余时间都用Mockito ·End·</description>
+      <description>PowerMock vs Mockito 只有在mock static method 时候才使用 PowerMock, 其余时间都用Mockito Spring UT 说是Spring 的UT, 不如说成是 mockito 和 power mocker 的入坑笔记好了.😄 Playframwork UT play 的 ut 我专</description>
     </item>
     
   </channel>
