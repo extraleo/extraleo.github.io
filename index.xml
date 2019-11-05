@@ -5,11 +5,36 @@
     <description>Recent content in Ray&#39;s Blog on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 04 Nov 2019 20:00:47 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 05 Nov 2019 14:23:36 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Play With Play!-03</title>
+      <title>Play With Play 04</title>
+      <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-04/</link>
+      <pubDate>Tue, 05 Nov 2019 14:23:36 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/playframwork/play-with-play-04/</guid>
+      <description>
+
+&lt;h2 id=&#34;coustom-annotation&#34;&gt;Coustom annotation&lt;/h2&gt;
+
+&lt;h3 id=&#34;add-attrs-to-request&#34;&gt;add attrs to request.&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;request = request.addAttr(TypedKey, value);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt;   这个&lt;code&gt;request=request...&lt;/code&gt; 一定要加上, 不然你以为你加上去了,但其实并没有.&lt;/p&gt;
+
+&lt;p&gt;最后当你&lt;code&gt;request.attrs().getOptional()&lt;/code&gt;的时候就会非常的悲剧, 并且还不知道为什么会拿不到东西&amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Play With Play 03</title>
       <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-03/</link>
       <pubDate>Mon, 04 Nov 2019 20:00:47 +0800</pubDate>
       
@@ -206,7 +231,7 @@ private String str;
     </item>
     
     <item>
-      <title>Play With Play!-02</title>
+      <title>Play With Play 02</title>
       <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-02/</link>
       <pubDate>Mon, 09 Sep 2019 18:14:43 +0800</pubDate>
       
@@ -224,6 +249,11 @@ private String str;
       return apiBadRequest(&amp;quot;Cannot create Info&amp;quot;);
     }
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;一般来说, 如果 &lt;code&gt;optional.isPresent() == false&lt;/code&gt; 的话, 就是 &lt;code&gt;request&lt;/code&gt; 的 &lt;code&gt;header&lt;/code&gt; 没带 &lt;code&gt;Content-Type: application/json&lt;/code&gt;
+当然, 我们在反序列话的时候会抛异常&amp;hellip;.. 这个时候吧, 你要是用个&lt;code&gt;try-catch&lt;/code&gt;, 这个代码真的很难搞&amp;hellip;..我现在还不知道这样子写是不是smell的&amp;hellip;.反正现在我就没try-catch.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;当然我们还有更加装逼式的写法那就是 &lt;code&gt;Maybe&lt;/code&gt;:&lt;/p&gt;
 
@@ -412,18 +442,6 @@ systemProp.https.proxyPort=8080
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Change DNS</title>
-      <link>https://leiheng.github.io/posts/hugo/change-dns/</link>
-      <pubDate>Thu, 08 Aug 2019 13:20:14 +0800</pubDate>
-      
-      <guid>https://leiheng.github.io/posts/hugo/change-dns/</guid>
-      <description>&lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
 </description>

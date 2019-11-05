@@ -9,9 +9,9 @@
   
   
   
-  <link rel="prev" href="https://leiheng.github.io/posts/misc/about-proxy/" />
-  <link rel="next" href="https://leiheng.github.io/posts/java/stackoverflow-error/" />
-  <link rel="canonical" href="https://leiheng.github.io/posts/java/playframwork/play-with-play-02/" />
+  <link rel="prev" href="https://leiheng.github.io/posts/java/playframwork/play-with-play-03/" />
+  
+  <link rel="canonical" href="https://leiheng.github.io/posts/java/playframwork/play-with-play-04/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -21,10 +21,10 @@
   <title>
        
        
-           Play With Play 02 | Ray&#39;s Blog
+           Play With Play 04 | Ray&#39;s Blog
        
   </title>
-  <meta name="title" content="Play With Play 02 | Ray&#39;s Blog">
+  <meta name="title" content="Play With Play 04 | Ray&#39;s Blog">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -43,9 +43,9 @@
          "@id": "https:\/\/leiheng.github.io"
     },
     "articleSection" : "posts",
-    "name" : "Play With Play 02",
-    "headline" : "Play With Play 02",
-    "description" : "Get request body 拿到body 并且转换成dto,而且我再吐槽一句, playframwork的官方guid上写的body 转 dto居然是自己写个annota",
+    "name" : "Play With Play 04",
+    "headline" : "Play With Play 04",
+    "description" : "Coustom annotation add attrs to request. request = request.addAttr(TypedKey, value); NOTE: 这个request=request... 一定要加上, 不然你以为你加上去了,但其实并没有. 最后当你request.att",
     "inLanguage" : "zh-cn",
     "author" : "leiheng",
     "creator" : "leiheng",
@@ -53,11 +53,11 @@
     "accountablePerson" : "leiheng",
     "copyrightHolder" : "leiheng",
     "copyrightYear" : "2019",
-    "datePublished": "2019-09-09 18:14:43 \x2b0800 CST",
-    "dateModified" : "2019-09-09 18:14:43 \x2b0800 CST",
-    "url" : "https:\/\/leiheng.github.io\/posts\/java\/playframwork\/play-with-play-02\/",
-    "wordCount" : "421",
-    "keywords" : [ "playframwork","java","akka", "Ray\x27s Blog"]
+    "datePublished": "2019-11-05 14:23:36 \x2b0800 CST",
+    "dateModified" : "2019-11-05 14:23:36 \x2b0800 CST",
+    "url" : "https:\/\/leiheng.github.io\/posts\/java\/playframwork\/play-with-play-04\/",
+    "wordCount" : "128",
+    "keywords" : [ "playframwork", "Ray\x27s Blog"]
 }
 </script>
 
@@ -141,11 +141,11 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Play With Play 02</h1>
+        <h1 class="post-title" itemprop="name headline">Play With Play 04</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://leiheng.github.io" rel="author">leiheng</a> with ♥ 
                 <span class="post-time">
-                on <time datetime=2019-09-09 itemprop="datePublished">September 9, 2019</time>
+                on <time datetime=2019-11-05 itemprop="datePublished">November 5, 2019</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
@@ -153,7 +153,7 @@
                         <a href="https://leiheng.github.io/categories/java/"> java </a>
                         
                 </span>
-                <span class="post-word-count">, 421 words</span>
+                <span class="post-word-count">, 128 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -173,39 +173,16 @@
 
           
 
-<h2 id="get-request-body">Get request body</h2>
+<h2 id="coustom-annotation">Coustom annotation</h2>
 
-<p>拿到body 并且转换成dto,而且我再吐槽一句, playframwork的官方guid上写的body 转 dto居然是自己写个annotation去转&hellip;.这不是有毛病吗????</p>
+<h3 id="add-attrs-to-request">add attrs to request.</h3>
 
-<p>本来我之前的写法是自己用<code>Json.fromJson()</code>来转换的, 但是后来发现play自己给我包装了一个, 所以hhhh,就用这个吧.</p>
-
-<pre><code class="language-java">    Optional&lt;Info&gt; optional = request.body().parseJson(Info.class);
-    if (!optional.isPresent()) {
-      return apiBadRequest(&quot;Cannot create Info&quot;);
-    }
+<pre><code class="language-java">request = request.addAttr(TypedKey, value);
 </code></pre>
 
-<blockquote>
-<p>一般来说, 如果 <code>optional.isPresent() == false</code> 的话, 就是 <code>request</code> 的 <code>header</code> 没带 <code>Content-Type: application/json</code>
-当然, 我们在反序列话的时候会抛异常&hellip;.. 这个时候吧, 你要是用个<code>try-catch</code>, 这个代码真的很难搞&hellip;..我现在还不知道这样子写是不是smell的&hellip;.反正现在我就没try-catch.</p>
-</blockquote>
+<p><strong>NOTE:</strong>   这个<code>request=request...</code> 一定要加上, 不然你以为你加上去了,但其实并没有.</p>
 
-<p>当然我们还有更加装逼式的写法那就是 <code>Maybe</code>:</p>
-
-<pre><code class="language-java">Optional&lt;Info&gt; optional = request.body().parseJson(Info.class);
-Maybe.just(optional)
-.filter(filter-&gt;optional.isPresent())
-.map(op-&gt;op.get())
-.switchIfEmpty(Maybe.error(new Exception(&quot;Unable to find.&quot;)))
-.map()
-.....subscribe()
-</code></pre>
-
-<p>当然这种方式太有侵入性了.而且我现在也<strong>不能确定</strong>到底这种写法是否符合<strong>play! practice.</strong></p>
-
-<h2 id="ut-get-result-body">UT get result body</h2>
-
-<p>emm, play 的ut 太魔性了. 拿回来的result我查了一会儿才知道怎么转成 String&hellip;.</p>
+<p>最后当你<code>request.attrs().getOptional()</code>的时候就会非常的悲剧, 并且还不知道为什么会拿不到东西&hellip;.</p>
 
 <p><br></p>
 
@@ -224,7 +201,7 @@ Maybe.just(optional)
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://leiheng.github.io/posts/java/playframwork/play-with-play-02/>https://leiheng.github.io/posts/java/playframwork/play-with-play-02/</span>
+                    <a href=https://leiheng.github.io/posts/java/playframwork/play-with-play-04/>https://leiheng.github.io/posts/java/playframwork/play-with-play-04/</span>
             </p>
             
              
@@ -243,12 +220,6 @@ Maybe.just(optional)
             <span class="tag"><a href="https://leiheng.github.io/tags/playframwork/">
                     #playframwork</a></span>
             
-            <span class="tag"><a href="https://leiheng.github.io/tags/java/">
-                    #java</a></span>
-            
-            <span class="tag"><a href="https://leiheng.github.io/tags/akka/">
-                    #akka</a></span>
-            
             </section>
         
         <section>
@@ -259,10 +230,8 @@ Maybe.just(optional)
 
     <div class="post-nav">
         
-        <a href="https://leiheng.github.io/posts/misc/about-proxy/" class="prev" rel="prev" title="Proxy"><i class="iconfont icon-left"></i>&nbsp;Proxy</a>
+        <a href="https://leiheng.github.io/posts/java/playframwork/play-with-play-03/" class="prev" rel="prev" title="Play With Play 03"><i class="iconfont icon-left"></i>&nbsp;Play With Play 03</a>
          
-        
-        <a href="https://leiheng.github.io/posts/java/stackoverflow-error/" class="next" rel="next" title="StackOverflow Error">StackOverflow Error&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 
