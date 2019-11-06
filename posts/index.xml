@@ -17,7 +17,7 @@
       <pubDate>Tue, 05 Nov 2019 14:23:36 +0800</pubDate>
       
       <guid>https://leiheng.github.io/posts/java/playframwork/play-with-play-04/</guid>
-      <description>Coustom annotation add attrs to request. request = request.addAttr(TypedKey, value); NOTE: 这个request=request... 一定要加上, 不然你以为你加上去了,但其实并没有. 最后当你request.att</description>
+      <description>Custom annotation add attrs to request. request = request.addAttr(TypedKey, value); NOTE: 这个request=request... 一定要加上, 不然你以为你加上去了,但其实并没有. 最后当你request.att</description>
     </item>
     
     <item>
