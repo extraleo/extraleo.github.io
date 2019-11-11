@@ -9,9 +9,9 @@
   
   
   
-  <link rel="prev" href="https://leiheng.github.io/posts/java/playframwork/play-with-play-03/" />
-  <link rel="next" href="https://leiheng.github.io/posts/java/playframwork/play-with-play-05/" />
-  <link rel="canonical" href="https://leiheng.github.io/posts/java/playframwork/play-with-play-04/" />
+  <link rel="prev" href="https://leiheng.github.io/posts/java/playframwork/play-with-play-04/" />
+  
+  <link rel="canonical" href="https://leiheng.github.io/posts/java/playframwork/play-with-play-05/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -22,10 +22,10 @@
   <title>
        
        
-           Play With Play 04 | Ray&#39;s Blog
+           Play With Play 05 | Ray&#39;s Blog
        
   </title>
-  <meta name="title" content="Play With Play 04 | Ray&#39;s Blog">
+  <meta name="title" content="Play With Play 05 | Ray&#39;s Blog">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -44,9 +44,9 @@
          "@id": "https:\/\/leiheng.github.io"
     },
     "articleSection" : "posts",
-    "name" : "Play With Play 04",
-    "headline" : "Play With Play 04",
-    "description" : "Custom annotation add attrs to request. request = request.addAttr(TypedKey, value); NOTE: 这个request=request... 一定要加上, 不然你以为你加上去了,但其实并没有. 最后当你request.att",
+    "name" : "Play With Play 05",
+    "headline" : "Play With Play 05",
+    "description" : "protobuf serialization protobuf 序列化不难, 他有自己默认的序列化和反序列化. 并且是支持驼峰的命名模式的. 但是关键的是, 我们框架的里面用的jackson 的序列化工具. 怎",
     "inLanguage" : "zh-cn",
     "author" : "leiheng",
     "creator" : "leiheng",
@@ -54,11 +54,11 @@
     "accountablePerson" : "leiheng",
     "copyrightHolder" : "leiheng",
     "copyrightYear" : "2019",
-    "datePublished": "2019-11-05 14:23:36 \x2b0800 CST",
-    "dateModified" : "2019-11-05 14:23:36 \x2b0800 CST",
-    "url" : "https:\/\/leiheng.github.io\/posts\/java\/playframwork\/play-with-play-04\/",
-    "wordCount" : "128",
-    "keywords" : [ "playframwork", "Ray\x27s Blog"]
+    "datePublished": "2019-11-11 14:49:28 \x2b0800 CST",
+    "dateModified" : "2019-11-11 14:49:28 \x2b0800 CST",
+    "url" : "https:\/\/leiheng.github.io\/posts\/java\/playframwork\/play-with-play-05\/",
+    "wordCount" : "93",
+    "keywords" : [  "Ray\x27s Blog"]
 }
 </script>
 
@@ -142,19 +142,18 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Play With Play 04</h1>
+        <h1 class="post-title" itemprop="name headline">Play With Play 05</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://leiheng.github.io" rel="author">leiheng</a> with ♥ 
                 <span class="post-time">
-                on <time datetime=2019-11-05 itemprop="datePublished">November 5, 2019</time>
+                on <time datetime=2019-11-11 itemprop="datePublished">November 11, 2019</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
-                        <a href="https://leiheng.github.io/categories/java/"> java </a>
                         
                 </span>
-                <span class="post-word-count">, 128 words</span>
+                <span class="post-word-count">, 93 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -174,18 +173,14 @@
 
           
 
-<h2 id="custom-annotation">Custom annotation</h2>
+<h2 id="protobuf-serialization">protobuf serialization</h2>
 
-<h3 id="add-attrs-to-request">add attrs to request.</h3>
+<p>protobuf 序列化不难, 他有自己默认的序列化和反序列化. 并且是支持驼峰的命名模式的. 但是关键的是, 我们框架的里面用的jackson 的序列化工具. 怎么把他们集成到一块呢????</p>
 
-<pre><code class="language-java">request = request.addAttr(TypedKey, value);
-</code></pre>
+<h3 id="custom-jackson-simplemodel">custom Jackson simpleModel</h3>
 
-<p><strong>NOTE:</strong>   这个<code>request=request...</code> 一定要加上, 不然你以为你加上去了,但其实并没有.</p>
-
-<p>最后当你<code>request.attrs().getOptional()</code>的时候就会非常的悲剧, 并且还不知道为什么会拿不到东西&hellip;.</p>
-
-<p><br></p>
+<p>TODO:
+<br></p>
 
 <p><center>  ·End·  </center></p>
 
@@ -202,7 +197,7 @@
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://leiheng.github.io/posts/java/playframwork/play-with-play-04/>https://leiheng.github.io/posts/java/playframwork/play-with-play-04/</span>
+                    <a href=https://leiheng.github.io/posts/java/playframwork/play-with-play-05/>https://leiheng.github.io/posts/java/playframwork/play-with-play-05/</span>
             </p>
             
              
@@ -215,14 +210,6 @@
   
     <div class="post-tags">
         
-            <section>
-            <i class="iconfont icon-tag"></i>Tag(s): 
-            
-            <span class="tag"><a href="https://leiheng.github.io/tags/playframwork/">
-                    #playframwork</a></span>
-            
-            </section>
-        
         <section>
                 <a href="javascript:window.history.back();">back</a></span> · 
                 <span><a href="https://leiheng.github.io">home</a></span>
@@ -231,10 +218,8 @@
 
     <div class="post-nav">
         
-        <a href="https://leiheng.github.io/posts/java/playframwork/play-with-play-03/" class="prev" rel="prev" title="Play With Play 03"><i class="iconfont icon-left"></i>&nbsp;Play With Play 03</a>
+        <a href="https://leiheng.github.io/posts/java/playframwork/play-with-play-04/" class="prev" rel="prev" title="Play With Play 04"><i class="iconfont icon-left"></i>&nbsp;Play With Play 04</a>
          
-        
-        <a href="https://leiheng.github.io/posts/java/playframwork/play-with-play-05/" class="next" rel="next" title="Play With Play 05">Play With Play 05&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

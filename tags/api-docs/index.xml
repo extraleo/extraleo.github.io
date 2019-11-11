@@ -19,7 +19,8 @@
       <guid>https://leiheng.github.io/posts/java/playframwork/swagger-practice/</guid>
       <description>let&amp;rsquo;s use swagger to generate api docs Using Swagger in Spring project is very very simple, just import dependency and use api annotaion, done! Then you can use {projectBaseContext}/swagger.json to get apidocs!
 Now, how to use swagger on play2.7?
-add dependency in sbt 
+add dependency in sbt // todo
+ignore _ebean_interator 
  ·End·</description>
     </item>
     
