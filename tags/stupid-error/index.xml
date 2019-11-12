@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>misc on Ray&#39;s Blog</title>
-    <link>https://leiheng.github.io/categories/misc/</link>
-    <description>Recent content in misc on Ray&#39;s Blog</description>
+    <title>stupid-error on Ray&#39;s Blog</title>
+    <link>https://leiheng.github.io/tags/stupid-error/</link>
+    <description>Recent content in stupid-error on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 12 Nov 2019 19:20:28 +0800</lastBuildDate>
     
-	<atom:link href="https://leiheng.github.io/categories/misc/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://leiheng.github.io/tags/stupid-error/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://leiheng.github.io/posts/misc/http-not-supported-or-disabled-in-libcurl/</guid>
       <description>如题. 一个这样的问题. 我在网上搜的时候发现排名第一的StackOverflow的回答说是 windows 不支持单引号 ==_==&amp;hellip;.. 想到之前自己做过的一个实验, 在win</description>
-    </item>
-    
-    <item>
-      <title>做工程的一些道理</title>
-      <link>https://leiheng.github.io/posts/misc/about-project/</link>
-      <pubDate>Mon, 16 Sep 2019 14:00:48 +0800</pubDate>
-      
-      <guid>https://leiheng.github.io/posts/misc/about-project/</guid>
-      <description>数据模型的构建 数据模型非常重要, 一旦数据模型设计不咋, 之后重构就是一团糟 论需求和解决方法 PM 提需求就提需求, 解决方案都是rd的事情. 论代码分层</description>
     </item>
     
   </channel>

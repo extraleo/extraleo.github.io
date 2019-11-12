@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 11 Nov 2019 14:49:28 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 12 Nov 2019 19:20:28 +0800</lastBuildDate>
     
 	<atom:link href="https://leiheng.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Http Not Supported or Disabled in Libcurl</title>
+      <link>https://leiheng.github.io/posts/misc/http-not-supported-or-disabled-in-libcurl/</link>
+      <pubDate>Tue, 12 Nov 2019 19:20:28 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/misc/http-not-supported-or-disabled-in-libcurl/</guid>
+      <description>如题. 一个这样的问题. 我在网上搜的时候发现排名第一的StackOverflow的回答说是 windows 不支持单引号 ==_==&amp;hellip;.. 想到之前自己做过的一个实验, 在win</description>
+    </item>
     
     <item>
       <title>Play With Play 05</title>

@@ -6,10 +6,55 @@
     <description>Recent content in Tags on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 05 Nov 2019 14:23:36 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 12 Nov 2019 19:20:28 +0800</lastBuildDate>
     
 	<atom:link href="https://leiheng.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>stupid-error</title>
+      <link>https://leiheng.github.io/tags/stupid-error/</link>
+      <pubDate>Tue, 12 Nov 2019 19:20:28 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/tags/stupid-error/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jackson</title>
+      <link>https://leiheng.github.io/tags/jackson/</link>
+      <pubDate>Mon, 11 Nov 2019 14:49:28 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/tags/jackson/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>java</title>
+      <link>https://leiheng.github.io/tags/java/</link>
+      <pubDate>Mon, 11 Nov 2019 14:49:28 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>json</title>
+      <link>https://leiheng.github.io/tags/json/</link>
+      <pubDate>Mon, 11 Nov 2019 14:49:28 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/tags/json/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>protobuf</title>
+      <link>https://leiheng.github.io/tags/protobuf/</link>
+      <pubDate>Mon, 11 Nov 2019 14:49:28 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/tags/protobuf/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>playframwork</title>
@@ -26,24 +71,6 @@
       <pubDate>Mon, 04 Nov 2019 20:00:47 +0800</pubDate>
       
       <guid>https://leiheng.github.io/tags/ut/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>jackson</title>
-      <link>https://leiheng.github.io/tags/jackson/</link>
-      <pubDate>Wed, 30 Oct 2019 20:17:49 +0800</pubDate>
-      
-      <guid>https://leiheng.github.io/tags/jackson/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>json</title>
-      <link>https://leiheng.github.io/tags/json/</link>
-      <pubDate>Wed, 30 Oct 2019 20:17:49 +0800</pubDate>
-      
-      <guid>https://leiheng.github.io/tags/json/</guid>
       <description></description>
     </item>
     
@@ -107,15 +134,6 @@
       <pubDate>Mon, 16 Sep 2019 14:00:48 +0800</pubDate>
       
       <guid>https://leiheng.github.io/tags/project/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>java</title>
-      <link>https://leiheng.github.io/tags/java/</link>
-      <pubDate>Thu, 12 Sep 2019 11:23:34 +0800</pubDate>
-      
-      <guid>https://leiheng.github.io/tags/java/</guid>
       <description></description>
     </item>
     

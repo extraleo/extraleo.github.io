@@ -6,10 +6,19 @@
     <description>Recent content in java on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 12 Sep 2019 11:23:34 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 11 Nov 2019 14:49:28 +0800</lastBuildDate>
     
 	<atom:link href="https://leiheng.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Play With Play 05</title>
+      <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-05/</link>
+      <pubDate>Mon, 11 Nov 2019 14:49:28 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/playframwork/play-with-play-05/</guid>
+      <description>protobuf serialization protobuf 序列化不难, 他有自己默认的序列化和反序列化. 并且是支持驼峰的命名模式的. 但是关键的是, 我们框架的里面用的jackson 的序列化工具. 怎</description>
+    </item>
     
     <item>
       <title>StackOverflow Error</title>

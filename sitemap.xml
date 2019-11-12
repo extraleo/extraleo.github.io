@@ -4,7 +4,7 @@
     <url>
       <loc>https://leiheng.github.io/categories/</loc>
       
-      <lastmod>2019-11-11T14:49:28+08:00</lastmod>
+      <lastmod>2019-11-12T19:20:28+08:00</lastmod>
       
       
       
@@ -16,7 +16,77 @@
     <url>
       <loc>https://leiheng.github.io/categories/</loc>
       
-      <lastmod>2019-11-11T14:49:28+08:00</lastmod>
+      <lastmod>2019-11-12T19:20:28+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/posts/misc/http-not-supported-or-disabled-in-libcurl/</loc>
+      
+      <lastmod>2019-11-12T19:20:28+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/posts/</loc>
+      
+      <lastmod>2019-11-12T19:20:28+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/</loc>
+      
+      <lastmod>2019-11-12T19:20:28+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/tags/</loc>
+      
+      <lastmod>2019-11-12T19:20:28+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/categories/misc/</loc>
+      
+      <lastmod>2019-11-12T19:20:28+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/tags/stupid-error/</loc>
+      
+      <lastmod>2019-11-12T19:20:28+08:00</lastmod>
       
       
       
@@ -36,7 +106,7 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/posts/</loc>
+      <loc>https://leiheng.github.io/tags/jackson/</loc>
       
       <lastmod>2019-11-11T14:49:28+08:00</lastmod>
       
@@ -48,7 +118,43 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/</loc>
+      <loc>https://leiheng.github.io/categories/java/</loc>
+      
+      <lastmod>2019-11-11T14:49:28+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/tags/java/</loc>
+      
+      <lastmod>2019-11-11T14:49:28+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/tags/json/</loc>
+      
+      <lastmod>2019-11-11T14:49:28+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/tags/protobuf/</loc>
       
       <lastmod>2019-11-11T14:49:28+08:00</lastmod>
       
@@ -65,30 +171,6 @@
       <lastmod>2019-11-05T14:23:36+08:00</lastmod>
       
       
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://leiheng.github.io/tags/</loc>
-      
-      <lastmod>2019-11-05T14:23:36+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://leiheng.github.io/categories/java/</loc>
-      
-      <lastmod>2019-11-05T14:23:36+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
       
       
     </url>
@@ -133,30 +215,6 @@
       <lastmod>2019-10-30T20:17:49+08:00</lastmod>
       
       
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://leiheng.github.io/tags/jackson/</loc>
-      
-      <lastmod>2019-10-30T20:17:49+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://leiheng.github.io/tags/json/</loc>
-      
-      <lastmod>2019-10-30T20:17:49+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
       
       
     </url>
@@ -284,18 +342,6 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/categories/misc/</loc>
-      
-      <lastmod>2019-09-16T14:00:48+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
       <loc>https://leiheng.github.io/tags/misc/</loc>
       
       <lastmod>2019-09-16T14:00:48+08:00</lastmod>
@@ -335,18 +381,6 @@
       <lastmod>2019-09-12T11:23:34+08:00</lastmod>
       
       
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://leiheng.github.io/tags/java/</loc>
-      
-      <lastmod>2019-09-12T11:23:34+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
       
       
     </url>
