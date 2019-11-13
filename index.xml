@@ -30,6 +30,12 @@ leih:/opt/dah # curl --noproxy localhost &amp;quot; http://localhost:9060/Action
 curl: (1) Protocol &amp;quot; http&amp;quot; not supported or disabled in libcurl
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;OR 用了错误的引号: &lt;a href=&#34;https://stackoverflow.com/questions/6884669/curl-1-protocol-https-not-supported-or-disabled-in-libcurl&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://stackoverflow.com/questions/6884669/curl-1-protocol-https-not-supported-or-disabled-in-libcurl&lt;/a&gt;, 那个第三个回答.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;看来会有很多格式错误会导致这个问题呢. curl&lt;/p&gt;
+&lt;/blockquote&gt;
+
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
@@ -210,8 +216,11 @@ private String str;
 
 &lt;h2 id=&#34;nfs-on-windows&#34;&gt;NFS on windows&lt;/h2&gt;
 
-&lt;p&gt;老是跑到一台机器上去看东西,受不了了, 于是在我本机开了个nfs client. 过程还好, 就是后来我一不小心改了一个东西, 重启之后我磁盘锁死了&amp;hellip;
-&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;老是跑到一台机器上去看东西,受不了了, 于是在我本机开了个nfs client. 过程还好, 就是后来我一不小心改了一个东西, 重启之后我磁盘锁死了&amp;hellip;&lt;/p&gt;
+
+&lt;h2 id=&#34;win-不支持单引号&#34;&gt;win 不支持单引号&lt;/h2&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
 </description>

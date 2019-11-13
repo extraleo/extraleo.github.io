@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Ray&#39;s Blog</title>
+    <title>Ray&#39;s Blog</title>
     <link>https://leiheng.github.io/categories/</link>
-    <description>Recent content in Categories on Ray&#39;s Blog</description>
+    <description>Recent content on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 12 Nov 2019 19:20:28 +0800</lastBuildDate>
@@ -12,34 +12,28 @@
     
     
     <item>
-      <title></title>
-      <link>https://leiheng.github.io/categories/</link>
-      <pubDate>Tue, 12 Nov 2019 19:20:28 +0800</pubDate>
+      <title>Windows Misc</title>
+      <link>https://leiheng.github.io/posts/misc/windows-misc/</link>
+      <pubDate>Thu, 10 Oct 2019 15:34:24 +0800</pubDate>
       
-      <guid>https://leiheng.github.io/categories/</guid>
-      <description></description>
+      <guid>https://leiheng.github.io/posts/misc/windows-misc/</guid>
+      <description>NFS on windows 老是跑到一台机器上去看东西,受不了了, 于是在我本机开了个nfs client. 过程还好, 就是后来我一不小心改了一个东西, 重启之后我磁盘锁死了&amp;hel</description>
     </item>
     
     <item>
-      <title>misc</title>
-      <link>https://leiheng.github.io/categories/misc/</link>
-      <pubDate>Tue, 12 Nov 2019 19:20:28 +0800</pubDate>
+      <title>Change DNS</title>
+      <link>https://leiheng.github.io/posts/hugo/change-dns/</link>
+      <pubDate>Thu, 08 Aug 2019 13:20:14 +0800</pubDate>
       
-      <guid>https://leiheng.github.io/categories/misc/</guid>
-      <description></description>
+      <guid>https://leiheng.github.io/posts/hugo/change-dns/</guid>
+      <description>·End·</description>
     </item>
     
-    <item>
-      <title>java</title>
-      <link>https://leiheng.github.io/categories/java/</link>
-      <pubDate>Mon, 11 Nov 2019 14:49:28 +0800</pubDate>
-      
-      <guid>https://leiheng.github.io/categories/java/</guid>
-      <description></description>
-    </item>
+  </channel>
+</rss>  </item>
     
     <item>
-      <title>Linux</title>
+      <title>linux</title>
       <link>https://leiheng.github.io/categories/linux/</link>
       <pubDate>Tue, 24 Sep 2019 17:32:00 +0800</pubDate>
       
