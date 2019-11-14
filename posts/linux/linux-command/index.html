@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "Linux Command",
     "headline" : "Linux Command",
-    "description" : "bash script include other bash file in your script Above answers is correct, but if run script in other folder, there will be some problem. For example, the a.sh and b.sh are in same folder, a include b with . .\/b.sh to include. When run script out of the folder, for example with xx\/xx\/xx\/a.sh, file b.sh will not found: .\/b.sh: No such file or directory. I use . $(dirname \x26quot;$0\x26quot;)\/b.sh",
+    "description" : "bash script include other bash file in your script Above answers is correct, but if run script in other folder, there will be some problem. For example, the a.sh and b.sh are in same folder, a include b with . .\/b.sh to include. When run script out of the folder, for example with xx\/xx\/xx\/a.sh, file b.sh will not found: .\/b.sh: No such file or directory. I use and have another",
     "inLanguage" : "zh-cn",
     "author" : "leiheng",
     "creator" : "leiheng",
@@ -57,7 +57,7 @@
     "datePublished": "2019-08-05 15:53:33 \x2b0800 CST",
     "dateModified" : "2019-08-05 15:53:33 \x2b0800 CST",
     "url" : "https:\/\/leiheng.github.io\/posts\/linux\/linux-command\/",
-    "wordCount" : "1323",
+    "wordCount" : "1395",
     "keywords" : [ "linux", "Ray\x27s Blog"]
 }
 </script>
@@ -154,7 +154,7 @@
                         <a href="https://leiheng.github.io/categories/linux/"> linux </a>
                         
                 </span>
-                <span class="post-word-count">, 1323 words</span>
+                <span class="post-word-count">, 1395 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -184,7 +184,8 @@
 <p>Above answers is correct, but if run script in other folder, there will be some problem.
 For example, the a.sh and b.sh are in same folder, a include b with  . ./b.sh to include.
 When run script out of the folder, for example with xx/xx/xx/a.sh, file b.sh will not found: ./b.sh: No such file or directory.
-I use</p>
+I use
+and have another problem: <strong>what diff between <code>source</code> and <code>./</code></strong></p>
 </blockquote>
 
 <p><code>. $(dirname &quot;$0&quot;)/b.sh</code></p>
@@ -195,14 +196,14 @@ I use</p>
 <li><p>Linux提供<code>$?</code>特殊变量来保存最后一条命令执行结束的退出状态, 正常的情况下，命令成功执行完成的退出状态是0</p>
 
 <pre><code class="language-sh">if [$? -eq 0] ; then
-</code></pre>
+</code></pre></li>
+</ul>
 
 <blockquote>
 <ul>
 <li><code>set -e</code></li>
 </ul>
-</blockquote></li>
-</ul>
+</blockquote>
 
 <p>在<code>set -e</code>之后出现的代码，一旦出现了除0之外的返回值，整个脚本直接退出</p>
 
@@ -272,6 +273,23 @@ cat /opt/content/cfg.tmpl | envsubst &gt; /opt/content/config/Content.cfg
 
 <hr />
 
+<h3 id="du-df">du/df</h3>
+
+<p>查看目录所在分区的usage: <code>df -h /file/path</code></p>
+
+<p>查看目录大小: <code>du -h --max-depthh=1 /file/path</code></p>
+
+<pre><code class="language-shell">[root]# du -h --max-depth=1 /root/idol-installer
+3.2G    /root/idol-installer/12.3IDOL
+1.8G    /root/idol-installer/960IDOL
+2.8G    /root/idol-installer/950IDOL
+743M    /root/idol-installer/941idol
+8.4G    /root/idol-installer
+[root]# df -h /root/idol-installer
+Filesystem                Size  Used Avail Use% Mounted on
+/dev/mapper/centos7-root  137G   51G   87G  37% /
+</code></pre>
+
 <h3 id="文件权限相关">文件权限相关</h3>
 
 <ol>
@@ -304,7 +322,9 @@ cat /opt/content/cfg.tmpl | envsubst &gt; /opt/content/config/Content.cfg
 
 <h3 id="cat">cat</h3>
 
-<pre><code class="language-bash">cat &gt; filename &lt;&lt;-EOF
+<p><strong>两种写法都可以</strong></p>
+
+<pre><code class="language-shell">cat &gt; filename &lt;&lt;-EOF
 first
 second
 EOF
@@ -315,8 +335,6 @@ second
 EOF
 </code></pre>
 
-<p><strong>两种写法都可以</strong></p>
-
 <blockquote>
 <p>将输入的多行内容写入到filename这个文件中去.
 &lt;&lt;- 的唯一变化就是Here Document 的内容部分每行前面的 tab (制表符)将会被删除掉，这种用法是为了编写Here Document的时候可以将内容部分进行缩进，方便阅读代码.eof=&gt;end of file,他可以被替换成其他合法字符</p>
@@ -325,6 +343,7 @@ EOF
 
 <p>less is more
 <code>more file</code>: 空格翻屏</p>
+</blockquote>
 
 <h3 id="tail">tail</h3>
 
@@ -336,7 +355,6 @@ EOF
 
 <p>I love scp
 <code>scp remote-host:remote-file local-file</code></p>
-</blockquote>
 
 <h3 id="sftp">sftp</h3>
 

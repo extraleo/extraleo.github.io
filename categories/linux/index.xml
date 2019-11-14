@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>linux on Ray&#39;s Blog</title>
+    <title>Linux on Ray&#39;s Blog</title>
     <link>https://leiheng.github.io/categories/linux/</link>
-    <description>Recent content in linux on Ray&#39;s Blog</description>
+    <description>Recent content in Linux on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 24 Sep 2019 17:32:00 +0800</lastBuildDate>
@@ -35,7 +35,7 @@
       <pubDate>Mon, 05 Aug 2019 15:53:33 +0800</pubDate>
       
       <guid>https://leiheng.github.io/posts/linux/linux-command/</guid>
-      <description>bash script include other bash file in your script Above answers is correct, but if run script in other folder, there will be some problem. For example, the a.sh and b.sh are in same folder, a include b with . ./b.sh to include. When run script out of the folder, for example with xx/xx/xx/a.sh, file b.sh will not found: ./b.sh: No such file or directory. I use . $(dirname &amp;quot;$0&amp;quot;)/b.sh</description>
+      <description>bash script include other bash file in your script Above answers is correct, but if run script in other folder, there will be some problem. For example, the a.sh and b.sh are in same folder, a include b with . ./b.sh to include. When run script out of the folder, for example with xx/xx/xx/a.sh, file b.sh will not found: ./b.sh: No such file or directory. I use and have another</description>
     </item>
     
   </channel>
