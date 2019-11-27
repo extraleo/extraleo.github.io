@@ -14,10 +14,11 @@
       <pubDate>Wed, 27 Nov 2019 16:09:40 +0800</pubDate>
       
       <guid>https://leiheng.github.io/posts/java/make-pipe-work-in-java/</guid>
-      <description>&lt;p&gt;坑爹啊, 我写了个用pipe的linux command, 用了 &lt;code&gt;Runtime.exec(String cmd)&lt;/code&gt;, 似乎没有什么作用. 非常的困惑, 明明这个命令能够在linux 上跑的. 我还怀疑是不是最后的返回的问题(因为我这条命令最后的确会报个kill 不存在的pid). 还用了 &lt;code&gt;&amp;gt; /dev/null &amp;gt; 2&amp;amp;1&lt;/code&gt;, 但是并没有起作用.&lt;/p&gt;
+      <description>&lt;p&gt;坑爹啊, 我写了个用 &lt;code&gt;pipe&lt;/code&gt; 的&lt;code&gt;linux command&lt;/code&gt;, 用了 &lt;code&gt;Runtime.exec(String cmd)&lt;/code&gt;, 似乎没有什么作用. 非常的困惑, 明明这个命令能够在linux 上跑的. 我还怀疑是不是最后的返回的问题(因为我这条命令最后的确会报个 &lt;em&gt;kill 不存在的pid&lt;/em&gt; 的错误).还用了个:
+&lt;code&gt;&amp;gt; /dev/null &amp;gt; 2&amp;amp;1&lt;/code&gt;, 但是并没有起作用.&lt;/p&gt;
 
-&lt;p&gt;伟大的StackOverflow, 给出了&lt;a href=&#34;https://stackoverflow.com/questions/5928225/how-to-make-pipes-work-with-runtime-exec&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;回答&lt;/a&gt;
-用String [], 我之前阅读过这段代码, 知道String 最后会被拆成String [], 但是没想到啊, 要在前面加 &lt;code&gt;sh -c&lt;/code&gt;. 最后 用了 &lt;code&gt;sh -c&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;伟大的&lt;strong&gt;StackOverflow&lt;/strong&gt;, 给出了&lt;a href=&#34;https://stackoverflow.com/questions/5928225/how-to-make-pipes-work-with-runtime-exec&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;回答&lt;/a&gt;
+用 &lt;code&gt;String []&lt;/code&gt;, 我之前阅读过这段代码, 知道 &lt;code&gt;String&lt;/code&gt; 最后会被拆成 &lt;code&gt;String []&lt;/code&gt;, 但是没想到啊, 要在前面加 &lt;code&gt;sh -c&lt;/code&gt;. 最后 用了 &lt;code&gt;sh -c&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;DONE.&lt;/p&gt;
 

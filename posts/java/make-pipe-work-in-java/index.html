@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "Make Pipe Work in Java",
     "headline" : "Make Pipe Work in Java",
-    "description" : "坑爹啊, 我写了个用pipe的linux command, 用了 Runtime.exec(String cmd), 似乎没有什么作用. 非常的困惑, 明明这个命令能够在linux 上跑的. 我还怀疑是不是最后的返回的",
+    "description" : "坑爹啊, 我写了个用 pipe 的linux command, 用了 Runtime.exec(String cmd), 似乎没有什么作用. 非常的困惑, 明明这个命令能够在linux 上跑的. 我还怀疑是不是最后的返回的问题(",
     "inLanguage" : "zh-cn",
     "author" : "leiheng",
     "creator" : "leiheng",
@@ -57,7 +57,7 @@
     "datePublished": "2019-11-27 16:09:40 \x2b0800 CST",
     "dateModified" : "2019-11-27 16:09:40 \x2b0800 CST",
     "url" : "https:\/\/leiheng.github.io\/posts\/java\/make-pipe-work-in-java\/",
-    "wordCount" : "204",
+    "wordCount" : "188",
     "keywords" : [ "java", "Ray\x27s Blog"]
 }
 </script>
@@ -154,7 +154,7 @@
                         <a href="https://leiheng.github.io/categories/java/"> java </a>
                         
                 </span>
-                <span class="post-word-count">, 204 words</span>
+                <span class="post-word-count">, 188 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -172,10 +172,11 @@
           
           
 
-          <p>坑爹啊, 我写了个用pipe的linux command, 用了 <code>Runtime.exec(String cmd)</code>, 似乎没有什么作用. 非常的困惑, 明明这个命令能够在linux 上跑的. 我还怀疑是不是最后的返回的问题(因为我这条命令最后的确会报个kill 不存在的pid). 还用了 <code>&gt; /dev/null &gt; 2&amp;1</code>, 但是并没有起作用.</p>
+          <p>坑爹啊, 我写了个用 <code>pipe</code> 的<code>linux command</code>, 用了 <code>Runtime.exec(String cmd)</code>, 似乎没有什么作用. 非常的困惑, 明明这个命令能够在linux 上跑的. 我还怀疑是不是最后的返回的问题(因为我这条命令最后的确会报个 <em>kill 不存在的pid</em> 的错误).还用了个:
+<code>&gt; /dev/null &gt; 2&amp;1</code>, 但是并没有起作用.</p>
 
-<p>伟大的StackOverflow, 给出了<a href="https://stackoverflow.com/questions/5928225/how-to-make-pipes-work-with-runtime-exec" rel="nofollow noreferrer" target="_blank">回答</a>
-用String [], 我之前阅读过这段代码, 知道String 最后会被拆成String [], 但是没想到啊, 要在前面加 <code>sh -c</code>. 最后 用了 <code>sh -c</code></p>
+<p>伟大的<strong>StackOverflow</strong>, 给出了<a href="https://stackoverflow.com/questions/5928225/how-to-make-pipes-work-with-runtime-exec" rel="nofollow noreferrer" target="_blank">回答</a>
+用 <code>String []</code>, 我之前阅读过这段代码, 知道 <code>String</code> 最后会被拆成 <code>String []</code>, 但是没想到啊, 要在前面加 <code>sh -c</code>. 最后 用了 <code>sh -c</code></p>
 
 <p>DONE.</p>
 

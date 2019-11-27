@@ -17,7 +17,7 @@
       <pubDate>Wed, 27 Nov 2019 16:09:40 +0800</pubDate>
       
       <guid>https://leiheng.github.io/posts/java/make-pipe-work-in-java/</guid>
-      <description>坑爹啊, 我写了个用pipe的linux command, 用了 Runtime.exec(String cmd), 似乎没有什么作用. 非常的困惑, 明明这个命令能够在linux 上跑的. 我还怀疑是不是最后的返回的</description>
+      <description>坑爹啊, 我写了个用 pipe 的linux command, 用了 Runtime.exec(String cmd), 似乎没有什么作用. 非常的困惑, 明明这个命令能够在linux 上跑的. 我还怀疑是不是最后的返回的问题(</description>
     </item>
     
     <item>
