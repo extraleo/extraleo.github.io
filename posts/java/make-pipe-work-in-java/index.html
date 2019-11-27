@@ -57,7 +57,7 @@
     "datePublished": "2019-11-27 16:09:40 \x2b0800 CST",
     "dateModified" : "2019-11-27 16:09:40 \x2b0800 CST",
     "url" : "https:\/\/leiheng.github.io\/posts\/java\/make-pipe-work-in-java\/",
-    "wordCount" : "188",
+    "wordCount" : "203",
     "keywords" : [ "java", "Ray\x27s Blog"]
 }
 </script>
@@ -154,7 +154,7 @@
                         <a href="https://leiheng.github.io/categories/java/"> java </a>
                         
                 </span>
-                <span class="post-word-count">, 188 words</span>
+                <span class="post-word-count">, 203 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -176,7 +176,9 @@
 <code>&gt; /dev/null &gt; 2&amp;1</code>, 但是并没有起作用.</p>
 
 <p>伟大的<strong>StackOverflow</strong>, 给出了<a href="https://stackoverflow.com/questions/5928225/how-to-make-pipes-work-with-runtime-exec" rel="nofollow noreferrer" target="_blank">回答</a>
-用 <code>String []</code>, 我之前阅读过这段代码, 知道 <code>String</code> 最后会被拆成 <code>String []</code>, 但是没想到啊, 要在前面加 <code>sh -c</code>. 最后 用了 <code>sh -c</code></p>
+用 <code>String []</code>, 我之前阅读过这段代码, 知道 <code>String</code> 最后会被拆成 <code>String []</code>, 但是没想到啊, 要在前面加 <code>sh -c</code>.</p>
+
+<p>最后 用了 <code>sh -c</code> 和<code>String[]</code> 来构建命令.</p>
 
 <p>DONE.</p>
 

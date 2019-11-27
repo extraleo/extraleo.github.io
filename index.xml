@@ -18,7 +18,9 @@
 &lt;code&gt;&amp;gt; /dev/null &amp;gt; 2&amp;amp;1&lt;/code&gt;, 但是并没有起作用.&lt;/p&gt;
 
 &lt;p&gt;伟大的&lt;strong&gt;StackOverflow&lt;/strong&gt;, 给出了&lt;a href=&#34;https://stackoverflow.com/questions/5928225/how-to-make-pipes-work-with-runtime-exec&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;回答&lt;/a&gt;
-用 &lt;code&gt;String []&lt;/code&gt;, 我之前阅读过这段代码, 知道 &lt;code&gt;String&lt;/code&gt; 最后会被拆成 &lt;code&gt;String []&lt;/code&gt;, 但是没想到啊, 要在前面加 &lt;code&gt;sh -c&lt;/code&gt;. 最后 用了 &lt;code&gt;sh -c&lt;/code&gt;&lt;/p&gt;
+用 &lt;code&gt;String []&lt;/code&gt;, 我之前阅读过这段代码, 知道 &lt;code&gt;String&lt;/code&gt; 最后会被拆成 &lt;code&gt;String []&lt;/code&gt;, 但是没想到啊, 要在前面加 &lt;code&gt;sh -c&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;最后 用了 &lt;code&gt;sh -c&lt;/code&gt; 和&lt;code&gt;String[]&lt;/code&gt; 来构建命令.&lt;/p&gt;
 
 &lt;p&gt;DONE.&lt;/p&gt;
 
