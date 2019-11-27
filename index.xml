@@ -5,8 +5,27 @@
     <description>Recent content in Ray&#39;s Blog on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 12 Nov 2019 19:20:28 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 27 Nov 2019 16:09:40 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Make Pipe Work in Java</title>
+      <link>https://leiheng.github.io/posts/java/make-pipe-work-in-java/</link>
+      <pubDate>Wed, 27 Nov 2019 16:09:40 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/make-pipe-work-in-java/</guid>
+      <description>&lt;p&gt;坑爹啊, 我写了个用pipe的linux command, 用了 &lt;code&gt;Runtime.exec(String cmd)&lt;/code&gt;, 似乎没有什么作用. 非常的困惑, 明明这个命令能够在linux 上跑的. 我还怀疑是不是最后的返回的问题(因为我这条命令最后的确会报个kill 不存在的pid). 还用了 &lt;code&gt;&amp;gt; /dev/null &amp;gt; 2&amp;amp;1&lt;/code&gt;, 但是并没有起作用.&lt;/p&gt;
+
+&lt;p&gt;伟大的StackOverflow, 给出了&lt;a href=&#34;https://stackoverflow.com/questions/5928225/how-to-make-pipes-work-with-runtime-exec&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;回答&lt;/a&gt;
+用String [], 我之前阅读过这段代码, 知道String 最后会被拆成String [], 但是没想到啊, 要在前面加 &lt;code&gt;sh -c&lt;/code&gt;. 最后 用了 &lt;code&gt;sh -c&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;DONE.&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Http Not Supported or Disabled in Libcurl</title>
@@ -370,41 +389,6 @@ Maybe.just(optional)
 &lt;p&gt;这也是配置的问题, 我一直觉得postman用系统proxy是走的那个网络proxy, 就是通过&lt;code&gt;chrome:/settings&lt;/code&gt;找到的那个配置proxy的地方. 但其实不是, 他妈的去找环境变量了, 就是&lt;code&gt;HTTP_PROXY&lt;/code&gt;这个环境变量, 所以, 你还的配置一个 &lt;code&gt;NO_PROXY&lt;/code&gt; 这样的环境变量&amp;hellip;..&lt;/p&gt;
 
 &lt;p&gt;顺便记录一下, postman dev tool 挺好用的, 打开它去看request,还能看到具体的报错信息, 解决postman proxy 的问题就是通过看他具体报错看出来的&amp;hellip;&amp;hellip;..&lt;/p&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Grpc 1</title>
-      <link>https://leiheng.github.io/posts/rpc/java/grpc-1/</link>
-      <pubDate>Thu, 15 Aug 2019 17:11:34 +0800</pubDate>
-      
-      <guid>https://leiheng.github.io/posts/rpc/java/grpc-1/</guid>
-      <description>
-
-&lt;h2 id=&#34;step-1&#34;&gt;Step 1&lt;/h2&gt;
-
-&lt;p&gt;Of course we need clone project from github, now I goto example folder and compile project.&lt;/p&gt;
-
-&lt;p&gt;Ooooooooooooooops! It failed even already behind proxy, so I set proxy i  &lt;code&gt;gradle.properties&lt;/code&gt; at example path. For example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#http proxy setup
-#dont need protocol &amp;quot;http&amp;quot;
-systemProp.http.proxyHost=server
-systemProp.http.proxyPort=8080
-
-#https proxy setup
-#dont need protocol &amp;quot;http&amp;quot;
-systemProp.https.proxyHost=server
-systemProp.https.proxyPort=8080
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;step-2&#34;&gt;Step 2&lt;/h2&gt;
-
-&lt;h3 id=&#34;lets-use-akka-grpc-generate-grpc-proto&#34;&gt;lets use akka-grpc generate grpc proto&lt;/h3&gt;
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
