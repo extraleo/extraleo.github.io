@@ -9,9 +9,9 @@
   
   
   
-  <link rel="prev" href="https://leiheng.github.io/posts/misc/http-not-supported-or-disabled-in-libcurl/" />
-  <link rel="next" href="https://leiheng.github.io/posts/java/maven-shade-plugin-merge-jar/" />
-  <link rel="canonical" href="https://leiheng.github.io/posts/java/make-pipe-work-in-java/" />
+  <link rel="prev" href="https://leiheng.github.io/posts/java/make-pipe-work-in-java/" />
+  
+  <link rel="canonical" href="https://leiheng.github.io/posts/java/maven-shade-plugin-merge-jar/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -22,10 +22,10 @@
   <title>
        
        
-           Make Pipe Work in Java | Ray&#39;s Blog
+           Maven Shade Plugin Merge Jar | Ray&#39;s Blog
        
   </title>
-  <meta name="title" content="Make Pipe Work in Java | Ray&#39;s Blog">
+  <meta name="title" content="Maven Shade Plugin Merge Jar | Ray&#39;s Blog">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -44,9 +44,9 @@
          "@id": "https:\/\/leiheng.github.io"
     },
     "articleSection" : "posts",
-    "name" : "Make Pipe Work in Java",
-    "headline" : "Make Pipe Work in Java",
-    "description" : "坑爹啊, 我写了个用 pipe 的linux command, 用了 Runtime.exec(String cmd), 似乎没有什么作用. 非常的困惑, 明明这个命令能够在linux 上跑的. 我还怀疑是不是最后的返回的问题(",
+    "name" : "Maven Shade Plugin Merge Jar",
+    "headline" : "Maven Shade Plugin Merge Jar",
+    "description" : "太悲伤了, 接手了一个非常挫里挫气的项目, 改了很多挫里挫气的代码, 最气的是, 这个代码的打包方式是从intellij\/eclipse 导出的. 谁敢",
     "inLanguage" : "zh-cn",
     "author" : "leiheng",
     "creator" : "leiheng",
@@ -54,11 +54,11 @@
     "accountablePerson" : "leiheng",
     "copyrightHolder" : "leiheng",
     "copyrightYear" : "2019",
-    "datePublished": "2019-11-27 16:09:40 \x2b0800 CST",
-    "dateModified" : "2019-11-27 16:09:40 \x2b0800 CST",
-    "url" : "https:\/\/leiheng.github.io\/posts\/java\/make-pipe-work-in-java\/",
-    "wordCount" : "196",
-    "keywords" : [ "java", "Ray\x27s Blog"]
+    "datePublished": "2019-11-28 19:59:49 \x2b0800 CST",
+    "dateModified" : "2019-11-28 19:59:49 \x2b0800 CST",
+    "url" : "https:\/\/leiheng.github.io\/posts\/java\/maven-shade-plugin-merge-jar\/",
+    "wordCount" : "518",
+    "keywords" : [  "Ray\x27s Blog"]
 }
 </script>
 
@@ -142,19 +142,18 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Make Pipe Work in Java</h1>
+        <h1 class="post-title" itemprop="name headline">Maven Shade Plugin Merge Jar</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://leiheng.github.io" rel="author">leiheng</a> with ♥ 
                 <span class="post-time">
-                on <time datetime=2019-11-27 itemprop="datePublished">November 27, 2019</time>
+                on <time datetime=2019-11-28 itemprop="datePublished">November 28, 2019</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
-                        <a href="https://leiheng.github.io/categories/java/"> java </a>
                         
                 </span>
-                <span class="post-word-count">, 196 words</span>
+                <span class="post-word-count">, 518 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -172,15 +171,83 @@
           
           
 
-          <p>坑爹啊, 我写了个用 <code>pipe</code> 的<code>linux command</code>, 用了 <code>Runtime.exec(String cmd)</code>, 似乎没有什么作用. 非常的困惑, 明明这个命令能够在linux 上跑的. 我还怀疑是不是最后的返回的问题(因为我这条命令最后的确会报个 <em>kill 不存在的pid</em> 的错误).还用了个:
-<code>&gt; /dev/null &gt; 2&amp;1</code>, 但是并没有起作用.</p>
+          
 
-<p>伟大的<strong>StackOverflow</strong>, 给出了<a href="https://stackoverflow.com/questions/5928225/how-to-make-pipes-work-with-runtime-exec" rel="nofollow noreferrer" target="_blank">回答</a>
-用 <code>String []</code>, 我之前阅读过这段代码, 知道 <code>String</code> 最后会被拆成 <code>String []</code>, 但是没想到啊, 要在前面加 <code>sh -c</code>.</p>
+<p>太悲伤了, 接手了一个非常挫里挫气的项目, 改了很多挫里挫气的代码, 最气的是, 这个代码的打包方式是从intellij/eclipse 导出的. 谁敢相信, 在2019年了, 连maven/gradle 项目都不是的 java 项目呢&hellip;..</p>
 
-<p>最后 用了 <code>sh -c</code> 和 <code>String[]</code> 来构建命令.</p>
+<p>由于引入了两个第三方类库, 导致我们打的包出来基本上不能跑&hellip; <strong>Class not found</strong> 胡你一脸. 行吧, merge jar.</p>
 
-<p>DONE.</p>
+<h2 id="merge-jar">Merge Jar</h2>
+
+<ol>
+<li>要把这个不是maven 项目改成maven 项目, 指定 sourceDir: <code>&lt;sourceDirectory&gt;src&lt;/sourceDirectory&gt;</code>, 然后用上 <code>maven-compiler-plugin</code> 确定 java 版本号.</li>
+
+<li><p>引入 <strong>本地dependencies</strong>. 这个包没得groupid,没得artifactId, 没得version 的三无包 🖕 . 所以要手动指定这个包在哪, 不然编译不过&hellip; 💅 , 并且随意填填以上三项:</p>
+
+<pre><code class="language-xml">&lt;dependency&gt;
+  &lt;groupId&gt;whatever&lt;/groupId&gt;
+  &lt;artifactId&gt;whatever&lt;/artifactId&gt;
+  &lt;version&gt;1.0&lt;/version&gt;
+  &lt;scope&gt;system&lt;/scope&gt;
+  &lt;systemPath&gt;${project.basedir}/lib/whatever.zip&lt;/systemPath&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>注意了, <code>&lt;scope&gt;system&lt;/scope&gt;</code> 一定要有, 天知道我随意删了什么神奇的scope&hellip;&hellip;.. 导致了我浪费了15min&hellip;&hellip;..</p></li>
+
+<li><p>set shade plugin, 非常随意, 但是有个坑. 因为我们这次是merge, 所以要把所有的东西都给搞进来, 在 include 就填 <strong>*</strong>, 然后果然什么都没有 merge 进来&hellip; 💅
+再看看, 居然是 <strong>两个*</strong></p></li>
+</ol>
+
+<p>最后, pom:</p>
+
+<pre><code class="language-xml">  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;Whatever&lt;/groupId&gt;
+      &lt;artifactId&gt;Whatever&lt;/artifactId&gt;
+      &lt;version&gt;1.0&lt;/version&gt;
+      &lt;scope&gt;system&lt;/scope&gt;
+      &lt;systemPath&gt;${project.basedir}/lib/Whatever.zip&lt;/systemPath&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+  &lt;build&gt;
+    &lt;sourceDirectory&gt;src&lt;/sourceDirectory&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+        &lt;version&gt;3.8.1&lt;/version&gt;
+        &lt;configuration&gt;
+          &lt;source&gt;1.8&lt;/source&gt;
+          &lt;target&gt;1.8&lt;/target&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-shade-plugin&lt;/artifactId&gt;
+        &lt;version&gt;2.4.3&lt;/version&gt;
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;phase&gt;package&lt;/phase&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;shade&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+              &lt;filters&gt;
+                &lt;filter&gt;
+                  &lt;artifact&gt;*:*&lt;/artifact&gt;
+                  &lt;includes&gt;
+                    &lt;include&gt;**&lt;/include&gt;
+                  &lt;/includes&gt;
+                &lt;/filter&gt;
+              &lt;/filters&gt;
+            &lt;/configuration&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+</code></pre>
 
 <p><br></p>
 
@@ -199,7 +266,7 @@
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://leiheng.github.io/posts/java/make-pipe-work-in-java/>https://leiheng.github.io/posts/java/make-pipe-work-in-java/</span>
+                    <a href=https://leiheng.github.io/posts/java/maven-shade-plugin-merge-jar/>https://leiheng.github.io/posts/java/maven-shade-plugin-merge-jar/</span>
             </p>
             
              
@@ -212,14 +279,6 @@
   
     <div class="post-tags">
         
-            <section>
-            <i class="iconfont icon-tag"></i>Tag(s): 
-            
-            <span class="tag"><a href="https://leiheng.github.io/tags/java/">
-                    #java</a></span>
-            
-            </section>
-        
         <section>
                 <a href="javascript:window.history.back();">back</a></span> · 
                 <span><a href="https://leiheng.github.io">home</a></span>
@@ -228,10 +287,8 @@
 
     <div class="post-nav">
         
-        <a href="https://leiheng.github.io/posts/misc/http-not-supported-or-disabled-in-libcurl/" class="prev" rel="prev" title="Http Not Supported or Disabled in Libcurl"><i class="iconfont icon-left"></i>&nbsp;Http Not Supported or Disabled in Libcurl</a>
+        <a href="https://leiheng.github.io/posts/java/make-pipe-work-in-java/" class="prev" rel="prev" title="Make Pipe Work in Java"><i class="iconfont icon-left"></i>&nbsp;Make Pipe Work in Java</a>
          
-        
-        <a href="https://leiheng.github.io/posts/java/maven-shade-plugin-merge-jar/" class="next" rel="next" title="Maven Shade Plugin Merge Jar">Maven Shade Plugin Merge Jar&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

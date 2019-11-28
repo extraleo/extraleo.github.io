@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 27 Nov 2019 16:09:40 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 28 Nov 2019 19:59:49 +0800</lastBuildDate>
     
 	<atom:link href="https://leiheng.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Maven Shade Plugin Merge Jar</title>
+      <link>https://leiheng.github.io/posts/java/maven-shade-plugin-merge-jar/</link>
+      <pubDate>Thu, 28 Nov 2019 19:59:49 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/maven-shade-plugin-merge-jar/</guid>
+      <description>太悲伤了, 接手了一个非常挫里挫气的项目, 改了很多挫里挫气的代码, 最气的是, 这个代码的打包方式是从intellij/eclipse 导出的. 谁敢</description>
+    </item>
     
     <item>
       <title>Make Pipe Work in Java</title>
