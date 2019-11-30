@@ -5,8 +5,24 @@
     <description>Recent content in Ray&#39;s Blog on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 28 Nov 2019 19:59:49 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 30 Nov 2019 13:02:43 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Sbt Compiler</title>
+      <link>https://leiheng.github.io/posts/java/playframwork/sbt-compiler/</link>
+      <pubDate>Sat, 30 Nov 2019 13:02:43 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/playframwork/sbt-compiler/</guid>
+      <description>&lt;p&gt;为啥子sbt编译的时候老是报我routes 有问题&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;fixme&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Maven Shade Plugin Merge Jar</title>
@@ -403,54 +419,6 @@ private String str;
 
 &lt;p&gt;网上看到这种错一般都是用Gson, 一般解决方法就是不让他显示出来&amp;hellip;.这是什么解决方案. 于是我就用jackson, done.
 &lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Play With Play 02</title>
-      <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-02/</link>
-      <pubDate>Mon, 09 Sep 2019 18:14:43 +0800</pubDate>
-      
-      <guid>https://leiheng.github.io/posts/java/playframwork/play-with-play-02/</guid>
-      <description>
-
-&lt;h2 id=&#34;get-request-body&#34;&gt;Get request body&lt;/h2&gt;
-
-&lt;p&gt;拿到body 并且转换成dto,而且我再吐槽一句, playframwork的官方guid上写的body 转 dto居然是自己写个annotation去转&amp;hellip;.这不是有毛病吗????&lt;/p&gt;
-
-&lt;p&gt;本来我之前的写法是自己用&lt;code&gt;Json.fromJson()&lt;/code&gt;来转换的, 但是后来发现play自己给我包装了一个, 所以hhhh,就用这个吧.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    Optional&amp;lt;Info&amp;gt; optional = request.body().parseJson(Info.class);
-    if (!optional.isPresent()) {
-      return apiBadRequest(&amp;quot;Cannot create Info&amp;quot;);
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;一般来说, 如果 &lt;code&gt;optional.isPresent() == false&lt;/code&gt; 的话, 就是 &lt;code&gt;request&lt;/code&gt; 的 &lt;code&gt;header&lt;/code&gt; 没带 &lt;code&gt;Content-Type: application/json&lt;/code&gt;
-当然, 我们在反序列话的时候会抛异常&amp;hellip;.. 这个时候吧, 你要是用个&lt;code&gt;try-catch&lt;/code&gt;, 这个代码真的很难搞&amp;hellip;..我现在还不知道这样子写是不是smell的&amp;hellip;.反正现在我就没try-catch.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;当然我们还有更加装逼式的写法那就是 &lt;code&gt;Maybe&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Optional&amp;lt;Info&amp;gt; optional = request.body().parseJson(Info.class);
-Maybe.just(optional)
-.filter(filter-&amp;gt;optional.isPresent())
-.map(op-&amp;gt;op.get())
-.switchIfEmpty(Maybe.error(new Exception(&amp;quot;Unable to find.&amp;quot;)))
-.map()
-.....subscribe()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;当然这种方式太有侵入性了.而且我现在也&lt;strong&gt;不能确定&lt;/strong&gt;到底这种写法是否符合&lt;strong&gt;play! practice.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;ut-get-result-body&#34;&gt;UT get result body&lt;/h2&gt;
-
-&lt;p&gt;emm, play 的ut 太魔性了. 拿回来的result我查了一会儿才知道怎么转成 String&amp;hellip;.&lt;/p&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;center&gt;  ·End·  &lt;/center&gt;&lt;/p&gt;
 </description>
