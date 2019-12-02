@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "Linux Command",
     "headline" : "Linux Command",
-    "description" : "bash script include other bash file in your script Above answers is correct, but if run script in other folder, there will be some problem. For example, the a.sh and b.sh are in same folder, a include b with . .\/b.sh to include. When run script out of the folder, for example with xx\/xx\/xx\/a.sh, file b.sh will not found: .\/b.sh: No such file or directory. I use and have another",
+    "description" : "This is my linux reference.",
     "inLanguage" : "zh-cn",
     "author" : "leiheng",
     "creator" : "leiheng",
@@ -57,7 +57,7 @@
     "datePublished": "2019-08-05 15:53:33 \x2b0800 CST",
     "dateModified" : "2019-08-05 15:53:33 \x2b0800 CST",
     "url" : "https:\/\/leiheng.github.io\/posts\/linux\/linux-command\/",
-    "wordCount" : "1395",
+    "wordCount" : "1446",
     "keywords" : [ "linux", "Ray\x27s Blog"]
 }
 </script>
@@ -154,7 +154,7 @@
                         <a href="https://leiheng.github.io/categories/linux/"> linux </a>
                         
                 </span>
-                <span class="post-word-count">, 1395 words</span>
+                <span class="post-word-count">, 1446 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -189,6 +189,28 @@ and have another problem: <strong>what diff between <code>source</code> and <cod
 </blockquote>
 
 <p><code>. $(dirname &quot;$0&quot;)/b.sh</code></p>
+
+<h3 id="bash-args">bash args</h3>
+
+<p>一般有两种方式: <code>&quot;$1&quot;</code> 和 <code>getopts</code>:</p>
+
+<pre><code class="language-shell">while getopts ':y' c
+do
+  case $c in
+    y)
+    echo &quot;--------------------------------------------------------------------&quot;
+    echo &quot;Hit return to continue&quot;
+    echo &quot;Hit Ctrl-C to end this script now!&quot;
+    echo &quot;--------------------------------------------------------------------&quot;
+    read DUMMY
+    ;;
+    ?)
+    echo &quot;unknow arg&quot;
+    exit 1
+    ;;
+  esac
+done
+</code></pre>
 
 <h3 id="common">common</h3>
 
