@@ -13,19 +13,19 @@
     
     <item>
       <title>Play With Play 02</title>
-      <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-02/</link>
+      <link>https://leiheng.github.io/posts/java/playframework/play-with-play-02/</link>
       <pubDate>Mon, 09 Sep 2019 18:14:43 +0800</pubDate>
       
-      <guid>https://leiheng.github.io/posts/java/playframwork/play-with-play-02/</guid>
+      <guid>https://leiheng.github.io/posts/java/playframework/play-with-play-02/</guid>
       <description>Get request body 拿到body 并且转换成dto,而且我再吐槽一句, playframwork的官方guid上写的body 转 dto居然是自己写个annota</description>
     </item>
     
     <item>
       <title>Play With Play 01</title>
-      <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-01/</link>
+      <link>https://leiheng.github.io/posts/java/playframework/play-with-play-01/</link>
       <pubDate>Thu, 08 Aug 2019 13:16:32 +0800</pubDate>
       
-      <guid>https://leiheng.github.io/posts/java/playframwork/play-with-play-01/</guid>
+      <guid>https://leiheng.github.io/posts/java/playframework/play-with-play-01/</guid>
       <description>prepare install gradle install sbt gradle 我尝试去使用 gradle 去构建项目, 但是一时半会还没能理解 gradle 里面 plugins 怎么玩的, 遂放弃, 先把 play 玩起来再说. sbt I&amp;rsquo;m new one for playframwork. My intellij cannot import sbt project so that tried to run sbt</description>
     </item>
     

@@ -1,40 +1,49 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>playframwork on Ray&#39;s Blog</title>
-    <link>https://leiheng.github.io/tags/playframwork/</link>
-    <description>Recent content in playframwork on Ray&#39;s Blog</description>
+    <title>playframework on Ray&#39;s Blog</title>
+    <link>https://leiheng.github.io/tags/playframework/</link>
+    <description>Recent content in playframework on Ray&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 05 Nov 2019 14:23:36 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 21 Dec 2019 14:41:29 +0800</lastBuildDate>
     
-	<atom:link href="https://leiheng.github.io/tags/playframwork/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://leiheng.github.io/tags/playframework/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Play With Play 06</title>
+      <link>https://leiheng.github.io/posts/java/playframework/play-with-play-06/</link>
+      <pubDate>Sat, 21 Dec 2019 14:41:29 +0800</pubDate>
+      
+      <guid>https://leiheng.github.io/posts/java/playframework/play-with-play-06/</guid>
+      <description>module in play 说一下playframework 里面的 module. 我在用 springboot 的时候, 有时候会自己写下 springboot-starter, 想到其实module 跟 starter 很相似, 都能够给你封装 bean, 都能给你封装</description>
+    </item>
+    
+    <item>
       <title>Play With Play 04</title>
-      <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-04/</link>
+      <link>https://leiheng.github.io/posts/java/playframework/play-with-play-04/</link>
       <pubDate>Tue, 05 Nov 2019 14:23:36 +0800</pubDate>
       
-      <guid>https://leiheng.github.io/posts/java/playframwork/play-with-play-04/</guid>
+      <guid>https://leiheng.github.io/posts/java/playframework/play-with-play-04/</guid>
       <description>Custom annotation add attrs to request. request = request.addAttr(TypedKey, value); NOTE: 这个request=request... 一定要加上, 不然你以为你加上去了,但其实并没有. 最后当你request.att</description>
     </item>
     
     <item>
       <title>Play With Play 03</title>
-      <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-03/</link>
+      <link>https://leiheng.github.io/posts/java/playframework/play-with-play-03/</link>
       <pubDate>Mon, 04 Nov 2019 20:00:47 +0800</pubDate>
       
-      <guid>https://leiheng.github.io/posts/java/playframwork/play-with-play-03/</guid>
+      <guid>https://leiheng.github.io/posts/java/playframework/play-with-play-03/</guid>
       <description>Play UT practice 怎么写play 的UT, 尤其是写跟ebean 相关的 UT, 而且还有 component inject, 以及 component mock. ·End·</description>
     </item>
     
     <item>
       <title>Swagger Practice</title>
-      <link>https://leiheng.github.io/posts/java/playframwork/swagger-practice/</link>
+      <link>https://leiheng.github.io/posts/java/playframework/swagger-practice/</link>
       <pubDate>Mon, 14 Oct 2019 16:04:45 +0800</pubDate>
       
-      <guid>https://leiheng.github.io/posts/java/playframwork/swagger-practice/</guid>
+      <guid>https://leiheng.github.io/posts/java/playframework/swagger-practice/</guid>
       <description>let&amp;rsquo;s use swagger to generate api docs Using Swagger in Spring project is very very simple, just import dependency and use api annotaion, done! Then you can use {projectBaseContext}/swagger.json to get apidocs!
 Now, how to use swagger on play2.7?
 add dependency in sbt // todo
@@ -44,19 +53,19 @@ ignore _ebean_interator
     
     <item>
       <title>Play With Play 02</title>
-      <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-02/</link>
+      <link>https://leiheng.github.io/posts/java/playframework/play-with-play-02/</link>
       <pubDate>Mon, 09 Sep 2019 18:14:43 +0800</pubDate>
       
-      <guid>https://leiheng.github.io/posts/java/playframwork/play-with-play-02/</guid>
+      <guid>https://leiheng.github.io/posts/java/playframework/play-with-play-02/</guid>
       <description>Get request body 拿到body 并且转换成dto,而且我再吐槽一句, playframwork的官方guid上写的body 转 dto居然是自己写个annota</description>
     </item>
     
     <item>
       <title>Play With Play 01</title>
-      <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-01/</link>
+      <link>https://leiheng.github.io/posts/java/playframework/play-with-play-01/</link>
       <pubDate>Thu, 08 Aug 2019 13:16:32 +0800</pubDate>
       
-      <guid>https://leiheng.github.io/posts/java/playframwork/play-with-play-01/</guid>
+      <guid>https://leiheng.github.io/posts/java/playframework/play-with-play-01/</guid>
       <description>prepare install gradle install sbt gradle 我尝试去使用 gradle 去构建项目, 但是一时半会还没能理解 gradle 里面 plugins 怎么玩的, 遂放弃, 先把 play 玩起来再说. sbt I&amp;rsquo;m new one for playframwork. My intellij cannot import sbt project so that tried to run sbt</description>
     </item>
     

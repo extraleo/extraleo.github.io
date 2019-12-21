@@ -13,10 +13,10 @@
     
     <item>
       <title>Play With Play 03</title>
-      <link>https://leiheng.github.io/posts/java/playframwork/play-with-play-03/</link>
+      <link>https://leiheng.github.io/posts/java/playframework/play-with-play-03/</link>
       <pubDate>Mon, 04 Nov 2019 20:00:47 +0800</pubDate>
       
-      <guid>https://leiheng.github.io/posts/java/playframwork/play-with-play-03/</guid>
+      <guid>https://leiheng.github.io/posts/java/playframework/play-with-play-03/</guid>
       <description>Play UT practice 怎么写play 的UT, 尤其是写跟ebean 相关的 UT, 而且还有 component inject, 以及 component mock. ·End·</description>
     </item>
     

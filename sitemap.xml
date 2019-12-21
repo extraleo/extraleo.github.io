@@ -4,7 +4,7 @@
     <url>
       <loc>https://leiheng.github.io/categories/</loc>
       
-      <lastmod>2019-12-02T15:12:25+08:00</lastmod>
+      <lastmod>2019-12-21T14:41:29+08:00</lastmod>
       
       
       
@@ -16,7 +16,7 @@
     <url>
       <loc>https://leiheng.github.io/categories/</loc>
       
-      <lastmod>2019-12-02T15:12:25+08:00</lastmod>
+      <lastmod>2019-12-21T14:41:29+08:00</lastmod>
       
       
       
@@ -26,9 +26,19 @@
     </url>
   
     <url>
+      <loc>https://leiheng.github.io/posts/java/playframework/play-with-play-06/</loc>
+      
+      <lastmod>2019-12-21T14:41:29+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
       <loc>https://leiheng.github.io/posts/</loc>
       
-      <lastmod>2019-12-02T15:12:25+08:00</lastmod>
+      <lastmod>2019-12-21T14:41:29+08:00</lastmod>
       
       
       
@@ -40,7 +50,43 @@
     <url>
       <loc>https://leiheng.github.io/</loc>
       
-      <lastmod>2019-12-02T15:12:25+08:00</lastmod>
+      <lastmod>2019-12-21T14:41:29+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/tags/</loc>
+      
+      <lastmod>2019-12-21T14:41:29+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/categories/java/</loc>
+      
+      <lastmod>2019-12-21T14:41:29+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://leiheng.github.io/tags/playframework/</loc>
+      
+      <lastmod>2019-12-21T14:41:29+08:00</lastmod>
       
       
       
@@ -60,30 +106,6 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/tags/</loc>
-      
-      <lastmod>2019-12-02T15:12:25+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://leiheng.github.io/categories/java/</loc>
-      
-      <lastmod>2019-12-02T15:12:25+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
       <loc>https://leiheng.github.io/tags/java-misc/</loc>
       
       <lastmod>2019-12-02T15:12:25+08:00</lastmod>
@@ -96,7 +118,7 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/posts/java/playframwork/sbt-compiler/</loc>
+      <loc>https://leiheng.github.io/posts/java/playframework/sbt-compiler/</loc>
       
       <lastmod>2019-11-30T13:02:43+08:00</lastmod>
       
@@ -196,7 +218,7 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/posts/java/playframwork/play-with-play-05/</loc>
+      <loc>https://leiheng.github.io/posts/java/playframework/play-with-play-05/</loc>
       
       <lastmod>2019-11-11T14:49:28+08:00</lastmod>
       
@@ -242,7 +264,7 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/posts/java/playframwork/play-with-play-04/</loc>
+      <loc>https://leiheng.github.io/posts/java/playframework/play-with-play-04/</loc>
       
       <lastmod>2019-11-05T14:23:36+08:00</lastmod>
       
@@ -252,19 +274,7 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/tags/playframwork/</loc>
-      
-      <lastmod>2019-11-05T14:23:36+08:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://leiheng.github.io/posts/java/playframwork/play-with-play-03/</loc>
+      <loc>https://leiheng.github.io/posts/java/playframework/play-with-play-03/</loc>
       
       <lastmod>2019-11-04T20:00:47+08:00</lastmod>
       
@@ -330,7 +340,7 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/posts/java/playframwork/swagger-practice/</loc>
+      <loc>https://leiheng.github.io/posts/java/playframework/swagger-practice/</loc>
       
       <lastmod>2019-10-14T16:04:45+08:00</lastmod>
       
@@ -462,7 +472,7 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/posts/java/playframwork/play-with-play-02/</loc>
+      <loc>https://leiheng.github.io/posts/java/playframework/play-with-play-02/</loc>
       
       <lastmod>2019-09-09T18:14:43+08:00</lastmod>
       
@@ -618,7 +628,7 @@
     </url>
   
     <url>
-      <loc>https://leiheng.github.io/posts/java/playframwork/play-with-play-01/</loc>
+      <loc>https://leiheng.github.io/posts/java/playframework/play-with-play-01/</loc>
       
       <lastmod>2019-08-08T13:16:32+08:00</lastmod>
       

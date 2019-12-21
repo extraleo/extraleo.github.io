@@ -9,9 +9,9 @@
   
   
   
-  <link rel="prev" href="https://leiheng.github.io/posts/java/playframwork/play-with-play-04/" />
-  <link rel="next" href="https://leiheng.github.io/posts/misc/http-not-supported-or-disabled-in-libcurl/" />
-  <link rel="canonical" href="https://leiheng.github.io/posts/java/playframwork/play-with-play-05/" />
+  <link rel="prev" href="https://leiheng.github.io/posts/misc/about-proxy/" />
+  <link rel="next" href="https://leiheng.github.io/posts/java/stackoverflow-error/" />
+  <link rel="canonical" href="https://leiheng.github.io/posts/java/playframework/play-with-play-02/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -22,10 +22,10 @@
   <title>
        
        
-           Play With Play 05 | Ray&#39;s Blog
+           Play With Play 02 | Ray&#39;s Blog
        
   </title>
-  <meta name="title" content="Play With Play 05 | Ray&#39;s Blog">
+  <meta name="title" content="Play With Play 02 | Ray&#39;s Blog">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -44,9 +44,9 @@
          "@id": "https:\/\/leiheng.github.io"
     },
     "articleSection" : "posts",
-    "name" : "Play With Play 05",
-    "headline" : "Play With Play 05",
-    "description" : "protobuf serialization protobuf 序列化不难, 他有自己默认的序列化和反序列化. 并且是支持驼峰的命名模式的. 但是关键的是, 我们框架的里面用的jackson 的序列化工具. 怎",
+    "name" : "Play With Play 02",
+    "headline" : "Play With Play 02",
+    "description" : "Get request body 拿到body 并且转换成dto,而且我再吐槽一句, playframwork的官方guid上写的body 转 dto居然是自己写个annota",
     "inLanguage" : "zh-cn",
     "author" : "leiheng",
     "creator" : "leiheng",
@@ -54,11 +54,11 @@
     "accountablePerson" : "leiheng",
     "copyrightHolder" : "leiheng",
     "copyrightYear" : "2019",
-    "datePublished": "2019-11-11 14:49:28 \x2b0800 CST",
-    "dateModified" : "2019-11-11 14:49:28 \x2b0800 CST",
-    "url" : "https:\/\/leiheng.github.io\/posts\/java\/playframwork\/play-with-play-05\/",
-    "wordCount" : "98",
-    "keywords" : [ "java","jackson","json","protobuf", "Ray\x27s Blog"]
+    "datePublished": "2019-09-09 18:14:43 \x2b0800 CST",
+    "dateModified" : "2019-09-09 18:14:43 \x2b0800 CST",
+    "url" : "https:\/\/leiheng.github.io\/posts\/java\/playframework\/play-with-play-02\/",
+    "wordCount" : "421",
+    "keywords" : [ "playframework","java","akka", "Ray\x27s Blog"]
 }
 </script>
 
@@ -142,11 +142,11 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Play With Play 05</h1>
+        <h1 class="post-title" itemprop="name headline">Play With Play 02</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://leiheng.github.io" rel="author">leiheng</a> with ♥ 
                 <span class="post-time">
-                on <time datetime=2019-11-11 itemprop="datePublished">November 11, 2019</time>
+                on <time datetime=2019-09-09 itemprop="datePublished">September 9, 2019</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
@@ -154,7 +154,7 @@
                         <a href="https://leiheng.github.io/categories/java/"> java </a>
                         
                 </span>
-                <span class="post-word-count">, 98 words</span>
+                <span class="post-word-count">, 421 words</span>
         </div>
     </header>
     <div class="post-content">
@@ -174,16 +174,41 @@
 
           
 
-<h2 id="protobuf-serialization">protobuf serialization</h2>
+<h2 id="get-request-body">Get request body</h2>
 
-<p>protobuf 序列化不难, 他有自己默认的序列化和反序列化. 并且是支持驼峰的命名模式的. 但是关键的是, 我们框架的里面用的jackson 的序列化工具. 怎么把他们集成到一块呢????</p>
+<p>拿到body 并且转换成dto,而且我再吐槽一句, playframwork的官方guid上写的body 转 dto居然是自己写个annotation去转&hellip;.这不是有毛病吗????</p>
 
-<h3 id="custom-jackson-simplemodel">custom Jackson simpleModel</h3>
+<p>本来我之前的写法是自己用<code>Json.fromJson()</code>来转换的, 但是后来发现play自己给我包装了一个, 所以hhhh,就用这个吧.</p>
 
-<h2 id="json-provide-module-load-order">Json Provide module load order</h2>
+<pre><code class="language-java">    Optional&lt;Info&gt; optional = request.body().parseJson(Info.class);
+    if (!optional.isPresent()) {
+      return apiBadRequest(&quot;Cannot create Info&quot;);
+    }
+</code></pre>
 
-<p>TODO:
-<br></p>
+<blockquote>
+<p>一般来说, 如果 <code>optional.isPresent() == false</code> 的话, 就是 <code>request</code> 的 <code>header</code> 没带 <code>Content-Type: application/json</code>
+当然, 我们在反序列话的时候会抛异常&hellip;.. 这个时候吧, 你要是用个<code>try-catch</code>, 这个代码真的很难搞&hellip;..我现在还不知道这样子写是不是smell的&hellip;.反正现在我就没try-catch.</p>
+</blockquote>
+
+<p>当然我们还有更加装逼式的写法那就是 <code>Maybe</code>:</p>
+
+<pre><code class="language-java">Optional&lt;Info&gt; optional = request.body().parseJson(Info.class);
+Maybe.just(optional)
+.filter(filter-&gt;optional.isPresent())
+.map(op-&gt;op.get())
+.switchIfEmpty(Maybe.error(new Exception(&quot;Unable to find.&quot;)))
+.map()
+.....subscribe()
+</code></pre>
+
+<p>当然这种方式太有侵入性了.而且我现在也<strong>不能确定</strong>到底这种写法是否符合<strong>play! practice.</strong></p>
+
+<h2 id="ut-get-result-body">UT get result body</h2>
+
+<p>emm, play 的ut 太魔性了. 拿回来的result我查了一会儿才知道怎么转成 String&hellip;.</p>
+
+<p><br></p>
 
 <p><center>  ·End·  </center></p>
 
@@ -200,7 +225,7 @@
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://leiheng.github.io/posts/java/playframwork/play-with-play-05/>https://leiheng.github.io/posts/java/playframwork/play-with-play-05/</span>
+                    <a href=https://leiheng.github.io/posts/java/playframework/play-with-play-02/>https://leiheng.github.io/posts/java/playframework/play-with-play-02/</span>
             </p>
             
              
@@ -216,17 +241,14 @@
             <section>
             <i class="iconfont icon-tag"></i>Tag(s): 
             
+            <span class="tag"><a href="https://leiheng.github.io/tags/playframework/">
+                    #playframework</a></span>
+            
             <span class="tag"><a href="https://leiheng.github.io/tags/java/">
                     #java</a></span>
             
-            <span class="tag"><a href="https://leiheng.github.io/tags/jackson/">
-                    #jackson</a></span>
-            
-            <span class="tag"><a href="https://leiheng.github.io/tags/json/">
-                    #json</a></span>
-            
-            <span class="tag"><a href="https://leiheng.github.io/tags/protobuf/">
-                    #protobuf</a></span>
+            <span class="tag"><a href="https://leiheng.github.io/tags/akka/">
+                    #akka</a></span>
             
             </section>
         
@@ -238,10 +260,10 @@
 
     <div class="post-nav">
         
-        <a href="https://leiheng.github.io/posts/java/playframwork/play-with-play-04/" class="prev" rel="prev" title="Play With Play 04"><i class="iconfont icon-left"></i>&nbsp;Play With Play 04</a>
+        <a href="https://leiheng.github.io/posts/misc/about-proxy/" class="prev" rel="prev" title="Proxy"><i class="iconfont icon-left"></i>&nbsp;Proxy</a>
          
         
-        <a href="https://leiheng.github.io/posts/misc/http-not-supported-or-disabled-in-libcurl/" class="next" rel="next" title="Http Not Supported or Disabled in Libcurl">Http Not Supported or Disabled in Libcurl&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="https://leiheng.github.io/posts/java/stackoverflow-error/" class="next" rel="next" title="StackOverflow Error">StackOverflow Error&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

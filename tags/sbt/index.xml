@@ -13,10 +13,10 @@
     
     <item>
       <title>Sbt Compiler</title>
-      <link>https://leiheng.github.io/posts/java/playframwork/sbt-compiler/</link>
+      <link>https://leiheng.github.io/posts/java/playframework/sbt-compiler/</link>
       <pubDate>Sat, 30 Nov 2019 13:02:43 +0800</pubDate>
       
-      <guid>https://leiheng.github.io/posts/java/playframwork/sbt-compiler/</guid>
+      <guid>https://leiheng.github.io/posts/java/playframework/sbt-compiler/</guid>
       <description>为啥子sbt编译的时候老是报我routes 有问题&amp;hellip; fixme 格老子的, 我现在在 intellij 那个 sbt shell, 里跑了一遍, 就编译过了, 这难道是我在 intellij 里 import sbt 导</description>
     </item>
     
