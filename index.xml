@@ -23,6 +23,8 @@
 &lt;p&gt;我在用 springboot 的时候, 有时候会自己写下 springboot-starter, 想到其实module 跟 starter 很相似, 都能够给你封装 bean, 都能给你封装依赖.
 但是在play 里面, 要是不用 guice 这个ioc 框架的话, play是自己显式binding class and bean, 以及 继承关系的.&lt;/p&gt;
 
+&lt;p&gt;就拿配置pb 的objectmapper 做例子吧.&lt;/p&gt;
+
 &lt;h2 id=&#34;refer&#34;&gt;REFER&lt;/h2&gt;
 
 &lt;p&gt;[Springboot starter]()&lt;/p&gt;
